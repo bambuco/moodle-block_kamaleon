@@ -1,0 +1,18 @@
+# BLOCK Kamaleon
+
+A block to display content from different sources and with different designs.
+
+Package tested in: moodle 4.1+
+
+## QUICK INSTALL
+Download zip package, extract the kamaleon folder and upload this folder into blocks/.
+
+## ABOUT
+* **Developed by:** David Herney - davidbernal at bambuco dot co
+* **GIT:** https://github.com/bambuco/moodle-block_kamaleon
+* **Powered by:** [BambuCo](https://bambuco.co/) - [Universidad CES](https://www.ces.edu.co/)
+
+## IN VERSION
+
+### 2023021500:
+* First version. Funded by [Universidad CES](https://www.ces.edu.co/)

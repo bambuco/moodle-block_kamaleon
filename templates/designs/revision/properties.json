@@ -1,0 +1,10 @@
+{
+  "name": "Content review",
+  "description": "Used to review content information, not to be used in production.",
+  "author": {
+    "name": "David Herney - BambuCo",
+    "url": "https://bambuco.co/",
+    "email": "info@bambuco.co"
+  },
+  "license": "GPL-3.0+"
+}

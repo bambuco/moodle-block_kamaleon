@@ -1,0 +1,37 @@
+.block_kamaleon .box-content > div {
+    max-width: 100%;
+    max-height: 300px;
+    overflow: auto;
+}
+
+.block_kamaleon .box-images {
+    text-align: center;
+    border-top: inherit;
+}
+
+.block_kamaleon .box-images img {
+    max-width: calc(50% - 2px);
+    height: auto;
+    border: 1px dashed;
+}
+
+.block_kamaleon .group-dates {
+    font-size: 80%;
+}
+
+.block_kamaleon .one-content > * {
+    position: relative;
+}
+
+.block_kamaleon .one-content label {
+    border: 1px dashed var(--dark);
+    border-right: none;
+    background-color: var(--light);
+    color: var(--dark);
+    position: absolute;
+    top: 0;
+    right: 0;
+    font-size: 70%;
+    padding: 1px 2px 1px 6px;
+    border-radius: 7px 0 0 7px;
+}

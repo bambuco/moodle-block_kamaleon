@@ -1,0 +1,87 @@
+{{!
+    This file is part of Moodle - https://moodle.org/
+
+    Moodle is free software: you can redistribute it and/or modify
+    it under the terms of the GNU General Public License as published by
+    the Free Software Foundation, either version 3 of the License, or
+    (at your option) any later version.
+
+    Moodle is distributed in the hope that it will be useful,
+    but WITHOUT ANY WARRANTY; without even the implied warranty of
+    MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+    GNU General Public License for more details.
+
+    You should have received a copy of the GNU General Public License
+    along with Moodle.  If not, see <http://www.gnu.org/licenses/>.
+}}
+{{!
+    @template block_kamaleon/contents
+
+    The contents list.
+
+    Example context (json):
+    {
+        "attributes": [
+            "contents": [
+                "shorttitle": "MC",
+                "title": "My content",
+                "subtitle": "My content subtitle",
+                "url": "https://example.com",
+                "content": "My content description",
+                "banner": "https://example.com/banner.png",
+                "icon": "https://example.com/icon.png",
+                "showedition": false,
+            ],
+            "instanceid": "99"
+        ]
+    }
+}}
+
+<div class="block_kamaleon-contentslist">
+    <div class="row">
+        {{#contents}}
+        <div class="col-md-3">
+            <div class="card mb-3 one-content">
+                <div class="card-header">
+                    {{#shorttitle}}
+                        <h6>
+                            <span class="badge badge-secondary">{{shorttitle}}</span>
+                        </h6>
+                    {{/shorttitle}}
+                    <h5 class="card-title">
+                        {{#hasicon}}
+                            <img src="{{icon}}" alt="" />
+                        {{/hasicon}}
+                        {{title}}
+                    </h5>
+                </div>
+                {{#hasbanner}}
+                    <img src="{{banner}}" alt="{{title}}" />
+                {{/hasbanner}}
+
+                <h3>{{subtitle}}</h3>
+                <div class="card-body">
+                    <div>
+                        {{{content}}}
+                    </div>
+
+                    {{#url}}
+                    <div>
+                        <a href="{{url}}" class="btn btn-success" {{#target}}target="{{target}}"{{/target}}>
+                            {{#linkname}}{{linkname}}{{/linkname}}
+                            {{^linkname}}{{#str}} morenavigationlinks {{/str}}{{/linkname}}
+                        </a>
+                    </div>
+                    {{/url}}
+                </div>
+
+                {{#showedition}}
+                <div class="card-footer text-muted">
+                    {{> block_kamaleon/edition}}
+                </div>
+                {{/showedition}}
+            </div>
+        </div>
+        {{/contents}}
+    </div>
+</div>
