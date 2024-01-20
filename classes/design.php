@@ -37,7 +37,7 @@ class design extends entity {
         $path = $CFG->dirroot . '/blocks/kamaleon/templates/designs/';
         $files = array_diff(scandir($path), ['..', '.']);
 
-        $list = [];
+        $list = ['' => ''];
         foreach ($files as $file) {
             if (is_dir($path . $file)
                     && file_exists($path . $file . '/properties.json')

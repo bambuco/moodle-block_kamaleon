@@ -94,6 +94,7 @@ class contents implements renderable, templatable {
         $context = \context_block::instance($this->instanceid);
 
         $contents = [];
+        $index = 0;
         foreach ($this->contents as $content) {
             // Check if the content is an object of \block_kamaleon\content type.
             if (!($content instanceof \block_kamaleon\content)) {
@@ -112,6 +113,8 @@ class contents implements renderable, templatable {
 
             $contentdata->hasbanner = !empty($contentdata->banner);
             $contentdata->hasicon = !empty($contentdata->icon);
+            $contentdata->index = $index;
+            $index++;
             $contents[] = $contentdata;
         }
 

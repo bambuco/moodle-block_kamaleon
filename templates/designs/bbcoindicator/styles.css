@@ -1,0 +1,24 @@
+.block_kamaleon.design-bbcoindicator .container-indicators {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 20px;
+    flex-wrap: wrap;
+}
+
+.block_kamaleon.design-bbcoindicator .container-indicators > div {
+    max-width: 200px;
+    padding: 20px;
+    text-align: center;
+}
+
+.block_kamaleon.design-bbcoindicator .container-indicators > div:hover {
+    margin-top: -10px;
+    transition: all 0.3s ease-in-out 0s;
+}
+
+.block_kamaleon.design-bbcoindicator h5 {
+    font-size: 14px;
+    font-weight: normal;
+    padding: 15px 0;
+}

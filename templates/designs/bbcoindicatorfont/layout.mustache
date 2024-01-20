@@ -15,21 +15,27 @@
     along with Moodle.  If not, see <http://www.gnu.org/licenses/>.
 }}
 {{!
-    @template block_kamaleon/contents
+    @template block_kamaleon/bbcoindicatorfont/layout
 
-    The contents list.
+    The designed layout.
 
     Example context (json):
     {
         "attributes": [
             "contents": [
+                "id": 1,
+                "index": 0,
                 "shorttitle": "MC",
                 "title": "My content",
                 "subtitle": "My content subtitle",
                 "url": "https://example.com",
+                "target": "_blank",
+                "linkname": "My content link name",
                 "content": "My content description",
                 "banner": "https://example.com/banner.png",
+                "hasbanner": true,
                 "icon": "https://example.com/icon.png",
+                "hasicon": true,
                 "showedition": false,
             ],
             "instanceid": "99"
@@ -37,24 +43,12 @@
     }
 }}
 
-<section class="container-cards">
+<section class="container-indicators">
     {{#contents}}
-    <div class="card-cards">
-        <div class="card_imagen">
-            {{#banner}}
-                <img src="{{banner}}" alt="{{shorttitle}}">
-            {{/banner}}
-        </div>
-        <div class="card_content">
-            <h2>{{title}}</h2>
-            {{{content}}}
-            {{#url}}
-                <p><a href="{{url}}" class="btn btn-primary" {{#target}}target="{{target}}"{{/target}}>
-                    {{#linkname}}{{linkname}}{{/linkname}}
-                    {{^linkname}}{{#str}} morenavigationlinks {{/str}}{{/linkname}}
-                </a></p>
-            {{/url}}
-        </div>
+    <div>
+        {{#shorttitle}}<i class="icon fa fa-{{shorttitle}}"></i>{{/shorttitle}}
+        {{#title}}<h5>{{title}}</h5>{{/title}}
+        {{#subtitle}}<h4>{{subtitle}}</h4>{{/subtitle}}
         {{#showedition}}
             {{> block_kamaleon/edition}}
         {{/showedition}}

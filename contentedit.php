@@ -88,7 +88,7 @@ $data['editoroptions'] = $editoroptions;
 
 $form = new \block_kamaleon\forms\content(null, $data);
 if ($form->is_cancelled()) {
-    $url = new moodle_url($CFG->wwwroot . '/blocks/kamaleon/content.php', ['id' => $bid]);
+    $url = new moodle_url($CFG->wwwroot . '/blocks/kamaleon/listcontents.php', ['id' => $bid]);
     redirect($url);
 } else if ($data = $form->get_data()) {
 
@@ -144,7 +144,7 @@ if ($form->is_cancelled()) {
         $DB->set_field('block_kamaleon_contents', 'content', $text, ['id' => $id]);
     }
 
-    $url = new moodle_url($CFG->wwwroot . '/blocks/kamaleon/content.php', ['id' => $bid, 'msg' => 'changessaved']);
+    $url = new moodle_url($CFG->wwwroot . '/blocks/kamaleon/listcontents.php', ['id' => $bid, 'msg' => 'changessaved']);
     redirect($url);
     exit;
 

@@ -1,0 +1,67 @@
+{{!
+    This file is part of Moodle - https://moodle.org/
+
+    Moodle is free software: you can redistribute it and/or modify
+    it under the terms of the GNU General Public License as published by
+    the Free Software Foundation, either version 3 of the License, or
+    (at your option) any later version.
+
+    Moodle is distributed in the hope that it will be useful,
+    but WITHOUT ANY WARRANTY; without even the implied warranty of
+    MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+    GNU General Public License for more details.
+
+    You should have received a copy of the GNU General Public License
+    along with Moodle.  If not, see <http://www.gnu.org/licenses/>.
+}}
+{{!
+    @template block_kamaleon/cesbootstrapcarousel/layout
+
+    The designed layout.
+
+    Example context (json):
+    {
+        "attributes": [
+            "contents": [
+                "id": 1,
+                "shorttitle": "MC",
+                "title": "My content",
+                "subtitle": "My content subtitle",
+                "url": "https://example.com",
+                "content": "My content description",
+                "banner": "https://example.com/banner.png",
+                "icon": "https://example.com/icon.png",
+                "showedition": false,
+            ],
+            "instanceid": "99"
+        ]
+    }
+}}
+
+<section id="cesbootstrapcarousel-{{instanceid}}" class="carousel slide" data-ride="carousel">
+    <ol class="carousel-indicators">
+    {{#contents}}
+        <li {{^index}}class="active"{{/index}} data-target="#cesbootstrapcarousel-{{instanceid}}" data-slide-to="{{index}}">&nbsp;</li>
+    {{/contents}}
+    </ol>
+    <div class="carousel-inner">
+        {{#contents}}
+            <div class="carousel-item {{^index}}active{{/index}}" style="background-image: url('{{banner}}');">
+                <div class="contenedor-bn">
+                    {{#title}}
+                        <div class="titulo-bn">{{title}}</div>
+                        <div class="carousel-title-separator"></div>
+                    {{/title}}
+                    {{#subtitle}}<div class="texto-bn-bold">{{subtitle}}</div>{{/subtitle}}
+                    {{#content}}<div class="content">{{{content}}}</div>{{/content}}
+                    {{#url}}<a class="boton-bn" style="border-radius: 10px;" href="{{url}}" {{#target}}target="{{target}}"{{/target}}><i class="fa fa-angle-right"></i></a>{{/url}}
+                    {{#showedition}}
+                        {{> block_kamaleon/edition}}
+                    {{/showedition}}
+                </div>
+            </div>
+        {{/contents}}
+        <a class="carousel-control carousel-control-prev" style="width: 5%" role="button" href="#cesbootstrapcarousel-{{instanceid}}" data-slide="prev"> <span class="sr-only">{{#str}} previous {{/str}}</span> </a>
+        <a class="carousel-control carousel-control-next" role="button" href="#cesbootstrapcarousel-{{instanceid}}" data-slide="next"> <span class="sr-only">{{#str}} next {{/str}}</span> </a>
+    </div>
+</section>

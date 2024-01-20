@@ -1,0 +1,31 @@
+.block_kamaleon.design-bbcoindicatorfont .container-indicators {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 20px;
+    flex-wrap: wrap;
+}
+
+.block_kamaleon.design-bbcoindicatorfont .container-indicators > div {
+    max-width: 200px;
+    padding: 20px;
+    text-align: center;
+}
+
+.block_kamaleon.design-bbcoindicatorfont .container-indicators > div:hover {
+    transform: scale(1.1);
+    transition: all 0.3s ease-in-out 0s;
+}
+
+.block_kamaleon.design-bbcoindicatorfont .icon {
+    font-size: 70px;
+    margin: 0;
+    padding: 0;
+    width: auto;
+}
+
+.block_kamaleon.design-bbcoindicatorfont h5 {
+    font-size: 14px;
+    font-weight: normal;
+    padding: 15px 0;
+}

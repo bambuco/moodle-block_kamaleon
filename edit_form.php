@@ -47,7 +47,7 @@ class block_kamaleon_edit_form extends block_edit_form {
 
         $types = ['custom' => get_string('type_custom', 'block_kamaleon')];
 
-        if (has_capability('block/kamaleon:addsources', $this->page->context)) {
+        if (has_capability('block/kamaleon:addsources', $this->block->context)) {
             $sourcestypes = \block_kamaleon\controller::get_sourcestypes();
             $types = array_merge($types, $sourcestypes);
         }
@@ -56,10 +56,20 @@ class block_kamaleon_edit_form extends block_edit_form {
         $availabledesigns = \block_kamaleon\design::get_availables();
         $mform->addElement('select', 'config_design', get_string('design', 'block_kamaleon'), $availabledesigns);
 
-        $contentitemurl = new \moodle_url('/blocks/kamaleon/content.php', ['id' => $this->block->instance->id]);
+        $contentitemurl = new \moodle_url('/blocks/kamaleon/listcontents.php', ['id' => $this->block->instance->id]);
         $contentbuttonlabel = get_string('customcontentgo', 'block_kamaleon');
         $link = \html_writer::link($contentitemurl, $contentbuttonlabel, ['class' => 'btn btn-primary']);
         $mform->addElement('static', 'contentbutton', $link);
+
+        $editoroptions = ['maxfiles' => EDITOR_UNLIMITED_FILES, 'noclean' => true, 'context' => $this->block->context];
+
+        // Header HTML editor.
+        $mform->addElement('editor', 'config_htmlheader', get_string('htmlheader', 'block_kamaleon'), null, $editoroptions);
+        $mform->setType('config_htmlheader', PARAM_RAW); // XSS is prevented when printing the block contents and serving files.
+
+        // Footer HTML editor.
+        $mform->addElement('editor', 'config_htmlfooter', get_string('htmlfooter', 'block_kamaleon'), null, $editoroptions);
+        $mform->setType('config_htmlfooter', PARAM_RAW); // XSS is prevented when printing the block contents and serving files.
 
     }
 

@@ -46,7 +46,7 @@ $context = context_block::instance($id);
 require_capability('block/kamaleon:addinstance', $context);
 
 $PAGE->set_context($context);
-$PAGE->set_url('/blocks/kamaleon/index.php');
+$PAGE->set_url('/blocks/kamaleon/listcontents.php');
 $PAGE->set_pagelayout('incourse');
 $PAGE->set_heading(get_string('content', 'block_kamaleon'));
 $PAGE->set_title(get_string('content', 'block_kamaleon'));
@@ -79,7 +79,7 @@ echo $OUTPUT->header();
 if ($delete && confirm_sesskey()) {
 
     if ($confirm != md5($delete)) {
-        $returnurl = new moodle_url('/blocks/kamaleon/content.php', ['id' => $id]);
+        $returnurl = new moodle_url('/blocks/kamaleon/listcontents.php', ['id' => $id]);
         echo $OUTPUT->heading(get_string('contentdelete', 'block_kamaleon'), 3);
         $optionsyes = ['delete' => $delete, 'confirm' => md5($delete), 'sesskey' => sesskey()];
         echo $OUTPUT->confirm(get_string('deletecheck', 'block_kamaleon'),
@@ -128,7 +128,7 @@ $list = $DB->get_records('block_kamaleon_contents', ['instanceid' => $id], 'defa
 $renderable = new \block_kamaleon\output\contents($id, $list, $currentdesign, true);
 $renderer = $PAGE->get_renderer('block_kamaleon');
 
-echo html_writer::start_tag('div', ['class' => 'block_kamaleon']);
+echo html_writer::start_tag('div', ['class' => 'block_kamaleon design-' . $currentdesign]);
 echo $renderer->render($renderable);
 echo html_writer::end_tag('div');
 

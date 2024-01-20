@@ -15,20 +15,24 @@
     along with Moodle.  If not, see <http://www.gnu.org/licenses/>.
 }}
 {{!
-    @template block_kamaleon/content
+    @template block_kamaleon/revision/layout
 
-    Template for show a content.
+    The designed layout.
 
     Example context (json):
     {
         "attributes": [
-            "shorttitle": "MC",
-            "title": "My content",
-            "subtitle": "My content subtitle",
-            "url": "https://example.com",
-            "content": "My content description",
-            "banner": "https://example.com/banner.png",
-            "icon": "https://example.com/icon.png",
+            "contents": [
+                "shorttitle": "MC",
+                "title": "My content",
+                "subtitle": "My content subtitle",
+                "url": "https://example.com",
+                "content": "My content description",
+                "banner": "https://example.com/banner.png",
+                "icon": "https://example.com/icon.png",
+                "showedition": false,
+            ],
+            "instanceid": "99"
         ]
     }
 }}
@@ -65,7 +69,7 @@
                 </ul>
 
                 {{#showedition}}
-                <div class="card-footer text-muted">
+                <div class="card-footer">
                     {{> block_kamaleon/edition}}
                 </div>
                 {{/showedition}}

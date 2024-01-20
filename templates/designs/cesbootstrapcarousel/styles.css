@@ -1,0 +1,84 @@
+.block_kamaleon.design-cesbootstrapcarousel .carousel-item {
+    background-position: center;
+    background-size: cover;
+}
+
+.block_kamaleon.design-cesbootstrapcarousel .carousel-control[role="button"]:focus {
+    box-shadow: none;
+}
+
+.carousel-indicators li {
+    border-bottom: 2px solid #aaa;
+}
+
+.block_kamaleon.design-cesbootstrapcarousel .carousel-title-separator {
+    width: 50px; height: 5px; border-radius: 10px; background-color: #00abaf; margin: 10px 0
+}
+
+.block_kamaleon.design-cesbootstrapcarousel .boton-bn {
+    width: 44px;
+    height: 44px;
+    color: #15284b;
+    background-color: #cddc29;
+    padding: 0 17px 2px 17px;
+    font-size: 35px;
+    font-weight: 900
+}
+
+.block_kamaleon.design-cesbootstrapcarousel .boton-bn:hover {
+    width: 44px;
+    height: 44px;
+    color: #cddc29;
+    background-color: #15284b;
+    padding: 0 17px 2px 17px;
+    font-size: 35px;
+    font-weight: 900
+}
+
+.block_kamaleon.design-cesbootstrapcarousel .contenedor-bn {
+    margin: auto;
+    max-width: 1110px;
+    width: 90%;
+    padding: 100px 0;
+}
+
+.block_kamaleon.design-cesbootstrapcarousel .titulo-bn {
+    font-weight: 900;
+    color: #cddc29;
+    font-size: 34px;
+}
+
+.block_kamaleon.design-cesbootstrapcarousel .texto-bn-bold {
+    font-weight: 800;
+    font-size: 34px;
+    line-height: 36px;
+    color: #15284b;
+    padding-right: 50%;
+    margin-bottom: 10px
+}
+
+.block_kamaleon.design-cesbootstrapcarousel .texto-bn-light {
+    font-weight: 300;
+    color: #FFF;
+    font-size: 34px;
+    padding-right: 60%;
+    line-height: 36px;
+}
+
+@media (max-width: 499px) {
+
+    .block_kamaleon.design-cesbootstrapcarousel .titulo-bn {
+        font-size: 25px;
+    }
+
+    .block_kamaleon.design-cesbootstrapcarousel .texto-bn-bold {
+        font-size: 20px;
+        line-height: 22px;
+    }
+
+    .block_kamaleon.design-cesbootstrapcarousel .texto-bn-light {
+        font-size: 20px;
+        line-height: 22px;
+    }
+
+}

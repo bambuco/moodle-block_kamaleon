@@ -58,6 +58,14 @@ class block_kamaleon extends block_base {
         $this->content = new stdClass;
         $this->content->footer = '';
 
+        $filteropt = new stdClass;
+        $filteropt->overflowdiv = true;
+
+        // If the content is trusted, do not clean it.
+        if ($this->content_is_trusted()) {
+            $filteropt->noclean = true;
+        }
+
         $design = '';
         if (!empty($this->config) && !empty($this->config->design)) {
             \block_kamaleon\controller::include_designcss($this->config->design);
@@ -71,12 +79,56 @@ class block_kamaleon extends block_base {
 
         $this->content->text = $renderer->render($renderable);
 
+        if (isset($this->config->htmlheader)) {
+            // Rewrite url.
+            $htmlheader = file_rewrite_pluginfile_urls($this->config->htmlheader,
+                                                                     'pluginfile.php',
+                                                                     $this->context->id,
+                                                                     'block_kamaleon',
+                                                                     'content_header',
+                                                                     0);
+            // Default to FORMAT_HTML.
+            $htmlheaderformat = FORMAT_HTML;
+            // Check to see if the format has been properly set on the config.
+            if (isset($this->config->htmlheaderformat)) {
+                $htmlheaderformat = $this->config->htmlheaderformat;
+            }
+
+            if (is_array($htmlheader)) {
+                $htmlheader = $htmlheader['text'];
+            }
+
+            $this->content->text = format_text($htmlheader, $htmlheaderformat, $filteropt) . $this->content->text;
+        }
+
+        if (isset($this->config->htmlfooter)) {
+            // Rewrite url.
+            $htmlfooter = file_rewrite_pluginfile_urls($this->config->htmlfooter,
+                                                                     'pluginfile.php',
+                                                                     $this->context->id,
+                                                                     'block_kamaleon',
+                                                                     'content_footer',
+                                                                     0);
+            // Default to FORMAT_HTML.
+            $htmlfooterformat = FORMAT_HTML;
+            // Check to see if the format has been properly set on the config.
+            if (isset($this->config->htmlfooterformat)) {
+                $htmlfooterformat = $this->config->htmlfooterformat;
+            }
+
+            if (is_array($htmlfooter)) {
+                $htmlfooter = $htmlfooter['text'];
+            }
+
+            $this->content->footer .= format_text($htmlfooter, $htmlfooterformat, $filteropt);
+        }
+
         $isediting = $this->page->user_is_editing() && has_capability('block/kamaleon:addinstance', $this->context);
         if ($isediting) {
-            $contentitemurl = new \moodle_url('/blocks/kamaleon/content.php', ['id' => $this->instance->id]);
+            $contentitemurl = new \moodle_url('/blocks/kamaleon/listcontents.php', ['id' => $this->instance->id]);
             $contentbuttonlabel = get_string('customcontentgo', 'block_kamaleon');
             $link = \html_writer::link($contentitemurl, $contentbuttonlabel, ['class' => 'btn btn-primary']);
-            $this->content->footer = $link;
+            $this->content->text .= $link;
         }
 
         return $this->content;
@@ -173,6 +225,10 @@ class block_kamaleon extends block_base {
             }
         }
 
+        if (!empty($this->config->design)) {
+            $attributes['class'] .= ' design-' . $this->config->design;
+        }
+
         return $attributes;
     }
 
@@ -193,6 +249,36 @@ class block_kamaleon extends block_base {
             'instance' => $instanceconfigs,
             'plugin' => $pluginconfigs,
         ];
+    }
+
+    /**
+     * Serialize and store config data.
+     *
+     * @param object $data
+     * @param boolean $nolongerused
+     * @return void
+     */
+    public function instance_config_save($data, $nolongerused = false) {
+
+        $config = clone($data);
+        // Move embedded files into a proper filearea and adjust HTML links to match.
+        $config->htmlheader = file_save_draft_area_files($data->htmlheader['itemid'],
+                              $this->context->id,
+                              'block_kamaleon',
+                              'content_header',
+                              0,
+                              ['subdirs' => true],
+                              $data->htmlheader['text']);
+        $config->htmlfooter = file_save_draft_area_files($data->htmlfooter['itemid'],
+                              $this->context->id,
+                              'block_kamaleon',
+                              'content_footer',
+                              0,
+                              ['subdirs' => true],
+                              $data->htmlfooter['text']);
+        $config->htmlheaderformat = $data->htmlheader['format'];
+        $config->htmlfooterformat = $data->htmlfooter['format'];
+        parent::instance_config_save($config, $nolongerused);
     }
 
     /**

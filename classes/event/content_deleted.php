@@ -65,7 +65,7 @@ class content_deleted extends \core\event\base {
      * @return \moodle_url
      */
     public function get_url() {
-        return new \moodle_url('/blocks/kamaleon/content.php', ['id' => $this->contextinstanceid]);
+        return new \moodle_url('/blocks/kamaleon/listcontents.php', ['id' => $this->contextinstanceid]);
     }
 
 }

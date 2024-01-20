@@ -1,0 +1,93 @@
+{{!
+    This file is part of Moodle - https://moodle.org/
+
+    Moodle is free software: you can redistribute it and/or modify
+    it under the terms of the GNU General Public License as published by
+    the Free Software Foundation, either version 3 of the License, or
+    (at your option) any later version.
+
+    Moodle is distributed in the hope that it will be useful,
+    but WITHOUT ANY WARRANTY; without even the implied warranty of
+    MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+    GNU General Public License for more details.
+
+    You should have received a copy of the GNU General Public License
+    along with Moodle.  If not, see <http://www.gnu.org/licenses/>.
+}}
+{{!
+    @template block_kamaleon/cessinglecard/layout
+
+    The designed layout.
+
+    Example context (json):
+    {
+        "attributes": [
+            "contents": [
+                "id": 1,
+                "shorttitle": "MC",
+                "title": "My content",
+                "subtitle": "My content subtitle",
+                "url": "https://example.com",
+                "target": "_blank",
+                "linkname": "My content link name",
+                "content": "My content description",
+                "banner": "https://example.com/banner.png",
+                "hasbanner": true,
+                "icon": "https://example.com/icon.png",
+                "hasicon": true,
+                "showedition": false,
+            ],
+            "instanceid": "99"
+        ]
+    }
+}}
+
+<style>
+    {{#contents}}
+        .block_kamaleon.design-cestabs #tab-ces-{{id}}:checked~#tab-ces-content-{{id}} {
+            display: block;
+        }
+    {{/contents}}
+</style>
+
+<section class="tabs-ces">
+    {{#contents}}
+        <input id="tab-ces-{{id}}" {{^index}}checked=""{{/index}} name="tabs-ces-{{instanceid}}" type="radio">
+        <label for="tab-ces-{{id}}">
+            <span class="botones-planes-tabs">
+                {{#hasicon}}
+                <div class="icono-planes-tabs">
+                    <img src="{{icon}}" alt="{{title}}" width="40" height="auto" />
+                </div>
+                {{/hasicon}}
+                {{#title}}<p>{{title}}</p>{{/title}}
+            </span>
+        </label>
+    {{/contents}}
+
+    {{#contents}}
+        <div id="tab-ces-content-{{id}}" class="tab-ces-content">
+            <div class="contenido-tabs">
+                {{#hasbanner}}
+                    <img class="contenido-tabs-imagen" src="{{banner}}" alt="{{title}}">
+                {{/hasbanner}}
+                <div class="contenido-tabs-texto">
+                    <h2>{{title}}</h2>
+                    <div class="separador-tabs"></div>
+                    {{{content}}}
+                    {{#url}}
+                        <a href="{{url}}" class="btn btn-secondary" {{#target}}target="{{target}}"{{/target}}>
+                        {{#linkname}}{{linkname}}{{/linkname}}
+                        {{^linkname}}{{#str}} morenavigationlinks {{/str}}{{/linkname}}
+                        </a>
+                    {{/url}}
+                </div>
+            </div>
+
+            {{#showedition}}
+                {{> block_kamaleon/edition}}
+            {{/showedition}}
+
+        </div>
+    {{/contents}}
+</section>

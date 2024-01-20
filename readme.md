@@ -14,5 +14,8 @@ Download zip package, extract the kamaleon folder and upload this folder into bl
 
 ## IN VERSION
 
+### 2023021501:
+* First designs. Funded by [Universidad CES](https://www.ces.edu.co/)
+
 ### 2023021500:
-* First version. Funded by [Universidad CES](https://www.ces.edu.co/)
+* First version.

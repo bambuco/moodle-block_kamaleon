@@ -1,4 +1,4 @@
-.block_kamaleon .container-cards {
+.block_kamaleon.design-cescardsresize1 .container-cards {
     position: relative;
     display: flex;
     justify-content: center;
@@ -8,7 +8,7 @@
     padding: 75px 0 100px 0;
 }
 
-.block_kamaleon .container-cards .card-cards {
+.block_kamaleon.design-cescardsresize1 .container-cards .card-cards {
     position: relative;
     display: flex;
     justify-content: center;
@@ -21,11 +21,11 @@
     transition: 0.5s
 }
 
-.block_kamaleon .container-cards .card-cards:hover {
+.block_kamaleon.design-cescardsresize1 .container-cards .card-cards:hover {
     height: 450px;
 }
 
-.block_kamaleon .container-cards .card-cards .card_imagen {
+.block_kamaleon.design-cescardsresize1 .container-cards .card-cards .card_imagen {
     position: absolute;
     top: 20px;
     width: 300px;
@@ -36,7 +36,7 @@
     transition: 0.5s;
 }
 
-.block_kamaleon .container-cards .card-cards:hover .card_imagen {
+.block_kamaleon.design-cescardsresize1 .container-cards .card-cards:hover .card_imagen {
     top: -100px;
     scale: 0.75;
     box-shadow: 0 15px 45px rgba(0, 0, 0, 0.2);
@@ -44,7 +44,7 @@
     padding: 3px;
 }
 
-.block_kamaleon .container-cards .card-cards .card_imagen img {
+.block_kamaleon.design-cescardsresize1 .container-cards .card-cards .card_imagen img {
     position: absolute;
     top: 0;
     left: 0;
@@ -53,7 +53,7 @@
     object-fit: cover;
 }
 
-.block_kamaleon .container-cards .card-cards .card_content {
+.block_kamaleon.design-cescardsresize1 .container-cards .card-cards .card_content {
     position: absolute;
     top: 252px;
     width: 100%;
@@ -64,36 +64,29 @@
     transition: 0.5s;
 }
 
-.block_kamaleon .container-cards .card-cards:hover .card_content {
+.block_kamaleon.design-cescardsresize1 .container-cards .card-cards:hover .card_content {
     top: 130px;
     height: 290px;
 }
 
-.block_kamaleon .container-cards .card-cards .card_content h2 {
+.block_kamaleon.design-cescardsresize1 .container-cards .card-cards .card_content h2 {
     font-size: 1.2em;
     font-weight: 900;
-    color: #15284b;
     margin-top: 6px;
 }
 
-.block_kamaleon .container-cards .card-cards .card_content p {
-    color: #333;
-}
-
-.block_kamaleon .container-cards .card-cards .card_content a {
+.block_kamaleon.design-cescardsresize1 .container-cards .card-cards .card_content a {
     position: relative;
     top: 15px;
     display: inline-block;
     padding: 12px 25px;
-    background: #cddc29;
-    color: #fff;
     font-weight: 500;
     text-decoration: none;
     border-radius: 8px;
     border: none;
 }
 
-.block_kamaleon .container-cards .card-cards .card_content a:hover {
-    background: #15284b;
-    text-decoration: none;
+.block_kamaleon.design-cescardsresize1 .showedition {
+    position: absolute;
+    bottom: -50px;
 }

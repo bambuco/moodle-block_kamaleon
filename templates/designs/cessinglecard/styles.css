@@ -1,0 +1,61 @@
+.block_kamaleon.design-cessinglecard .container-cards {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 20px;
+    flex-wrap: wrap;
+}
+
+.block_kamaleon.design-cessinglecard .container-cards a {
+    text-decoration: none;
+}
+
+.block_kamaleon.design-cessinglecard .container-cards a:hover {
+    text-decoration: none;
+}
+
+.block_kamaleon.design-cessinglecard .card-cards {
+    width: 255px;
+    border-radius: 20px;
+    margin: 5px;
+    position: relative;
+    top: 0;
+    transition: all .1s ease-in;
+    border-bottom: solid 5px #15284b;
+}
+
+.block_kamaleon.design-cessinglecard .card-cards:hover {
+    margin: 5px;
+    top: -2px;
+    box-shadow: 0 4px 5px rgba(0, 0, 0, 0.2);
+    border-bottom: solid 5px #00abaf;
+    border-radius: 20px;
+    transition: all 0.3s ease-in-out 0s;
+    filter: brightness(.9);
+}
+
+.block_kamaleon.design-cessinglecard .card_imagen img {
+    max-width: 100%;
+    max-height: 100%;
+    border-radius: 20px 20px 0 0;
+}
+
+.block_kamaleon.design-cessinglecard .card_content {
+    background-color: #15284b;
+    border-radius: 0 0 16px 16px;
+}
+
+.block_kamaleon.design-cessinglecard .card_content h5 {
+    padding: 15px 38px;
+    font-size: 17px;
+    text-align: center;
+    line-height: normal;
+    margin-bottom: 0;
+    color: #FFF !important;
+    font-weight: 700;
+}
+
+.block_kamaleon.design-cessinglecard .showedition {
+    display: flex;
+    justify-content: center;
+}

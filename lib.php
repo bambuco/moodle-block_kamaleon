@@ -60,10 +60,9 @@ function block_kamaleon_pluginfile($course, $cm, $context, $filearea, $args, $fo
         // At this point there is no way to check SYSTEM context, so ignoring it.
     }
 
-    if (!in_array($filearea, ['banner', 'icon', 'content'])) {
+    if (!in_array($filearea, ['banner', 'icon', 'content', 'content_header', 'content_footer'])) {
         send_file_not_found();
     }
-
 
     $entryid = (int) array_shift($args);
 
