@@ -1,1 +1,80 @@
+<?php
+// This file is part of Moodle - http://moodle.org/
+//
+// Moodle is free software: you can redistribute it and/or modify
+// it under the terms of the GNU General Public License as published by
+// the Free Software Foundation, either version 3 of the License, or
+// (at your option) any later version.
+//
+// Moodle is distributed in the hope that it will be useful,
+// but WITHOUT ANY WARRANTY; without even the implied warranty of
+// MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+// GNU General Public License for more details.
+//
+// You should have received a copy of the GNU General Public License
+// along with Moodle.  If not, see <http://www.gnu.org/licenses/>.
 
+/**
+ * Strings for component 'block_kamaleon', language 'en'
+ *
+ * @package   block_kamaleon
+ * @copyright 2023 David Herney @ BambuCo
+ * @license   http://www.gnu.org/copyleft/gpl.html GNU GPL v3 or later
+ */
+
+$string['pluginname'] = 'Kamaleon';
+
+// Capabilities.
+$string['kamaleon:addinstance'] = 'Añadir un nuevo bloque Kamaleon';
+$string['kamaleon:myaddinstance'] = 'Añadir un nuevo bloque Kamaleon al Tablero';
+$string['kamaleon:addsources'] = 'Añadir orígenes al bloque Kamaleon';
+
+$string['privacy:metadata:block'] = 'el bloque Kamaleon block no almacena información privada del usuario.';
+$string['search:content'] = 'Kamaleon block contenido';
+$string['eventcontent_created'] = 'Kamaleon contenido creado';
+$string['eventcontent_updated'] = 'Kamaleon contenido actualizado';
+$string['eventcontent_deleted'] = 'Kamaleon contenido eliminado';
+
+$string['allowadditionalcssclasses'] = 'Permitir clases CSS adicionales';
+$string['banner'] = 'Banner';
+$string['banner_help'] = 'La imagen principal para el contenido.';
+$string['changessaved'] = 'Cambios guardados';
+$string['configallowadditionalcssclasses'] = 'Añadir una opción de configuración para instancias del bloque para permitir que sean configuradas clases CSS adicionales.';
+$string['configclasses'] = 'Clases CSS adicionales';
+$string['configclasses_help'] = 'El propósito de esta configuración es ayudar con el tema a distinguir unos bloques de otros. Cualuier clase CSS ingresada aquí (delimitada por un espacio) serán anexadas a las clases predeterminadas del bloque.';
+$string['configcontent'] = 'Contenido';
+$string['configtitle'] = 'Título del bloque';
+$string['configtype'] = 'Tipo de contenido';
+$string['content'] = 'Contenido';
+$string['contentdelete'] = 'Eliminar contenido';
+$string['contentdeleted'] = 'Contenido eliminado';
+$string['contentvars'] = 'Variables del contenido';
+$string['contentvars_help'] = 'Algunos diseños tienen variables que pueden ser usadas en el contenido. Por ejemplo, el diseño de "Pago de cursos" tiene la variable {price} que será reemplazada por el precio del curso.<br />
+Configurar una variable por línea. El formato es: variable=value. Por ejemplo: price=100';
+$string['createdat'] = 'Creada en {$a}';
+$string['customcontentgo'] = 'Gestionar contenido';
+$string['defaultweight'] = 'Ponderación';
+$string['design'] = 'Diseño';
+$string['deletecheck'] = '¿Está seguro de querer eliminar este contenido?';
+$string['htmlheader'] = 'Bloque del encabezado';
+$string['htmlfooter'] = 'Bloque del pie de página';
+$string['icon'] = 'Ícono';
+$string['icon_help'] = 'El ícono d ela imagen secundari para el contenido.';
+$string['images'] = 'Imágenes';
+$string['lastupdated'] = 'Última actualización en {$a}';
+$string['linkname'] = 'Nombre del enlace';
+$string['newblock'] = '(nuevo Kamaleon)';
+$string['newcontent'] = 'Nuevo contenido';
+$string['shorttitle'] = 'Título corto';
+$string['subtitle'] = 'Subtítulo';
+$string['target'] = 'URL destino';
+$string['title'] = 'Título';
+$string['type_blog'] = 'Blog';
+$string['type_calendar'] = 'Calendario';
+$string['type_coursecategories'] = 'Categorías de curso';
+$string['type_courses'] = 'Cursos';
+$string['type_custom'] = 'Contenido personalizado';
+$string['type_glossary'] = 'Glosario';
+$string['type_moddata'] = 'Módulo BasedeDatos';
+$string['type_statistics'] = 'Estadísticas';
+$string['url'] = 'URL';
