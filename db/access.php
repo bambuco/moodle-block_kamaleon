@@ -43,5 +43,15 @@ $capabilities = [
             'manager' => CAP_ALLOW
         ],
         'clonepermissionsfrom' => 'moodle/site:manageblocks'
-    ]
+    ],
+
+    'block/kamaleon:myaddinstance' => [
+        'riskbitmask' => RISK_SPAM | RISK_XSS,
+        'captype' => 'write',
+        'contextlevel' => CONTEXT_BLOCK,
+        'archetypes' => [
+            'manager' => CAP_ALLOW
+        ],
+        'clonepermissionsfrom' => 'moodle/site:manageblocks'
+    ],
 ];

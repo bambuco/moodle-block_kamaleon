@@ -15,7 +15,7 @@
 // along with Moodle.  If not, see <http://www.gnu.org/licenses/>.
 
 /**
- * Strings for component 'block_kamaleon', language 'en'
+ * Strings for component 'block_kamaleon', language 'es_mx'
  *
  * @package   block_kamaleon
  * @copyright 2023 David Herney @ BambuCo
@@ -29,19 +29,19 @@ $string['kamaleon:addinstance'] = 'Añadir un nuevo bloque Kamaleon';
 $string['kamaleon:myaddinstance'] = 'Añadir un nuevo bloque Kamaleon al Tablero';
 $string['kamaleon:addsources'] = 'Añadir orígenes al bloque Kamaleon';
 
-$string['privacy:metadata:block'] = 'el bloque Kamaleon block no almacena información privada del usuario.';
-$string['search:content'] = 'Kamaleon block contenido';
-$string['eventcontent_created'] = 'Kamaleon contenido creado';
-$string['eventcontent_updated'] = 'Kamaleon contenido actualizado';
-$string['eventcontent_deleted'] = 'Kamaleon contenido eliminado';
+$string['privacy:metadata:block'] = 'El bloque Kamaleon no almacena información privada del usuario.';
+$string['search:content'] = 'Contenido del bloque Kamaleon';
+$string['eventcontent_created'] = 'Contenido de Kamaleon creado';
+$string['eventcontent_updated'] = 'Contenido de Kamaleon actualizado';
+$string['eventcontent_deleted'] = 'Contenido de Kamaleon eliminado';
 
 $string['allowadditionalcssclasses'] = 'Permitir clases CSS adicionales';
-$string['banner'] = 'Banner';
+$string['banner'] = 'Imagen';
 $string['banner_help'] = 'La imagen principal para el contenido.';
 $string['changessaved'] = 'Cambios guardados';
-$string['configallowadditionalcssclasses'] = 'Añadir una opción de configuración para instancias del bloque para permitir que sean configuradas clases CSS adicionales.';
+$string['configallowadditionalcssclasses'] = 'Añadir una opción de configuración a las instancias del bloque para permitir que sean configuradas clases CSS adicionales.';
 $string['configclasses'] = 'Clases CSS adicionales';
-$string['configclasses_help'] = 'El propósito de esta configuración es ayudar con el tema a distinguir unos bloques de otros. Cualuier clase CSS ingresada aquí (delimitada por un espacio) serán anexadas a las clases predeterminadas del bloque.';
+$string['configclasses_help'] = 'El propósito de esta configuración es ayudar a distinguir unos bloques de otros. Cualquier clase CSS ingresada aquí (delimitada por un espacio) será anexada a las clases predeterminadas del bloque.';
 $string['configcontent'] = 'Contenido';
 $string['configtitle'] = 'Título del bloque';
 $string['configtype'] = 'Tipo de contenido';
@@ -50,16 +50,16 @@ $string['contentdelete'] = 'Eliminar contenido';
 $string['contentdeleted'] = 'Contenido eliminado';
 $string['contentvars'] = 'Variables del contenido';
 $string['contentvars_help'] = 'Algunos diseños tienen variables que pueden ser usadas en el contenido. Por ejemplo, el diseño de "Pago de cursos" tiene la variable {price} que será reemplazada por el precio del curso.<br />
-Configurar una variable por línea. El formato es: variable=value. Por ejemplo: price=100';
-$string['createdat'] = 'Creada en {$a}';
+Configurar una variable por línea. El formato es: variable=valor. Por ejemplo: price=100';
+$string['createdat'] = 'Creado en {$a}';
 $string['customcontentgo'] = 'Gestionar contenido';
-$string['defaultweight'] = 'Ponderación';
+$string['defaultweight'] = 'Peso';
 $string['design'] = 'Diseño';
 $string['deletecheck'] = '¿Está seguro de querer eliminar este contenido?';
-$string['htmlheader'] = 'Bloque del encabezado';
-$string['htmlfooter'] = 'Bloque del pie de página';
+$string['htmlheader'] = 'Encabezado del bloque';
+$string['htmlfooter'] = 'Pie del bloque';
 $string['icon'] = 'Ícono';
-$string['icon_help'] = 'El ícono d ela imagen secundari para el contenido.';
+$string['icon_help'] = 'El ícono o imagen secundaria para el contenido.';
 $string['images'] = 'Imágenes';
 $string['lastupdated'] = 'Última actualización en {$a}';
 $string['linkname'] = 'Nombre del enlace';
@@ -75,6 +75,6 @@ $string['type_coursecategories'] = 'Categorías de curso';
 $string['type_courses'] = 'Cursos';
 $string['type_custom'] = 'Contenido personalizado';
 $string['type_glossary'] = 'Glosario';
-$string['type_moddata'] = 'Módulo BasedeDatos';
+$string['type_moddata'] = 'Módulo Base de datos';
 $string['type_statistics'] = 'Estadísticas';
 $string['url'] = 'URL';
