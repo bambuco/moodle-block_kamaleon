@@ -1,0 +1,65 @@
+{{!
+    This file is part of Moodle - https://moodle.org/
+
+    Moodle is free software: you can redistribute it and/or modify
+    it under the terms of the GNU General Public License as published by
+    the Free Software Foundation, either version 3 of the License, or
+    (at your option) any later version.
+
+    Moodle is distributed in the hope that it will be useful,
+    but WITHOUT ANY WARRANTY; without even the implied warranty of
+    MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+    GNU General Public License for more details.
+
+    You should have received a copy of the GNU General Public License
+    along with Moodle.  If not, see <http://www.gnu.org/licenses/>.
+}}
+{{!
+    @template block_kamaleon/designs/confiarovercard/layout
+
+    The designed layout.
+
+    Example context (json):
+    {
+        "attributes": [
+            "contents": [
+                "id": 1,
+                "index": 0,
+                "shorttitle": "MC",
+                "title": "My content",
+                "subtitle": "My content subtitle",
+                "url": "https://example.com",
+                "target": "_blank",
+                "linkname": "My content link name",
+                "content": "My content description",
+                "banner": "https://example.com/banner.png",
+                "hasbanner": true,
+                "icon": "https://example.com/icon.png",
+                "hasicon": true,
+                "showedition": false,
+            ],
+            "instanceid": "99"
+        ]
+    }
+}}
+
+<section class="container-cards">
+    {{#contents}}
+    <div class="card-cards" {{#banner}}style="background-image: url({{banner}});"{{/banner}}>
+        <div class="card_initial">
+            <h5>{{title}}</h5>
+            <div class="card_content">
+                {{{content}}}
+                {{#url}}
+                    <div class="card_buttons">
+                        <a href="{{url}}" class="btn btn-primary" {{#target}}target="{{target}}"{{/target}}>{{linkname}}</a>
+                    </div>
+                {{/url}}
+                {{#showedition}}
+                    {{> block_kamaleon/edition}}
+                {{/showedition}}
+           </div>
+        </div>
+    </div>
+    {{/contents}}
+</section>

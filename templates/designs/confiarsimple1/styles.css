@@ -1,0 +1,51 @@
+.block_kamaleon.design-confiarsimple1 .single-content {
+    max-width: 1200px;
+    margin: 5px auto 40px;
+    position: relative;
+    display: flex;
+    border-radius: 0 0 16px 16px;
+}
+
+.block_kamaleon.design-confiarsimple1 .content-image {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 50%;
+}
+
+.block_kamaleon.design-confiarsimple1 .content-content {
+    width: 50%;
+    display: flex;
+    align-items: center;
+}
+
+.block_kamaleon.design-confiarsimple1 .content-image img {
+    max-width: 90%;
+    max-height: 100%;
+    border-radius: 20px;
+}
+
+.block_kamaleon.design-confiarsimple1 .content-content h5 {
+    font-size: 200%;
+    text-align: left;
+    line-height: normal;
+    font-weight: 700;
+    position: relative;
+    margin-bottom: 40px;
+}
+
+.block_kamaleon.design-confiarsimple1 .content-content h5:before {
+    content: "";
+    position: absolute;
+    width: 50px;
+    height: 5px;
+    border: none;
+    background-color: var(--primary);
+    bottom: -20px;
+    border-radius: 3px;
+}
+
+.block_kamaleon.design-confiarsimple1 .showedition {
+    display: flex;
+    justify-content: center;
+}

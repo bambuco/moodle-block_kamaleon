@@ -17,14 +17,14 @@
     transition: all 0.3s ease-in-out 0s;
 }
 
-.block_kamaleon.design-bbcoindicatorfont .icon {
+.block_kamaleon.design-bbcoindicatorfont .container-indicators .icon {
     font-size: 70px;
     margin: 0;
     padding: 0;
     width: auto;
 }
 
-.block_kamaleon.design-bbcoindicatorfont h5 {
+.block_kamaleon.design-bbcoindicatorfont .container-indicators h5 {
     font-size: 14px;
     font-weight: normal;
     padding: 15px 0;

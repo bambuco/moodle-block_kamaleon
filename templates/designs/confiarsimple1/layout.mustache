@@ -1,0 +1,79 @@
+{{!
+    This file is part of Moodle - https://moodle.org/
+
+    Moodle is free software: you can redistribute it and/or modify
+    it under the terms of the GNU General Public License as published by
+    the Free Software Foundation, either version 3 of the License, or
+    (at your option) any later version.
+
+    Moodle is distributed in the hope that it will be useful,
+    but WITHOUT ANY WARRANTY; without even the implied warranty of
+    MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+    GNU General Public License for more details.
+
+    You should have received a copy of the GNU General Public License
+    along with Moodle.  If not, see <http://www.gnu.org/licenses/>.
+}}
+{{!
+    @template block_kamaleon/confiarsimple1/layout
+
+    The designed layout.
+
+    Example context (json):
+    {
+        "attributes": [
+            "contents": [
+                "id": 1,
+                "index": 0,
+                "shorttitle": "MC",
+                "title": "My content",
+                "subtitle": "My content subtitle",
+                "url": "https://example.com",
+                "target": "_blank",
+                "linkname": "My content link name",
+                "content": "My content description",
+                "banner": "https://example.com/banner.png",
+                "hasbanner": true,
+                "icon": "https://example.com/icon.png",
+                "hasicon": true,
+                "showedition": false,
+            ],
+            "instanceid": "99"
+        ]
+    }
+}}
+
+<section class="container-contents">
+    {{#contents}}
+    <div class="single-content">
+        <div class="content-image">
+            {{#banner}}
+                {{#url}}
+                    <a href="{{url}}" {{#target}}target="{{target}}"{{/target}}>
+                        <img src="{{banner}}" alt="{{title}}" title="{{title}}">
+                    </a>
+                {{/url}}
+                {{^url}}
+                    <img src="{{banner}}" alt="{{title}}" title="{{title}}">
+                {{/url}}
+            {{/banner}}
+        </div>
+        <div class="content-content">
+            <div>
+                <h5>{{title}}</h5>
+                {{#content}}
+                    {{{content}}}
+                {{/content}}
+                {{#url}}
+                    <a href="{{url}}" {{#target}}target="{{target}}"{{/target}} class="btn btn-primary">
+                        {{linkname}}
+                    </a>
+                {{/url}}
+                {{#showedition}}
+                    {{> block_kamaleon/edition}}
+                {{/showedition}}
+            </div>
+        </div>
+    </div>
+    {{/contents}}
+</section>

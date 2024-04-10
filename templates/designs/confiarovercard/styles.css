@@ -1,0 +1,92 @@
+.block_kamaleon.design-confiarovercard .container-cards {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 20px;
+    flex-wrap: wrap;
+}
+
+.block_kamaleon.design-confiarovercard .card-cards {
+    width: 255px;
+    height: 320px;
+    border-radius: 20px;
+    margin: 15px 5px 5px;
+    position: relative;
+    transition: all .1s ease-in;
+    box-shadow: 0 3px 7px #aaa;
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: center center;
+}
+
+.block_kamaleon.design-confiarovercard .card-cards:hover {
+    margin-top: -5px;
+    transition: all 0.3s ease-in-out 0s;
+}
+
+.block_kamaleon.design-confiarovercard .card-cards:hover:before {
+    content: "";
+    position: absolute;
+    bottom: -15px;
+    left: 10%;
+    right: 10%;
+    background-color: var(--primary);
+    border: none;
+    border-radius: 3px;
+    height: 5px;
+    width: 70%;
+}
+
+.block_kamaleon.design-confiarovercard .card_initial {
+    top: 0;
+    left: 0;
+    bottom: 0;
+    right: 0;
+    position: absolute;
+    border-radius: 20px;
+}
+
+.block_kamaleon.design-confiarovercard .card-cards:hover .card_initial {
+    top: -5px;
+    transition: all 0.3s ease-in-out 0s;
+    background-color: rgba(255, 255, 255, 0.7);
+}
+
+.block_kamaleon.design-confiarovercard .card_initial h5 {
+    padding: 15px 38px;
+    font-size: 17px;
+    text-align: center;
+    line-height: normal;
+    margin-bottom: 0;
+    font-weight: 700;
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    background-color: #fff;
+    border-radius: 0 0 20px 20px;
+}
+
+.block_kamaleon.design-confiarovercard .card-cards:hover .card_initial h5 {
+    background-color: transparent;
+    position: relative;
+}
+
+.block_kamaleon.design-confiarovercard .card_content {
+    display: none;
+    padding: 0 20px;
+}
+
+.block_kamaleon.design-confiarovercard .card-cards:hover .card_content {
+    display: block;
+}
+
+.block_kamaleon.design-confiarovercard .card_content .card_buttons {
+    padding: 5px 10px;
+    text-align: center;
+}
+
+.block_kamaleon.design-confiarovercard .showedition {
+    display: flex;
+    justify-content: center;
+}
