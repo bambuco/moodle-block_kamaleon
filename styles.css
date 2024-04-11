@@ -6,3 +6,8 @@
     display: flex;
     flex-wrap: wrap;
 }
+
+.block_kamaleon .block-controls.float-right {
+    z-index: 2;
+    position: relative;
+}
