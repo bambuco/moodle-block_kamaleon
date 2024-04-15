@@ -10,11 +10,11 @@
     display: flex;
     justify-content: center;
     align-items: center;
-    width: 50%;
+    width: 40%;
 }
 
 .block_kamaleon.design-confiarsimple1 .content-content {
-    width: 50%;
+    width: 60%;
     display: flex;
     align-items: center;
 }
@@ -48,4 +48,23 @@
 .block_kamaleon.design-confiarsimple1 .showedition {
     display: flex;
     justify-content: center;
+}
+
+@media (max-width: 499px) {
+    .block_kamaleon.design-confiarsimple1 .single-content {
+        flex-direction: column;
+    }
+
+    .block_kamaleon.home-escuela-confiar .content-image {
+        width: auto;
+    }
+
+    .block_kamaleon.design-confiarsimple1 .content-image img {
+        max-width: 100%;
+    }
+
+    .block_kamaleon.design-confiarsimple1 .content-content {
+        width: 100%;
+        padding: 20px;
+    }
 }
