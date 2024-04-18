@@ -32,6 +32,30 @@ class block_kamaleon extends block_base {
         return true;
     }
 
+    /* Allows the block class to have a say in the user's ability to edit (i.e., configure) blocks of this type.
+     * The framework has first say in whether this will be allowed (e.g., no editing allowed unless in edit mode)
+     * but if the framework does allow it, the block can still decide to refuse.
+     * @return boolean
+     */
+    function user_can_edit() {
+        $canmanage = has_capability('block/kamaleon:addinstance', $this->context);
+
+        if ($canmanage) {
+            return true;
+        }
+
+        return false;
+    }
+
+    /**
+     * If overridden and set to false by the block it will not be editable.
+     *
+     * @return bool
+     */
+    public function instance_can_be_edited() {
+        return $this->user_can_edit();
+    }
+
     function applicable_formats() {
         return ['all' => true];
     }
@@ -74,7 +98,14 @@ class block_kamaleon extends block_base {
 
         $list = $DB->get_records('block_kamaleon_contents', ['instanceid' => $this->instance->id], 'defaultweight ASC');
 
-        $renderable = new \block_kamaleon\output\contents($this->instance->id, $list, $design);
+        if (empty($list) && !empty($this->config->originalinstanceid)) {
+            $instanceid = $this->config->originalinstanceid;
+            $list = $DB->get_records('block_kamaleon_contents', ['instanceid' => $instanceid], 'defaultweight ASC');
+        } else {
+            $instanceid = $this->instance->id;
+        }
+
+        $renderable = new \block_kamaleon\output\contents($instanceid, $list, $design);
         $renderer = $this->page->get_renderer('block_kamaleon');
 
         $this->content->text = $renderer->render($renderable);
@@ -124,8 +155,8 @@ class block_kamaleon extends block_base {
         }
 
         $isediting = $this->page->user_is_editing() && has_capability('block/kamaleon:addinstance', $this->context);
-        if ($isediting) {
-            $contentitemurl = new \moodle_url('/blocks/kamaleon/listcontents.php', ['id' => $this->instance->id]);
+        if ($isediting && $instanceid == $this->instance->id) {
+            $contentitemurl = new \moodle_url('/blocks/kamaleon/listcontents.php', ['id' => $instanceid]);
             $contentbuttonlabel = get_string('customcontentgo', 'block_kamaleon');
             $link = \html_writer::link($contentitemurl, $contentbuttonlabel, ['class' => 'btn btn-primary']);
             $this->content->text .= $link;

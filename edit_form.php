@@ -33,6 +33,8 @@ class block_kamaleon_edit_form extends block_edit_form {
     protected function specific_definition($mform) {
         global $CFG;
 
+        $canmanage = has_capability('block/kamaleon:addinstance', $this->block->context);
+
         // Fields for editing HTML block title and contents.
         $mform->addElement('header', 'configheader', get_string('blocksettings', 'block'));
 
@@ -56,10 +58,12 @@ class block_kamaleon_edit_form extends block_edit_form {
         $availabledesigns = \block_kamaleon\design::get_availables();
         $mform->addElement('select', 'config_design', get_string('design', 'block_kamaleon'), $availabledesigns);
 
-        $contentitemurl = new \moodle_url('/blocks/kamaleon/listcontents.php', ['id' => $this->block->instance->id]);
-        $contentbuttonlabel = get_string('customcontentgo', 'block_kamaleon');
-        $link = \html_writer::link($contentitemurl, $contentbuttonlabel, ['class' => 'btn btn-primary']);
-        $mform->addElement('static', 'contentbutton', $link);
+        if ($canmanage) {
+            $contentitemurl = new \moodle_url('/blocks/kamaleon/listcontents.php', ['id' => $this->block->instance->id]);
+            $contentbuttonlabel = get_string('customcontentgo', 'block_kamaleon');
+            $link = \html_writer::link($contentitemurl, $contentbuttonlabel, ['class' => 'btn btn-primary']);
+            $mform->addElement('static', 'contentbutton', $link);
+        }
 
         $editoroptions = ['maxfiles' => EDITOR_UNLIMITED_FILES, 'noclean' => true, 'context' => $this->block->context];
 
@@ -92,6 +96,10 @@ class block_kamaleon_edit_form extends block_edit_form {
         if (isset($title)) {
             // Reset the preserved title.
             $this->block->config->title = $title;
+        }
+
+        if (empty($this->block->config->originalinstanceid)) {
+            $this->block->config->originalinstanceid = $this->block->instance->id;
         }
     }
 
