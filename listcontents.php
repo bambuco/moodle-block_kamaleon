@@ -128,7 +128,12 @@ $list = $DB->get_records('block_kamaleon_contents', ['instanceid' => $id], 'defa
 $renderable = new \block_kamaleon\output\contents($id, $list, $currentdesign, true);
 $renderer = $PAGE->get_renderer('block_kamaleon');
 
-echo html_writer::start_tag('div', ['class' => 'block_kamaleon design-' . $currentdesign]);
+$cssclasses = 'block_kamaleon design-' . $currentdesign;
+if (!empty($configdata->classes)) {
+    $cssclasses .= ' ' . $configdata->classes;
+}
+
+echo html_writer::start_tag('div', ['class' => $cssclasses]);
 echo $renderer->render($renderable);
 echo html_writer::end_tag('div');
 
