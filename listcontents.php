@@ -45,8 +45,30 @@ require_login(null, true);
 $context = context_block::instance($id);
 require_capability('block/kamaleon:addinstance', $context);
 
+$params = ['id' => $id];
+$baseurl = new moodle_url('/blocks/kamaleon/listcontents.php', $params);
+
+// Get parent context and see if is a course.
+$parentcontext = $context->get_parent_context();
+if ($parentcontext->contextlevel === CONTEXT_COURSE) {
+    if ($parentcontext->instanceid) {
+        if ($course = get_course($parentcontext->instanceid)) {
+            $PAGE->set_course($course);
+        }
+    }
+} else if ($parentcontext->contextlevel === CONTEXT_MODULE) {
+    $coursemodule = $DB->get_record('course_modules', ['id' => $parentcontext->instanceid]);
+    $module = $DB->get_record('modules', ['id' => $coursemodule->module]);
+    $cm = get_coursemodule_from_id($module->name, $coursemodule->id);
+    $PAGE->set_cm($cm);
+    $cmurl = new moodle_url('/mod/' . $module->name . '/view.php', ['id' => $coursemodule->id]);
+    $PAGE->navbar->add($cm->name, $cmurl);
+}
+
+$PAGE->navbar->add(get_string('customcontentgo', 'block_kamaleon'));
+
 $PAGE->set_context($context);
-$PAGE->set_url('/blocks/kamaleon/listcontents.php');
+$PAGE->set_url($baseurl);
 $PAGE->set_pagelayout('incourse');
 $PAGE->set_heading(get_string('content', 'block_kamaleon'));
 $PAGE->set_title(get_string('content', 'block_kamaleon'));

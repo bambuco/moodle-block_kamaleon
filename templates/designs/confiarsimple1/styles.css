@@ -50,12 +50,12 @@
     justify-content: center;
 }
 
-@media (max-width: 499px) {
+@media (max-width: 512px) {
     .block_kamaleon.design-confiarsimple1 .single-content {
         flex-direction: column;
     }
 
-    .block_kamaleon.home-escuela-confiar .content-image {
+    .block_kamaleon.design-confiarsimple1 .content-image {
         width: auto;
     }
 

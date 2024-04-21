@@ -49,7 +49,7 @@
 .block_kamaleon.design-confiarovercard .card-cards:hover .card_initial {
     top: -5px;
     transition: all 0.3s ease-in-out 0s;
-    background-color: rgba(255, 255, 255, 0.7);
+    background-color: rgba(255, 255, 255, 0.9);
 }
 
 .block_kamaleon.design-confiarovercard .card_initial h5 {
@@ -79,6 +79,11 @@
 
 .block_kamaleon.design-confiarovercard .card-cards:hover .card_content {
     display: block;
+}
+
+.block_kamaleon.design-confiarovercard .card_content .card_content-content {
+    max-height: 225px;
+    overflow: auto;
 }
 
 .block_kamaleon.design-confiarovercard .card_content .card_buttons {

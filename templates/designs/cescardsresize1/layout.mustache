@@ -42,12 +42,14 @@
     <div class="card-cards">
         <div class="card_imagen">
             {{#banner}}
-                <img src="{{banner}}" alt="{{shorttitle}}">
+                <img src="{{banner}}" alt="{{shorttitle}}" title="{{shorttitle}}">
             {{/banner}}
         </div>
         <div class="card_content">
             <h2>{{title}}</h2>
-            {{{content}}}
+            <div class="card_content-content">
+                {{{content}}}
+            </div>
             {{#url}}
                 <p><a href="{{url}}" class="btn btn-primary" {{#target}}target="{{target}}"{{/target}}>
                     {{#linkname}}{{linkname}}{{/linkname}}

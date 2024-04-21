@@ -79,6 +79,38 @@ class block_kamaleon_edit_form extends block_edit_form {
 
     function set_data($defaults) {
 
+        if (!empty($this->block->config) && !empty($this->block->config->htmlheader)) {
+            $htmlheader = $this->block->config->htmlheader;
+            $draftid_editor = file_get_submitted_draft_itemid('config_htmlheader');
+            if (empty($htmlheader)) {
+                $currenthtmlheader = '';
+            } else {
+                $currenthtmlheader = $htmlheader;
+            }
+            $defaults->config_htmlheader['text'] = file_prepare_draft_area($draftid_editor, $this->block->context->id,
+                                                        'block_kamaleon', 'htmlheader', 0, ['subdirs' => true], $currenthtmlheader);
+            $defaults->config_htmlheader['itemid'] = $draftid_editor;
+            $defaults->config_htmlheader['format'] = $this->block->config->htmlheaderformat ?? FORMAT_MOODLE;
+        } else {
+            $htmlheader = '';
+        }
+
+        if (!empty($this->block->config) && !empty($this->block->config->htmlfooter)) {
+            $htmlfooter = $this->block->config->htmlfooter;
+            $draftid_editor = file_get_submitted_draft_itemid('config_htmlfooter');
+            if (empty($htmlfooter)) {
+                $currenthtmlfooter = '';
+            } else {
+                $currenthtmlfooter = $htmlfooter;
+            }
+            $defaults->config_htmlfooter['text'] = file_prepare_draft_area($draftid_editor, $this->block->context->id,
+                                                        'block_kamaleon', 'htmlfooter', 0, ['subdirs' => true], $currenthtmlfooter);
+            $defaults->config_htmlfooter['itemid'] = $draftid_editor;
+            $defaults->config_htmlfooter['format'] = $this->block->config->htmlfooterformat ?? FORMAT_MOODLE;
+        } else {
+            $htmlfooter = '';
+        }
+
         if (!$this->block->user_can_edit() && !empty($this->block->config->title)) {
             // If a title has been set but the user cannot edit it format it nicely
             $title = $this->block->config->title;
@@ -87,11 +119,17 @@ class block_kamaleon_edit_form extends block_edit_form {
             unset($this->block->config->title);
         }
 
+        // Have to delete html here, otherwise parent::set_data will empty content of editors.
+        unset($this->block->config->htmlheader);
+        unset($this->block->config->htmlfooter);
         parent::set_data($defaults);
 
         if (!isset($this->block->config)) {
             $this->block->config = new stdClass();
         }
+
+        $this->block->config->htmlheader = $htmlheader;
+        $this->block->config->htmlfooter = $htmlfooter;
 
         if (isset($title)) {
             // Reset the preserved title.

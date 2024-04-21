@@ -17,7 +17,7 @@
     transition: all 0.3s ease-in-out 0s;
 }
 
-.block_kamaleon.design-bbcoindicator h5 {
+.block_kamaleon.design-bbcoindicator .container-indicators h5 {
     font-size: 14px;
     font-weight: normal;
     padding: 15px 0;
