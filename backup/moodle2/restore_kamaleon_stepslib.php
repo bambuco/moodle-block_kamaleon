@@ -41,6 +41,8 @@ class restore_kamaleon_block_structure_step extends restore_structure_step {
 
     /**
      * Process block data.
+     * @param object $data
+     * @return void
      */
     public function process_block($data) {
         global $DB;
@@ -52,13 +54,17 @@ class restore_kamaleon_block_structure_step extends restore_structure_step {
             return;
         }
 
+        $contextid = $this->task->get_contextid();
+
         // Iterate over all the item elements, creating them if needed.
         if (isset($data->kamaleon['contents']['item'])) {
             foreach ($data->kamaleon['contents']['item'] as $item) {
                 $item = (object)$item;
 
+                $olditemid = $item->id;
                 $item->instanceid = $this->task->get_blockid();
-                $DB->insert_record('block_kamaleon_contents', $item);
+                $itemid = $DB->insert_record('block_kamaleon_contents', $item, true);
+                $DB->set_field('files', 'itemid', $itemid, ['contextid' => $contextid, 'itemid' => $olditemid]);
             }
         }
 

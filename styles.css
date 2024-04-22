@@ -12,6 +12,15 @@
     position: relative;
 }
 
+.block_kamaleon.design-default .block_kamaleon-contentslist > .row {
+    align-items: stretch;
+    justify-content: center;
+}
+
+.block_kamaleon.design-default .block_kamaleon-contentslist .one-content {
+    height: 100%;
+}
+
 .block_kamaleon.design-default .block_kamaleon-contentslist .card-header h5 {
     display: flex;
     align-items: center;
