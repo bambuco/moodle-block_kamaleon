@@ -34,7 +34,7 @@
  * @param array $options
  */
 function block_kamaleon_pluginfile($course, $cm, $context, $filearea, $args, $forcedownload, array $options = []) {
-    global $CFG, $USER;
+    global $CFG, $USER, $DB;
 
     if ($context->contextlevel != CONTEXT_BLOCK) {
         send_file_not_found();
@@ -69,10 +69,18 @@ function block_kamaleon_pluginfile($course, $cm, $context, $filearea, $args, $fo
     // Fetch file info.
     $fs = get_file_storage();
     $relativepath = implode('/', $args);
-    $fullpath = "/$context->id/block_kamaleon/$filearea/$entryid/$relativepath";
 
-    if (!($file = $fs->get_file_by_hash(sha1($fullpath))) || $file->is_directory()) {
-        return false;
+    $fileid = $DB->get_field('files', 'id', [
+            'contextid' => $context->id,
+            'component' => 'block_kamaleon',
+            'filearea' => $filearea,
+            'itemid' => $entryid,
+            'filepath' => '/',
+            'filename' => $relativepath
+        ], MUST_EXIST);
+
+    if (!($file = $fs->get_file_by_id($fileid)) || $file->is_directory()) {
+            return false;
     }
 
     \core\session\manager::write_close();

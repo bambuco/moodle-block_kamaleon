@@ -39,6 +39,9 @@ class restore_kamaleon_block_structure_step extends restore_structure_step {
         return $paths;
     }
 
+    /**
+     * Process block data.
+     */
     public function process_block($data) {
         global $DB;
 
@@ -50,8 +53,8 @@ class restore_kamaleon_block_structure_step extends restore_structure_step {
         }
 
         // Iterate over all the item elements, creating them if needed.
-        if (isset($data->kamaleon_contents['item'])) {
-            foreach ($data->kamaleon_contents['item'] as $item) {
+        if (isset($data->kamaleon['contents']['item'])) {
+            foreach ($data->kamaleon['contents']['item'] as $item) {
                 $item = (object)$item;
 
                 $item->instanceid = $this->task->get_blockid();

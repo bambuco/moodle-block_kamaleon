@@ -320,8 +320,30 @@ class block_kamaleon extends block_base {
      * @return bool
      */
     function instance_delete() {
+        global $DB;
+
         $fs = get_file_storage();
         $fs->delete_area_files($this->context->id, 'block_kamaleon');
+
+        if ($contents = $DB->get_records('block_kamaleon_contents', ['instanceid' => $this->instance->id])) {
+            foreach ($contents as $content) {
+
+                // Delete files.
+                $files = $fs->get_area_files($this->context->id, 'block_kamaleon', 'banner', $content->id);
+                foreach ($files as $file) {
+                    $file->delete();
+                }
+
+                $files = $fs->get_area_files($this->context->id, 'block_kamaleon', 'icon', $content->id);
+                foreach ($files as $file) {
+                    $file->delete();
+                }
+
+                // Delete content information.
+                $DB->delete_records('block_kamaleon_contents', ['id' => $content->id]);
+            }
+        }
+
         return true;
     }
 
