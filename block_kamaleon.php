@@ -258,6 +258,8 @@ class block_kamaleon extends block_base {
 
         if (!empty($this->config->design)) {
             $attributes['class'] .= ' design-' . $this->config->design;
+        } else {
+            $attributes['class'] .= ' design-default';
         }
 
         return $attributes;

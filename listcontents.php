@@ -48,7 +48,7 @@ require_capability('block/kamaleon:addinstance', $context);
 $params = ['id' => $id];
 $baseurl = new moodle_url('/blocks/kamaleon/listcontents.php', $params);
 
-// Get parent context and see if is a course.
+// Get parent context and see if is a course or a mod.
 $parentcontext = $context->get_parent_context();
 if ($parentcontext->contextlevel === CONTEXT_COURSE) {
     if ($parentcontext->instanceid) {

@@ -13,6 +13,9 @@ Download zip package, extract the kamaleon folder and upload this folder into bl
 * **Powered by:** [BambuCo](https://bambuco.co/) - [Universidad CES](https://www.ces.edu.co/)
 
 ## IN VERSION
+### 2023021502:
+* Backup and restore implementation.
+* New Confiar designs.
 
 ### 2023021501:
 * First designs. Funded by [Universidad CES](https://www.ces.edu.co/)

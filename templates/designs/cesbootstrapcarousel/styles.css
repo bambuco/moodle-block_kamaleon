@@ -65,7 +65,16 @@
     line-height: 36px;
 }
 
-@media (max-width: 499px) {
+.block_kamaleon.design-cesbootstrapcarousel .contenedor-bn .content {
+    background-color: #333a;
+    color: #fff;
+    padding: 2px 10px;
+    border-radius: 10px;
+    margin-top: 10px;
+    margin-bottom: 10px;
+}
+
+@media (max-width: 512px) {
 
     .block_kamaleon.design-cesbootstrapcarousel .titulo-bn {
         font-size: 25px;

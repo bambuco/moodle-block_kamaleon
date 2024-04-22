@@ -11,3 +11,12 @@
     z-index: 2;
     position: relative;
 }
+
+.block_kamaleon.design-default .block_kamaleon-contentslist .card-header h5 {
+    display: flex;
+    align-items: center;
+}
+
+.block_kamaleon.design-default .block_kamaleon-contentslist .card-header h5 img {
+    margin-right: 10px;
+}
