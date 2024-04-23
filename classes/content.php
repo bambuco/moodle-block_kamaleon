@@ -115,4 +115,42 @@ class content extends entity {
         return $uri;
     }
 
+    /**
+     * Get the content variables.
+     *
+     * @return array Variables.
+     */
+    public function get_vars() : array {
+
+        $returnvars = [];
+        if (!empty($this->data->contentvars)) {
+            $vars = explode("\n", $this->data->contentvars);
+            $vars = array_map('trim', $vars);
+            $vars = array_filter($vars, function($var) {
+                return !empty($var);
+            });
+            $vars = array_map(function($var) {
+                return explode('=', $var);
+            }, $vars);
+
+            foreach ($vars as $var) {
+                if (count($var) >= 2) {
+                    $varname = trim($var[0]);
+
+                    if (count($var) > 2) {
+                        $varvalue = implode('=', array_slice($var, 1));
+                    } else {
+                        $varvalue = trim($var[1]);
+                    }
+
+                    if (!empty($varname) && !empty($varvalue)) {
+                        $returnvars[$varname] = $varvalue;
+                    }
+                }
+            }
+        }
+
+        return $returnvars;
+    }
+
 }

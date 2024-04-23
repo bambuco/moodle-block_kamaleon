@@ -111,6 +111,8 @@ class contents implements renderable, templatable {
             $contentdata->timecreatedformated = userdate($contentdata->timecreated);
             $contentdata->timemodifiedformated = userdate($contentdata->timemodified);
 
+            $contentdata->vars = $content->get_vars();
+
             $contentdata->hasbanner = !empty($contentdata->banner);
             $contentdata->hasicon = !empty($contentdata->icon);
             $contentdata->index = $index;

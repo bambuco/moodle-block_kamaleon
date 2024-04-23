@@ -38,6 +38,7 @@ $string['eventcontent_deleted'] = 'Contenido de Kamaleon eliminado';
 $string['allowadditionalcssclasses'] = 'Permitir clases CSS adicionales';
 $string['banner'] = 'Imagen';
 $string['banner_help'] = 'La imagen principal para el contenido.';
+$string['bylabel'] = 'Por';
 $string['changessaved'] = 'Cambios guardados';
 $string['configallowadditionalcssclasses'] = 'Añadir una opción de configuración a las instancias del bloque para permitir que sean configuradas clases CSS adicionales.';
 $string['configclasses'] = 'Clases CSS adicionales';

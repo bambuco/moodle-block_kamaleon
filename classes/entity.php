@@ -52,6 +52,11 @@ class entity {
         }
     }
 
+    /**
+     * Get the entity data.
+     *
+     * @return \stdClass Entity data.
+     */
     public function get_object() {
         return json_decode(json_encode($this->data));
     }

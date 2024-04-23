@@ -1,0 +1,83 @@
+.block_kamaleon.design-event1 .container-cards {
+    display: flex;
+    justify-content: center;
+    align-items: stretch;
+    gap: 20px;
+    flex-wrap: wrap;
+    margin-bottom: 20px;
+}
+
+.block_kamaleon.design-event1 .card-cards {
+    max-width: 350px;
+    width: 100%;
+    border-radius: 5px;
+    margin: 15px 5px 5px;
+    position: relative;
+    border: 1px solid #f0f0f0;
+}
+
+.block_kamaleon.design-event1 .card-cards:hover > * {
+    filter: brightness(1.1);
+}
+
+.block_kamaleon.design-event1 .card-header {
+    height: 200px;
+}
+
+.block_kamaleon.design-event1 .card-header .event-date {
+    position: absolute;
+    top: 5px;
+    left: 5px;
+    font-size: 17px;
+    font-weight: normal;
+    width: 50px;
+    background-color: #fff;
+    line-height: 100%;
+    text-align: center;
+    padding: 5px;
+}
+
+.block_kamaleon.design-event1 .card-header .event-icon {
+    position: absolute;
+    top: 5px;
+    right: 5px;
+}
+
+.block_kamaleon.design-event1 .card-cards .event-subtitle {
+    margin: -15px auto 10px;
+    text-align: center;
+}
+
+.block_kamaleon.design-event1 .card-cards .event-subtitle h6 {
+    background-color: var(--primary);
+    color: #fff;
+    display: inline-block;
+    padding: 5px;
+    border-radius: 5px;
+}
+
+.block_kamaleon.design-event1 .card-cards .event-title {
+    text-align: center;
+    padding: 5px;
+}
+
+.block_kamaleon.design-event1 .card-cards .moreinfo {
+    text-align: center;
+    padding: 5px;
+    color: #aaa;
+    font-size: 90%;
+}
+
+.block_kamaleon.design-event1 .card-body .card_buttons {
+    padding: 5px 10px;
+    text-align: center;
+}
+
+.block_kamaleon.design-event1 .card-body {
+    font-size: 90%;
+}
+
+.block_kamaleon.design-event1 .showedition {
+    display: flex;
+    justify-content: center;
+}
