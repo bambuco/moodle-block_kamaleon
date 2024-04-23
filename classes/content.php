@@ -62,6 +62,15 @@ class content extends entity {
      */
     public function get_banner() {
 
+        if (property_exists($this->data, 'banner')) {
+            return $this->data->banner;
+        }
+
+        // If the content has no id, then it is not a custom content.
+        if (!property_exists($this->data, 'id') || $this->data->id <= 0) {
+            return '';
+        }
+
         $uri = '';
         $context = \context_block::instance($this->data->instanceid);
         $fs = get_file_storage();
@@ -91,6 +100,15 @@ class content extends entity {
      * @return string Image URI.
      */
     public function get_icon() {
+
+        if (property_exists($this->data, 'icon')) {
+            return $this->data->icon;
+        }
+
+        // If the content has no id, then it is not a custom content.
+        if (!property_exists($this->data, 'id') || $this->data->id <= 0) {
+            return '';
+        }
 
         $uri = '';
         $context = \context_block::instance($this->data->instanceid);
@@ -124,28 +142,41 @@ class content extends entity {
 
         $returnvars = [];
         if (!empty($this->data->contentvars)) {
-            $vars = explode("\n", $this->data->contentvars);
-            $vars = array_map('trim', $vars);
-            $vars = array_filter($vars, function($var) {
-                return !empty($var);
-            });
-            $vars = array_map(function($var) {
-                return explode('=', $var);
-            }, $vars);
 
-            foreach ($vars as $var) {
-                if (count($var) >= 2) {
-                    $varname = trim($var[0]);
+            if (is_string($this->data->contentvars)) {
 
-                    if (count($var) > 2) {
-                        $varvalue = implode('=', array_slice($var, 1));
-                    } else {
-                        $varvalue = trim($var[1]);
+                $vars = explode("\n", $this->data->contentvars);
+                $vars = array_map('trim', $vars);
+                $vars = array_filter($vars, function($var) {
+                    return !empty($var);
+                });
+                $vars = array_map(function($var) {
+                    return explode('=', $var);
+                }, $vars);
+
+            } else if (is_array($this->data->contentvars)) {
+                $vars = $this->data->contentvars;
+            } else {
+                $vars = [];
+            }
+
+            foreach ($vars as $key => $var) {
+                if (is_array($var)) {
+                    if (count($var) >= 2) {
+                        $varname = trim($var[0]);
+
+                        if (count($var) > 2) {
+                            $varvalue = implode('=', array_slice($var, 1));
+                        } else {
+                            $varvalue = trim($var[1]);
+                        }
+
+                        if (!empty($varname) && !empty($varvalue)) {
+                            $returnvars[$varname] = $varvalue;
+                        }
                     }
-
-                    if (!empty($varname) && !empty($varvalue)) {
-                        $returnvars[$varname] = $varvalue;
-                    }
+                } else if (is_string($key) && is_string($var)) {
+                    $returnvars[$key] = $var;
                 }
             }
         }

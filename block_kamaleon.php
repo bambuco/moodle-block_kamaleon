@@ -96,11 +96,16 @@ class block_kamaleon extends block_base {
             $design = $this->config->design;
         }
 
-        $list = $DB->get_records('block_kamaleon_contents', ['instanceid' => $this->instance->id], 'defaultweight ASC');
+        $contentsource = \block_kamaleon\controller::get_typeinstance($this->config->type);
 
-        if (empty($list) && !empty($this->config->originalinstanceid)) {
+        $list = [];
+        if ($contentsource) {
+            $list = $contentsource->get_contents($this->instance->id, $this->config);
+        }
+
+        if (empty($list) && !empty($this->config->originalinstanceid) && $contentsource) {
             $instanceid = $this->config->originalinstanceid;
-            $list = $DB->get_records('block_kamaleon_contents', ['instanceid' => $instanceid], 'defaultweight ASC');
+            $list = $contentsource->get_contents($instanceid, $this->config);
         } else {
             $instanceid = $this->instance->id;
         }

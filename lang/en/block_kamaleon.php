@@ -65,6 +65,7 @@ $string['icon_help'] = 'The icon o secondary image for the content.';
 $string['images'] = 'Images';
 $string['lastupdated'] = 'Last updated on {$a}';
 $string['linkname'] = 'Link name';
+$string['moreinfo'] = 'More info...';
 $string['newblock'] = '(new Kamaleon)';
 $string['newcontent'] = 'New content';
 $string['shorttitle'] = 'Short title';
