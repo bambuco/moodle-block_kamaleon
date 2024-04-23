@@ -164,11 +164,13 @@ if ($contentsource) {
     echo $renderer->render($renderable);
     echo html_writer::end_tag('div');
 
-    echo html_writer::start_tag('div', ['class' => 'row buttons']);
-    echo html_writer::link('contentedit.php?instanceid=' . $id,
-                            $OUTPUT->image_icon('t/add', 'core') . get_string('newcontent', 'block_kamaleon'),
-                            ['class' => 'btn btn-primary']);
-    echo html_writer::end_tag('div');
+    if ($iscustom) {
+        echo html_writer::start_tag('div', ['class' => 'row buttons']);
+        echo html_writer::link('contentedit.php?instanceid=' . $id,
+                                $OUTPUT->image_icon('t/add', 'core') . get_string('newcontent', 'block_kamaleon'),
+                                ['class' => 'btn btn-primary']);
+        echo html_writer::end_tag('div');
+    }
 
 }
 
