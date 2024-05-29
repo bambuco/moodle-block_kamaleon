@@ -31,4 +31,18 @@ namespace block_kamaleon\type;
  */
 class custom {
 
+    /**
+     * Get the contents for the custom type.
+     *
+     * @param int $instanceid The block instance id.
+     * @param object $configdata The block configuration data.
+     * @return array List of contents.
+     */
+    public function get_contents($instanceid, $configdata = null) : array {
+        global $DB;
+
+        $contents = $DB->get_records('block_kamaleon_contents', ['instanceid' => $instanceid], 'defaultweight ASC');
+
+        return $contents;
+    }
 }

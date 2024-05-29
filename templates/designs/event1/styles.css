@@ -68,6 +68,12 @@
     font-size: 90%;
 }
 
+.block_kamaleon.design-event1 .card-cards .moreinfo .userpicture,
+.block_kamaleon.design-event1 .card-cards .moreinfo .userinitials {
+    transform: scale(0.8);
+    transform-origin: right top;
+}
+
 .block_kamaleon.design-event1 .card-body .card_buttons {
     padding: 5px 10px;
     text-align: center;

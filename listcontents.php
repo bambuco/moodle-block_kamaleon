@@ -145,25 +145,33 @@ $designform->display();
 echo html_writer::end_tag('div');
 echo html_writer::end_tag('div');
 
-$list = $DB->get_records('block_kamaleon_contents', ['instanceid' => $id], 'defaultweight ASC');
+$contentsource = \block_kamaleon\controller::get_typeinstance($configdata->type);
 
-$renderable = new \block_kamaleon\output\contents($id, $list, $currentdesign, true);
-$renderer = $PAGE->get_renderer('block_kamaleon');
+if ($contentsource) {
+    $list = $contentsource->get_contents($id, $configdata);
 
-$cssclasses = 'block_kamaleon design-' . $currentdesign;
-if (!empty($configdata->classes)) {
-    $cssclasses .= ' ' . $configdata->classes;
+    $iscustom = $contentsource instanceof \block_kamaleon\type\custom;
+
+    $renderable = new \block_kamaleon\output\contents($id, $list, $currentdesign, $iscustom);
+    $renderer = $PAGE->get_renderer('block_kamaleon');
+
+    $cssclasses = 'block_kamaleon design-' . $currentdesign;
+    if (!empty($configdata->classes)) {
+        $cssclasses .= ' ' . $configdata->classes;
+    }
+
+    echo html_writer::start_tag('div', ['class' => $cssclasses]);
+    echo $renderer->render($renderable);
+    echo html_writer::end_tag('div');
+
+    if ($iscustom) {
+        echo html_writer::start_tag('div', ['class' => 'row buttons']);
+        echo html_writer::link('contentedit.php?instanceid=' . $id,
+                                $OUTPUT->image_icon('t/add', 'core') . get_string('newcontent', 'block_kamaleon'),
+                                ['class' => 'btn btn-primary']);
+        echo html_writer::end_tag('div');
+    }
+
 }
-
-echo html_writer::start_tag('div', ['class' => $cssclasses]);
-echo $renderer->render($renderable);
-echo html_writer::end_tag('div');
-
-echo html_writer::start_tag('div', ['class' => 'row buttons']);
-echo html_writer::link('contentedit.php?instanceid=' . $id,
-                        $OUTPUT->image_icon('t/add', 'core') . get_string('newcontent', 'block_kamaleon'),
-                        ['class' => 'btn btn-primary']);
-echo html_writer::end_tag('div');
-
 
 echo $OUTPUT->footer();

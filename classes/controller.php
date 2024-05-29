@@ -40,8 +40,8 @@ class controller {
     public static function get_sourcestypes() {
 
         $types = [
-            /*'blog' => get_string('type_blog', 'block_kamaleon'),
-            'calendar' => get_string('type_calendar', 'block_kamaleon'),
+            'blog' => get_string('type_blog', 'block_kamaleon'),
+            /*'calendar' => get_string('type_calendar', 'block_kamaleon'),
             'coursecategories' => get_string('type_coursecategories', 'block_kamaleon'),
             'courses' => get_string('type_courses', 'block_kamaleon'),
             'glossary' => get_string('type_glossary', 'block_kamaleon'),
