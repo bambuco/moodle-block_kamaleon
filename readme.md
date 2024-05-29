@@ -13,6 +13,10 @@ Download zip package, extract the kamaleon folder and upload this folder into bl
 * **Powered by:** [BambuCo](https://bambuco.co/) - [Universidad CES](https://www.ces.edu.co/)
 
 ## IN VERSION
+### 2023021503:
+* New content type: blog
+* New design: Events 1
+
 ### 2023021502:
 * Backup and restore implementation.
 * New Confiar designs.
