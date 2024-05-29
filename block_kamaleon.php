@@ -96,7 +96,10 @@ class block_kamaleon extends block_base {
             $design = $this->config->design;
         }
 
-        $contentsource = \block_kamaleon\controller::get_typeinstance($this->config->type);
+        $contentsource = null;
+        if (is_object($this->config) && isset($this->config->type)) {
+            $contentsource = \block_kamaleon\controller::get_typeinstance($this->config->type);
+        }
 
         $list = [];
         if ($contentsource) {
