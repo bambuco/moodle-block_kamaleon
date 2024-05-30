@@ -81,4 +81,70 @@ class controller {
         }
 
     }
+
+    /**
+     * Include the external files according the current used design.
+     *
+     * @param string $design The design name.
+     * @param string $visualization The visualization name.
+     * @return void
+     */
+    public static function include_externals(string $design, string $visualization = '') {
+        global $CFG, $PAGE;
+
+        if (empty($design)) {
+            return;
+        }
+
+        // First load the generic externals.
+        if (!empty($visualization)) {
+
+            // Check if use slider in the block and include the flexslider CSS file.
+            if ($visualization == 'hslider') {
+                $csspath = '/blocks/kamaleon/externals/flexslider/flexslider.css';
+                $PAGE->requires->css($csspath, true);
+                $PAGE->requires->js_call_amd('block_kamaleon/main', 'initSlider');
+            }
+        }
+
+        $externals = \block_kamaleon\design::get_externals($design);
+
+        if (empty($externals)) {
+            return;
+        }
+
+        $localpath = '/blocks/kamaleon/externals/';
+
+        // Include externals CSS files.
+        if (property_exists($externals, 'css')) {
+            foreach ($externals->css as $css) {
+                $csspath = realpath($CFG->dirroot . $localpath . $css);
+
+                if ($csspath != $CFG->dirroot . $localpath . $css) {
+                    // Is a relative or other wrong path.
+                    continue;
+                }
+
+                if (file_exists($csspath)) {
+                    $PAGE->requires->css($localpath . $css, true);
+                }
+            }
+        }
+
+        // Include externals JS files.
+        if (property_exists($externals, 'js')) {
+            foreach ($externals->js as $js) {
+                $jspath = realpath($CFG->dirroot . $localpath . $js);
+
+                if ($jspath != $CFG->dirroot . $localpath . $js) {
+                    // Is a relative or other wrong path.
+                    continue;
+                }
+
+                if (file_exists($jspath)) {
+                    $PAGE->requires->js($localpath . $js);
+                }
+            }
+        }
+    }
 }

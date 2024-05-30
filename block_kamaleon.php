@@ -73,7 +73,6 @@ class block_kamaleon extends block_base {
     }
 
     function get_content() {
-        global $DB;
 
         if ($this->content !== NULL) {
             return $this->content;
@@ -92,6 +91,10 @@ class block_kamaleon extends block_base {
 
         $design = '';
         if (!empty($this->config) && !empty($this->config->design)) {
+
+            $visualization = property_exists($this->config, 'visualization') ? $this->config->visualization : '';
+            \block_kamaleon\controller::include_externals($this->config->design, $visualization);
+
             \block_kamaleon\controller::include_designcss($this->config->design);
             $design = $this->config->design;
         }
@@ -268,6 +271,10 @@ class block_kamaleon extends block_base {
             $attributes['class'] .= ' design-' . $this->config->design;
         } else {
             $attributes['class'] .= ' design-default';
+        }
+
+        if (property_exists($this->config, 'visualization') && $this->config->visualization == 'hslider') {
+            $attributes['class'] .= ' kam-hslider';
         }
 
         return $attributes;

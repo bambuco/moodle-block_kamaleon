@@ -36,7 +36,7 @@ class renderer extends plugin_renderer_base {
     /**
      * Return the template content for the block.
      *
-     * @param catalog $contents The contents renderable
+     * @param contents $contents The contents renderable
      * @return string HTML string
      */
     public function render_contents(contents $contents) : string {

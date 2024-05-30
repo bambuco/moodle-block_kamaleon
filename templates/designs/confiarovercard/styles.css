@@ -95,3 +95,8 @@
     display: flex;
     justify-content: center;
 }
+
+/* To fix using kam-hslider */
+.block_kamaleon.design-confiarovercard .flex-viewport {
+    padding-top: 20px;
+}

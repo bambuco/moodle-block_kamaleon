@@ -84,12 +84,14 @@ if ($designformdata = $designform->get_data()) {
     $currentdesign = $configdata->design;
 
     if (!$preview) {
-        $configdata = base64_encode(serialize($configdata));
-        $DB->set_field('block_instances', 'configdata', $configdata, ['id' => $id]);
+        $newconfigdata = base64_encode(serialize($configdata));
+        $DB->set_field('block_instances', 'configdata', $newconfigdata, ['id' => $id]);
     }
 }
 
 if (!empty($currentdesign)) {
+    $visualization = property_exists($configdata, 'visualization') ? $configdata->visualization : '';
+    \block_kamaleon\controller::include_externals($currentdesign, $visualization);
     \block_kamaleon\controller::include_designcss($currentdesign);
 }
 
@@ -144,6 +146,10 @@ echo html_writer::start_tag('div', ['class' => 'card-body']);
 $designform->display();
 echo html_writer::end_tag('div');
 echo html_writer::end_tag('div');
+
+if (!property_exists($configdata, 'type')) {
+    $configdata->type = 'custom';
+}
 
 $contentsource = \block_kamaleon\controller::get_typeinstance($configdata->type);
 

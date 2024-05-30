@@ -58,6 +58,9 @@ class block_kamaleon_edit_form extends block_edit_form {
         $availabledesigns = \block_kamaleon\design::get_availables();
         $mform->addElement('select', 'config_design', get_string('design', 'block_kamaleon'), $availabledesigns);
 
+        $visualizations = \block_kamaleon\design::get_visualizations();
+        $mform->addElement('select', 'config_visualization', get_string('visualization', 'block_kamaleon'), $visualizations);
+
         if ($canmanage) {
             $contentitemurl = new \moodle_url('/blocks/kamaleon/listcontents.php', ['id' => $this->block->instance->id]);
             $contentbuttonlabel = get_string('customcontentgo', 'block_kamaleon');
