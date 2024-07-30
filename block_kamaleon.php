@@ -267,13 +267,13 @@ class block_kamaleon extends block_base {
             }
         }
 
-        if (!empty($this->config->design)) {
+        if ($this->config && !empty($this->config->design)) {
             $attributes['class'] .= ' design-' . $this->config->design;
         } else {
             $attributes['class'] .= ' design-default';
         }
 
-        if (property_exists($this->config, 'visualization') && $this->config->visualization == 'hslider') {
+        if ($this->config && property_exists($this->config, 'visualization') && $this->config->visualization == 'hslider') {
             $attributes['class'] .= ' kam-hslider';
         }
 
