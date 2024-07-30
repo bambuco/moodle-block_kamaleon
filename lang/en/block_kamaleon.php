@@ -81,3 +81,6 @@ $string['type_glossary'] = 'Glossary';
 $string['type_moddata'] = 'Database module';
 $string['type_statistics'] = 'Statistics';
 $string['url'] = 'URL';
+$string['visualization'] = 'Visualization';
+$string['visualization_default'] = 'Default';
+$string['visualization_hslider'] = 'Horizontal slider';

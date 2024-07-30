@@ -95,3 +95,9 @@
     position: absolute;
     bottom: -50px;
 }
+
+/* To fix using kam-hslider */
+.block_kamaleon.design-cescardsresize1 .flex-viewport {
+    padding-top: 20px;
+    padding-bottom: 20px;
+}

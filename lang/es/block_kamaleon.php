@@ -80,3 +80,6 @@ $string['type_glossary'] = 'Glosario';
 $string['type_moddata'] = 'Módulo Base de datos';
 $string['type_statistics'] = 'Estadísticas';
 $string['url'] = 'URL';
+$string['visualization'] = 'Visualización';
+$string['visualization_default'] = 'Por defecto';
+$string['visualization_hslider'] = 'Deslizador horizontal';

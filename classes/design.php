@@ -31,6 +31,11 @@ namespace block_kamaleon;
  */
 class design extends entity {
 
+    /**
+     * Get the available designs.
+     *
+     * @return array The list of available designs.
+     */
     public static function get_availables() {
         global $CFG;
 
@@ -60,6 +65,49 @@ class design extends entity {
         }
 
         return $list;
+    }
+
+    /**
+     * Get the available visualizations.
+     *
+     * @return array The list of available visualizations.
+     */
+    public static function get_visualizations() {
+
+        return [
+            'default' => get_string('visualization_default', 'block_kamaleon'),
+            'hslider' => get_string('visualization_hslider', 'block_kamaleon'),
+        ];
+    }
+    /**
+     * Get the external settings for a design.
+     *
+     * @param string $design The design name.
+     * @return object|null The external settings.
+     */
+    public static function get_externals(string $design): ?object {
+        global $CFG;
+
+        $path = $CFG->dirroot . '/blocks/kamaleon/templates/designs/';
+
+        if (is_dir($path . $design)) {
+
+            $propertiescontent = file_get_contents($path . $design . '/properties.json');
+            if (!empty($propertiescontent)) {
+                $settings = json_decode($propertiescontent, true);
+
+                if (is_array($settings)) {
+                    $settings = (object)$settings;
+                }
+
+                if (!empty($settings->external)) {
+                    return is_array($settings->external) ? (object)$settings->external : $settings->external;
+                }
+            }
+
+        }
+
+        return null;
     }
 
 }
