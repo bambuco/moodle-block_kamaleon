@@ -29,3 +29,14 @@
 .block_kamaleon.design-default .block_kamaleon-contentslist .card-header h5 img {
     margin-right: 10px;
 }
+
+.block_kamaleon.kam-cols-2 > .card-body > .card-text.content {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+}
+
+.block_kamaleon.kam-cols-2 > .card-body > .card-text.content > section,
+.block_kamaleon.kam-cols-2 > .card-body > .card-text.content > div {
+    width: 50%;
+}

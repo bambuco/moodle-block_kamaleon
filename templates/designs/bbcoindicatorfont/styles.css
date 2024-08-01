@@ -29,3 +29,9 @@
     font-weight: normal;
     padding: 15px 0;
 }
+
+.block_kamaleon.kam-cards .kam-card {
+    box-shadow: 0 0 30px #ddd;
+    border-radius: 30px;
+    margin: 5px 10px;
+}

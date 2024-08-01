@@ -15,7 +15,7 @@
     along with Moodle.  If not, see <http://www.gnu.org/licenses/>.
 }}
 {{!
-    @template block_kamaleon/bbcoindicatorfont/layout
+    @template block_kamaleon/comfesinglecard2/layout
 
     The designed layout.
 
@@ -43,21 +43,30 @@
     }
 }}
 
-<section class="container-indicators">
+<section class="container-cards">
     {{#contents}}
-    <div class="kam-card">
+    <div class="card-cards" {{#banner}}style="background-image: url('{{banner}}');"{{/banner}}>
+        <div class="card_content">
+            {{#title}}<h4>{{title}}</h4>{{/title}}
+            {{#content}}{{content}}{{/content}}
+            {{#showedition}}
+                {{> block_kamaleon/edition}}
+            {{/showedition}}
+        </div>
         {{#url}}
-            <a href="{{url}}" {{#target}}target="{{target}}"{{/target}} {{#title}}title="{{title}}"{{/title}}>
+        <div class="card_footer">
+                <a href="{{url}}" {{#target}}target="{{target}}"{{/target}} class="btn btn-primary">
+                {{#linkname}}
+                    {{linkname}}
+                {{/linkname}}
+                {{^linkname}}
+                    {{#title}}
+                        {{#str}} moreinfo, block_kamaleon {{/str}}
+                    {{/title}}
+                {{/linkname}}
+                </a>
+        </div>
         {{/url}}
-        {{#shorttitle}}<i class="icon fa fa-{{shorttitle}}"></i>{{/shorttitle}}
-        {{#title}}<h5>{{title}}</h5>{{/title}}
-        {{#subtitle}}<h4>{{subtitle}}</h4>{{/subtitle}}
-        {{#url}}
-            </a>
-        {{/url}}
-        {{#showedition}}
-            {{> block_kamaleon/edition}}
-        {{/showedition}}
     </div>
     {{/contents}}
 </section>

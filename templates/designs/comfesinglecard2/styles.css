@@ -1,0 +1,50 @@
+.block_kamaleon.design-comfesinglecard2 .container-cards {
+    display: flex;
+    justify-content: center;
+    align-items: stretch;
+    gap: 20px;
+    flex-wrap: wrap;
+}
+
+.block_kamaleon.design-comfesinglecard2 .card-cards {
+    width: 355px;
+    border-radius: 10px;
+    margin: 5px 5px 40px;
+    position: relative;
+    padding-top: 150px;
+    box-shadow: 0px 0px 10px 0px rgba(0, 0, 0, 0.1);
+    display: flex;
+    align-items: end;
+}
+
+.block_kamaleon.design-comfesinglecard2 .card_content {
+    background-color: var(--light);
+    /*border-radius: 115% 400px 0px 0px/90px 150px 10px 10px;*/
+    border-radius: 255px 100px 10px 10px / 80px 150px 10px 10px;
+    padding: 20px 20px 40px;
+}
+
+.block_kamaleon.design-comfesinglecard2 .card_content h4 {
+    padding: 15px 38px;
+    font-size: 17px;
+    text-align: center;
+    line-height: 19px;
+    margin-bottom: 0;
+    color: var(--primary) !important;
+    font-weight: 500;
+}
+
+.block_kamaleon.design-comfesinglecard2 .card_footer {
+    position: absolute;
+    display: flex;
+    justify-content: right;
+    bottom: -20px;
+    left: 0;
+    right: 0;
+    padding-right: 30px;
+}
+
+.block_kamaleon.design-comfesinglecard2 .showedition {
+    display: flex;
+    justify-content: center;
+}

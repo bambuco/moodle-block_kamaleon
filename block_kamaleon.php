@@ -15,13 +15,12 @@
 // along with Moodle.  If not, see <http://www.gnu.org/licenses/>.
 
 /**
- * Form for editing block instances.
+ * Block kamaleon class definition.
  *
  * @package   block_kamaleon
  * @copyright 2023 David Herney @ BambuCo
  * @license   http://www.gnu.org/copyleft/gpl.html GNU GPL v3 or later
  */
-
 class block_kamaleon extends block_base {
 
     function init() {
@@ -163,14 +162,6 @@ class block_kamaleon extends block_base {
             }
 
             $this->content->footer .= format_text($htmlfooter, $htmlfooterformat, $filteropt);
-        }
-
-        $isediting = $this->page->user_is_editing() && has_capability('block/kamaleon:addinstance', $this->context);
-        if ($isediting && $instanceid == $this->instance->id) {
-            $contentitemurl = new \moodle_url('/blocks/kamaleon/listcontents.php', ['id' => $instanceid]);
-            $contentbuttonlabel = get_string('customcontentgo', 'block_kamaleon');
-            $link = \html_writer::link($contentitemurl, $contentbuttonlabel, ['class' => 'btn btn-primary']);
-            $this->content->text .= $link;
         }
 
         return $this->content;
@@ -391,6 +382,44 @@ class block_kamaleon extends block_base {
         }
 
         return true;
+    }
+
+    /**
+     * Return a block_contents object representing the full contents of this block.
+     *
+     * This internally calls ->get_content(), and then adds the editing controls etc.
+     *
+     * @param object $output The output renderer from the parent context (e.g. page renderer)
+     * @return block_contents a representation of the block, for rendering.
+     */
+    public function get_content_for_output($output) {
+        $bc = parent::get_content_for_output($output);
+
+        if (empty($bc->controls) ||
+                !$this->page->user_is_editing() ||
+                !has_capability('block/kamaleon:addinstance', $this->context)) {
+            return $bc;
+        }
+
+        $str = get_string('customcontentgo', 'block_kamaleon');
+
+        $newcontrols = [];
+        foreach ($bc->controls as $control) {
+            $newcontrols[] = $control;
+            // Append our new item onto the controls if we're on the correct item.
+            if (strpos($control->attributes['class'], 'editing_edit') !== false) {
+                $icon = new pix_icon('t/preferences', $str, 'moodle', ['class' => 'iconsmall']);
+                $newcontrols[] = new action_menu_link_secondary(
+                    new moodle_url('/blocks/kamaleon/listcontents.php', ['id' => $this->instance->id, 'sesskey' => sesskey()]),
+                    $icon,
+                    $str,
+                    ['class' => 'editing_manage']
+                );
+            }
+        }
+
+        $bc->controls = $newcontrols;
+        return $bc;
     }
 
 }

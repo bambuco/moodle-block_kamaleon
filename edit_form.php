@@ -80,19 +80,25 @@ class block_kamaleon_edit_form extends block_edit_form {
 
     }
 
+    /**
+     * Set the default values for the form.
+     *
+     * @param stdClass $defaults The default values.
+     * @return void
+     */
     function set_data($defaults) {
 
         if (!empty($this->block->config) && !empty($this->block->config->htmlheader)) {
             $htmlheader = $this->block->config->htmlheader;
-            $draftid_editor = file_get_submitted_draft_itemid('config_htmlheader');
+            $draftideditor = file_get_submitted_draft_itemid('config_htmlheader');
             if (empty($htmlheader)) {
                 $currenthtmlheader = '';
             } else {
                 $currenthtmlheader = $htmlheader;
             }
-            $defaults->config_htmlheader['text'] = file_prepare_draft_area($draftid_editor, $this->block->context->id,
-                                                        'block_kamaleon', 'htmlheader', 0, ['subdirs' => true], $currenthtmlheader);
-            $defaults->config_htmlheader['itemid'] = $draftid_editor;
+            $defaults->config_htmlheader['text'] = file_prepare_draft_area($draftideditor, $this->block->context->id,
+                                                    'block_kamaleon', 'content_header', 0, ['subdirs' => true], $currenthtmlheader);
+            $defaults->config_htmlheader['itemid'] = $draftideditor;
             $defaults->config_htmlheader['format'] = $this->block->config->htmlheaderformat ?? FORMAT_MOODLE;
         } else {
             $htmlheader = '';
@@ -100,15 +106,15 @@ class block_kamaleon_edit_form extends block_edit_form {
 
         if (!empty($this->block->config) && !empty($this->block->config->htmlfooter)) {
             $htmlfooter = $this->block->config->htmlfooter;
-            $draftid_editor = file_get_submitted_draft_itemid('config_htmlfooter');
+            $draftideditor = file_get_submitted_draft_itemid('config_htmlfooter');
             if (empty($htmlfooter)) {
                 $currenthtmlfooter = '';
             } else {
                 $currenthtmlfooter = $htmlfooter;
             }
-            $defaults->config_htmlfooter['text'] = file_prepare_draft_area($draftid_editor, $this->block->context->id,
-                                                        'block_kamaleon', 'htmlfooter', 0, ['subdirs' => true], $currenthtmlfooter);
-            $defaults->config_htmlfooter['itemid'] = $draftid_editor;
+            $defaults->config_htmlfooter['text'] = file_prepare_draft_area($draftideditor, $this->block->context->id,
+                                                    'block_kamaleon', 'content_footer', 0, ['subdirs' => true], $currenthtmlfooter);
+            $defaults->config_htmlfooter['itemid'] = $draftideditor;
             $defaults->config_htmlfooter['format'] = $this->block->config->htmlfooterformat ?? FORMAT_MOODLE;
         } else {
             $htmlfooter = '';
