@@ -22,19 +22,6 @@
  * @license   http://www.gnu.org/copyleft/gpl.html GNU GPL v3 or later
  */
 
-$string['pluginname'] = 'Kamaleon';
-
-// Capabilities.
-$string['kamaleon:addinstance'] = 'Add a new Kamaleon block';
-$string['kamaleon:myaddinstance'] = 'Add a new Kamaleon block to Dashboard';
-$string['kamaleon:addsources'] = 'Add sources to Kamaleon block';
-
-$string['privacy:metadata:block'] = 'The Kamaleon block does not store privacy user information.';
-$string['search:content'] = 'Kamaleon block content';
-$string['eventcontent_created'] = 'Kamaleon content created';
-$string['eventcontent_updated'] = 'Kamaleon content updated';
-$string['eventcontent_deleted'] = 'Kamaleon content deleted';
-
 $string['allowadditionalcssclasses'] = 'Allow additional CSS classes';
 $string['banner'] = 'Banner';
 $string['banner_help'] = 'The main image for the content.';
@@ -55,19 +42,28 @@ Set a variable by line. The format is: variable=value. For example: price=100';
 $string['createdat'] = 'Created at {$a}';
 $string['customcontentgo'] = 'Manage content';
 $string['defaultweight'] = 'Weight';
-$string['design'] = 'Design';
 $string['deletecheck'] = 'Are you sure you want to delete this content?';
+$string['design'] = 'Design';
 $string['errornotcontentdata'] = 'Error: No content data found.';
-$string['htmlheader'] = 'Header\'s block';
+$string['eventcontent_created'] = 'Kamaleon content created';
+$string['eventcontent_deleted'] = 'Kamaleon content deleted';
+$string['eventcontent_updated'] = 'Kamaleon content updated';
 $string['htmlfooter'] = 'Footer\'s block';
+$string['htmlheader'] = 'Header\'s block';
 $string['icon'] = 'Icon';
 $string['icon_help'] = 'The icon o secondary image for the content.';
 $string['images'] = 'Images';
+$string['kamaleon:addinstance'] = 'Add a new Kamaleon block';
+$string['kamaleon:addsources'] = 'Add sources to Kamaleon block';
+$string['kamaleon:myaddinstance'] = 'Add a new Kamaleon block to Dashboard';
 $string['lastupdated'] = 'Last updated on {$a}';
 $string['linkname'] = 'Link name';
 $string['moreinfo'] = 'More info...';
 $string['newblock'] = '(new Kamaleon)';
 $string['newcontent'] = 'New content';
+$string['pluginname'] = 'Kamaleon';
+$string['privacy:metadata'] = 'The Kamaleon block does not store privacy user information.';
+$string['search:content'] = 'Kamaleon block content';
 $string['shorttitle'] = 'Short title';
 $string['subtitle'] = 'Subtitle';
 $string['target'] = 'URL target';

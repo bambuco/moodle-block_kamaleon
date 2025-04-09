@@ -22,19 +22,6 @@
  * @license   http://www.gnu.org/copyleft/gpl.html GNU GPL v3 or later
  */
 
-$string['pluginname'] = 'Kamaleon';
-
-// Capabilities.
-$string['kamaleon:addinstance'] = 'Añadir un nuevo bloque Kamaleon';
-$string['kamaleon:myaddinstance'] = 'Añadir un nuevo bloque Kamaleon al Tablero';
-$string['kamaleon:addsources'] = 'Añadir orígenes al bloque Kamaleon';
-
-$string['privacy:metadata:block'] = 'El bloque Kamaleon no almacena información privada del usuario.';
-$string['search:content'] = 'Contenido del bloque Kamaleon';
-$string['eventcontent_created'] = 'Contenido de Kamaleon creado';
-$string['eventcontent_updated'] = 'Contenido de Kamaleon actualizado';
-$string['eventcontent_deleted'] = 'Contenido de Kamaleon eliminado';
-
 $string['allowadditionalcssclasses'] = 'Permitir clases CSS adicionales';
 $string['banner'] = 'Imagen';
 $string['banner_help'] = 'La imagen principal para el contenido.';
@@ -55,18 +42,27 @@ Configurar una variable por línea. El formato es: variable=valor. Por ejemplo: 
 $string['createdat'] = 'Creado en {$a}';
 $string['customcontentgo'] = 'Gestionar contenido';
 $string['defaultweight'] = 'Peso';
-$string['design'] = 'Diseño';
 $string['deletecheck'] = '¿Está seguro de querer eliminar este contenido?';
-$string['htmlheader'] = 'Encabezado del bloque';
+$string['design'] = 'Diseño';
+$string['eventcontent_created'] = 'Contenido de Kamaleon creado';
+$string['eventcontent_deleted'] = 'Contenido de Kamaleon eliminado';
+$string['eventcontent_updated'] = 'Contenido de Kamaleon actualizado';
 $string['htmlfooter'] = 'Pie del bloque';
+$string['htmlheader'] = 'Encabezado del bloque';
 $string['icon'] = 'Ícono';
 $string['icon_help'] = 'El ícono o imagen secundaria para el contenido.';
 $string['images'] = 'Imágenes';
+$string['kamaleon:addinstance'] = 'Añadir un nuevo bloque Kamaleon';
+$string['kamaleon:addsources'] = 'Añadir orígenes al bloque Kamaleon';
+$string['kamaleon:myaddinstance'] = 'Añadir un nuevo bloque Kamaleon al Tablero';
 $string['lastupdated'] = 'Última actualización en {$a}';
 $string['linkname'] = 'Nombre del enlace';
 $string['moreinfo'] = 'Más info...';
 $string['newblock'] = '(nuevo Kamaleon)';
 $string['newcontent'] = 'Nuevo contenido';
+$string['pluginname'] = 'Kamaleon';
+$string['privacy:metadata'] = 'El bloque Kamaleon no almacena información privada del usuario.';
+$string['search:content'] = 'Contenido del bloque Kamaleon';
 $string['shorttitle'] = 'Título corto';
 $string['subtitle'] = 'Subtítulo';
 $string['target'] = 'URL destino';
