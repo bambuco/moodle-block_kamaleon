@@ -23,10 +23,10 @@
  */
 namespace block_kamaleon\output;
 
-use core_tag\reportbuilder\local\entities\instance;
 use renderable;
 use renderer_base;
 use templatable;
+use local_uitranslate\local\lib as uitrans;
 
 /**
  * Class containing data for the component.
@@ -116,6 +116,13 @@ class contents implements renderable, templatable {
             $contentdata->hasbanner = !empty($contentdata->banner);
             $contentdata->hasicon = !empty($contentdata->icon);
             $contentdata->index = $index;
+
+            // UI translation.
+            $contentdata->shorttitle = uitrans::get($contentdata->shorttitle);
+            $contentdata->title = uitrans::get($contentdata->title);
+            $contentdata->subtitle = uitrans::get($contentdata->subtitle);
+            $contentdata->linkname = uitrans::get($contentdata->linkname);
+
             $index++;
             $contents[] = $contentdata;
         }

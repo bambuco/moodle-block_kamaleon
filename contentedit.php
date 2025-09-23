@@ -24,6 +24,8 @@
 require_once('../../config.php');
 require_once($CFG->libdir . '/formslib.php');
 
+use local_uitranslate\local\lib as uitrans;
+
 $id = optional_param('id', 0, PARAM_INT);
 
 require_login(null, true);
@@ -117,6 +119,8 @@ if ($form->is_cancelled()) {
     if (!$content) {
         $content = new stdClass();
         $content->timecreated = time();
+    } else {
+        $oldcontent = clone $content;
     }
 
     $content->instanceid = $bid;
@@ -144,8 +148,22 @@ if ($form->is_cancelled()) {
             'context' => $context,
         ]);
         $event->trigger();
+
+        foreach (['shorttitle', 'title', 'subtitle', 'linkname'] as $field) {
+            if ($oldcontent->$field !== $data->$field) {
+                uitrans::unset('block_kamaleon', $oldcontent->$field, $field, $content->id);
+                uitrans::set('block_kamaleon', $data->$field, $field, $content->id);
+            }
+        }
     } else {
         $id = $DB->insert_record('block_kamaleon_contents', $content, true);
+
+        uitrans::setbulk('block_kamaleon', [
+            'shorttitle' => $data->shorttitle,
+            'title' => $data->title,
+            'subtitle' => $data->subtitle,
+            'linkname' => $data->linkname,
+        ], $id);
 
         $event = \block_kamaleon\event\content_created::create([
             'objectid' => $id,
