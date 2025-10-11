@@ -41,7 +41,8 @@ class custom extends base {
     public function get_contents($instanceid, $configdata = null) : array {
         global $DB;
 
-        $contents = $DB->get_records('block_kamaleon_contents', ['instanceid' => $instanceid], 'defaultweight ASC');
+        $size = $configdata->maxrecords ?? 0;
+        $contents = $DB->get_records('block_kamaleon_contents', ['instanceid' => $instanceid], 'defaultweight ASC', '*', 0, $size);
 
         return $contents;
     }
