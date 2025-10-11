@@ -1,0 +1,10 @@
+{
+  "name": "Stars rating (STxUTxCxx)",
+  "description": "Created to display rating information with stars. Use variables: author and rating (list with 1 and 0)",
+  "author": {
+    "name": "David Herney",
+    "url": "https://bambuco.co/",
+    "email": "david.herney@bambuco.co"
+  },
+  "license": "GPL-3.0+"
+}

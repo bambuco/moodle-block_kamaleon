@@ -14,35 +14,35 @@
 // You should have received a copy of the GNU General Public License
 // along with Moodle.  If not, see <http://www.gnu.org/licenses/>.
 
-/**
- * Class containing the custom type information.
- *
- * @package   block_kamaleon
- * @copyright 2023 David Herney @ BambuCo
- * @license   http://www.gnu.org/copyleft/gpl.html GNU GPL v3 or later
- */
 namespace block_kamaleon\type;
 
 /**
- * Type custom.
+ * Class base
  *
- * @copyright 2023 David Herney @ BambuCo
- * @license   http://www.gnu.org/copyleft/gpl.html GNU GPL v3 or later
+ * @package    block_kamaleon
+ * @copyright  2025 David Herney @ BambuCo
+ * @license    http://www.gnu.org/copyleft/gpl.html GNU GPL v3 or later
  */
-class custom extends base {
+class base {
 
     /**
-     * Get the contents for the custom type.
+     * Get the contents for default.
      *
      * @param int $instanceid The block instance id.
      * @param object $configdata The block configuration data.
      * @return array List of contents.
      */
-    public function get_contents($instanceid, $configdata = null) : array {
-        global $DB;
+    public function get_contents($instanceid, $configdata = null): array {
+        return [];
+    }
 
-        $contents = $DB->get_records('block_kamaleon_contents', ['instanceid' => $instanceid], 'defaultweight ASC');
-
-        return $contents;
+    /**
+     * Get the configuration form elements.
+     *
+     * @param object $configdata The block configuration data.
+     * @return array List of setting elements.
+     */
+    public function get_config_form_elements($configdata = null): array {
+        return [];
     }
 }

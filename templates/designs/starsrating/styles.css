@@ -1,0 +1,70 @@
+.block_kamaleon.design-starsrating .container-cards {
+    display: flex;
+    justify-content: center;
+    align-items: stretch;
+    gap: 20px;
+    flex-wrap: wrap;
+    margin-bottom: 20px;
+}
+
+.block_kamaleon.design-starsrating .card-cards {
+    max-width: 350px;
+    width: 100%;
+    border-radius: 20px;
+    margin: 15px 5px 5px;
+    position: relative;
+    border: 1px solid #f0f0f0;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    transition: transform 0.3s, box-shadow 0.3s;
+    background-color: #fff;
+}
+
+.block_kamaleon.design-starsrating .stars-rating {
+    padding: 20px 0 0 0;
+    display: flex;
+}
+
+.block_kamaleon.design-starsrating .stars-rating .star > span {
+    display: none;
+    font-size: 1.5em;
+    margin: 0 2px;
+}
+
+.block_kamaleon.design-starsrating .stars-rating [data-rating="1"] .filled {
+    color: #f5c518;
+    display: inline-block;
+}
+
+.block_kamaleon.design-starsrating .stars-rating [data-rating="0"] .empty {
+    color: #ccc;
+    display: inline-block;
+}
+
+.block_kamaleon.design-starsrating .rating-date {
+    font-size: 0.9em;
+    color: #777;
+    margin-bottom: 15px;
+}
+
+.block_kamaleon.design-starsrating .byname {
+    font-weight: bold;
+    font-size: 110%;
+    display: flex;
+    align-items: center;
+}
+
+.block_kamaleon.design-starsrating .byname img {
+    margin-right: 10px;
+}
+
+.block_kamaleon.design-starsrating .authoricon {
+    width: 100px;
+    height: 100px;
+    border-radius: 50%;
+    object-fit: cover;
+}
+
+.block_kamaleon.design-starsrating .showedition {
+    display: flex;
+    justify-content: center;
+}

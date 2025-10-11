@@ -15,7 +15,7 @@
     along with Moodle.  If not, see <http://www.gnu.org/licenses/>.
 }}
 {{!
-    @template block_kamaleon/designs/event1/layout
+    @template block_kamaleon/designs/rating/layout
 
     The designed layout.
 
@@ -27,14 +27,13 @@
                 "index": 0,
                 "shorttitle": "MC",
                 "title": "My content",
-                "subtitle": "My content subtitle",
                 "url": "https://example.com",
                 "target": "_blank",
                 "linkname": "My content link name",
                 "content": "My content description",
-                "banner": "https://example.com/banner.png",
-                "hasbanner": true,
-                "hasicon": false,
+                "hasbanner": false,
+                "icon": "https://example.com/icon.png",
+                "hasicon": true,
                 "showedition": false
             ],
             "instanceid": "99"
@@ -45,46 +44,40 @@
 <section class="container-cards">
     {{#contents}}
     <div class="card-cards">
-        <div class="card-header" {{#hasbanner}}style="background-image: url({{banner}});"{{/hasbanner}}>
-            {{#shorttitle}}
-                <span class="event-date">{{shorttitle}}</span>
-            {{/shorttitle}}
-            {{#hasicon}}
-                <img class="event-icon" src="{{icon}}" alt="" />
-            {{/hasicon}}
-        </div>
-        <div class="event-subtitle">
-            <h6>{{subtitle}}</h6>
-        </div>
-        <div class="event-title">
-            <h5>{{title}}</h5>
-        </div>
-        <div class="moreinfo">
-            {{#vars}}{{#author}}
-                <div class="by">
-                    <span class="bylabel">
-                        {{#str}} bylabel, block_kamaleon {{/str}}
-                    </span>
-                    <span class="byname">
-                        {{{author}}}
-                    </span>
-                </div>
-            {{/author}}{{/vars}}
-        </div>
-
         <div class="card-body">
+
+            <h5>
+                {{#url}}
+                    <a href="{{url}}" {{#target}}target="{{target}}"{{/target}}>
+                        {{title}}
+                    </a>
+                {{/url}}
+                {{^url}}
+                    {{title}}
+                {{/url}}
+            </h5>
+
             <div class="card_content-content">
                 {{{content}}}
             </div>
 
-            {{#url}}
-            <div class="card_buttons">
-                <a href="{{url}}" class="btn btn-primary" {{#target}}target="{{target}}"{{/target}}>
-                    {{#linkname}}{{linkname}}{{/linkname}}
-                    {{^linkname}}{{#str}} moreinfo, block_kamaleon {{/str}}{{/linkname}}
-                </a>
+            <div class="stars-rating">
+                {{#vars}}{{#rating}}
+                    <div class="star" data-rating="{{.}}"><span class="filled">&#9733;</span><span class="empty">&#9734;</span></div>
+                {{/rating}}{{/vars}}
             </div>
-            {{/url}}
+            <div class="rating-date">
+                {{shorttitle}}
+            </div>
+
+            {{#vars}}{{#author}}
+                <div class="by">
+                    <div class="byname">
+                        <img src="{{{icon}}}" class="authoricon"/>
+                        {{{author}}}
+                    </div>
+                </div>
+            {{/author}}{{/vars}}
 
             {{#showedition}}
             <div class="card-footer text-muted">
@@ -92,6 +85,7 @@
             </div>
             {{/showedition}}
         </div>
+
     </div>
     {{/contents}}
 </section>

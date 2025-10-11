@@ -49,6 +49,11 @@ class controller {
             'statistics' => get_string('type_statistics', 'block_kamaleon')*/
         ];
 
+        $plugininfo = \core_plugin_manager::instance()->get_plugin_info('tool_courserating');
+        if ($plugininfo && $plugininfo->is_installed_and_upgraded()) {
+            $types['tool_courserating'] = get_string('pluginname', 'tool_courserating');
+        }
+
         return $types;
     }
 

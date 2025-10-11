@@ -61,8 +61,10 @@ class contents implements renderable, templatable {
      *
      * @param int $instanceid The block instance id.
      * @param array $contents The contents list.
+     * @param string $currentdesign The current block design.
+     * @param bool $showedition Show edition buttons.
      */
-    public function __construct(int $instanceid, array $contents, string $currentdesign = null, bool $showedition = false) {
+    public function __construct(int $instanceid, array $contents, string $currentdesign = '', bool $showedition = false) {
         $this->instanceid = $instanceid;
         $this->contents = $contents;
         $this->currentdesign = $currentdesign;

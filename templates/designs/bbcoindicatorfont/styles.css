@@ -22,6 +22,7 @@
     margin: 0;
     padding: 0;
     width: auto;
+    max-width: unset;
 }
 
 .block_kamaleon.design-bbcoindicatorfont .container-indicators h5 {

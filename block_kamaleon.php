@@ -278,11 +278,12 @@ class block_kamaleon extends block_base {
      * @since Moodle 3.8
      */
     public function get_config_for_external() {
-        global $CFG;
+
+        $allowcssclasses = get_config('block_kamaleon', 'allowcssclasses');
 
         // Return all settings for all users since it is safe (no private keys, etc..).
         $instanceconfigs = !empty($this->config) ? $this->config : new stdClass();
-        $pluginconfigs = (object) ['allowcssclasses' => $CFG->block_kamaleon_allowcssclasses];
+        $pluginconfigs = (object) ['allowcssclasses' => $allowcssclasses];
 
         return (object) [
             'instance' => $instanceconfigs,

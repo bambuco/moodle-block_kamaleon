@@ -25,7 +25,25 @@
 defined('MOODLE_INTERNAL') || die;
 
 if ($ADMIN->fulltree) {
-    $settings->add(new admin_setting_configcheckbox('block_kamaleon_allowcssclasses',
+    $settings->add(new admin_setting_configcheckbox('block_kamaleon/allowcssclasses',
                                                     get_string('allowadditionalcssclasses', 'block_kamaleon'),
-                                                    get_string('configallowadditionalcssclasses', 'block_kamaleon'), 0));
+                                                    get_string('configallowadditionalcssclasses', 'block_kamaleon'), 1)
+    );
+
+
+    $types = \block_kamaleon\controller::get_sourcestypes();
+    foreach ($types as $type => $typename) {
+        $typeinstance = \block_kamaleon\controller::get_typeinstance($type);
+        if ($typeinstance) {
+            $elements = $typeinstance->get_config_form_elements();
+            if (!empty($elements)) {
+                $settings->add(new admin_setting_heading('block_kamaleon_' . $type . '_settings',
+                                                        $typename, ''));
+                foreach ($elements as $element) {
+                    $settings->add($element);
+                }
+            }
+        }
+    }
+
 }

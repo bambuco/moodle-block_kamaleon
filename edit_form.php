@@ -41,7 +41,8 @@ class block_kamaleon_edit_form extends block_edit_form {
         $mform->addElement('text', 'config_title', get_string('configtitle', 'block_kamaleon'));
         $mform->setType('config_title', PARAM_TEXT);
 
-        if (!empty($CFG->block_kamaleon_allowcssclasses)) {
+        $allowcssclasses = get_config('block_kamaleon', 'allowcssclasses');
+        if (!empty($allowcssclasses)) {
             $mform->addElement('text', 'config_classes', get_string('configclasses', 'block_kamaleon'));
             $mform->setType('config_classes', PARAM_TEXT);
             $mform->addHelpButton('config_classes', 'configclasses', 'block_kamaleon');
@@ -54,6 +55,9 @@ class block_kamaleon_edit_form extends block_edit_form {
             $types = array_merge($types, $sourcestypes);
         }
         $mform->addElement('select', 'config_type', get_string('configtype', 'block_kamaleon'), $types);
+
+        $mform->addElement('text', 'config_maxrecords', get_string('configmaxrecords', 'block_kamaleon'));
+        $mform->setType('config_maxrecords', PARAM_INT);
 
         $availabledesigns = \block_kamaleon\design::get_availables();
         $mform->addElement('select', 'config_design', get_string('design', 'block_kamaleon'), $availabledesigns);

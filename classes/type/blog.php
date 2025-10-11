@@ -31,7 +31,7 @@ require_once($CFG->dirroot . '/blog/locallib.php');
  * @copyright 2023 David Herney @ BambuCo
  * @license   http://www.gnu.org/copyleft/gpl.html GNU GPL v3 or later
  */
-class blog {
+class blog extends base {
 
     /**
      * Get the contents for the custom type.

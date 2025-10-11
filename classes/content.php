@@ -150,9 +150,31 @@ class content extends entity {
                 $vars = array_filter($vars, function($var) {
                     return !empty($var);
                 });
-                $vars = array_map(function($var) {
-                    return explode('=', $var);
-                }, $vars);
+
+                $finalvar = [];
+                foreach ($vars as $key => $var) {
+                    $newvar = explode('=', $var);
+
+                    if (count($newvar) >= 2) {
+                        $varname = trim($newvar[0]);
+
+                        if (count($newvar) > 2) {
+                            $varvalue = implode('=', array_slice($newvar, 1));
+                        } else if ($newvar[1][0] == '[') {
+                            // Multiline array.
+                            $varvalue = @json_decode($newvar[1]);
+                        } else {
+                            $varvalue = trim($newvar[1]);
+                        }
+
+                        if (!empty($varname)) {
+                            $finalvar[$varname] = $varvalue;
+                        }
+                    } else {
+                        $finalvar[] = trim($var);
+                    }
+                }
+                $vars = $finalvar;
 
             } else if (is_array($this->data->contentvars)) {
                 $vars = $this->data->contentvars;
@@ -161,23 +183,11 @@ class content extends entity {
             }
 
             foreach ($vars as $key => $var) {
-                if (is_array($var)) {
-                    if (count($var) >= 2) {
-                        $varname = trim($var[0]);
-
-                        if (count($var) > 2) {
-                            $varvalue = implode('=', array_slice($var, 1));
-                        } else {
-                            $varvalue = trim($var[1]);
-                        }
-
-                        if (!empty($varname) && !empty($varvalue)) {
-                            $returnvars[$varname] = $varvalue;
-                        }
-                    }
-                } else if (is_string($key) && is_string($var)) {
-                    $returnvars[$key] = $var;
+                if (!is_string($key)) {
+                    continue;
                 }
+
+                $returnvars[$key] = $var;
             }
         }
 
