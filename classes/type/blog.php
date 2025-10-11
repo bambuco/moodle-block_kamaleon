@@ -43,7 +43,7 @@ class blog extends base {
     public function get_contents($instanceid, $configdata = null) : array {
         global $DB, $OUTPUT;
 
-        $size = 5;
+        $size = $configdata->maxrecords ?? 5;
         $summarylength = 100;
         $params = ['module' => 'blog', 'courseid' => 0, 'publishstate' => 'public'];
         $posts = $DB->get_records('post', $params, 'created DESC', '*', 0, $size);
