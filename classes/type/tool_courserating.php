@@ -102,26 +102,27 @@ class tool_courserating extends base {
                 $stars[] = $i < $rating->rating;
             }
 
-            $content = new \block_kamaleon\content((object)[
-                'id' => -1,
-                'instanceid' => $instanceid,
-                'shorttitle' => $shorttitle,
-                'title' => format_string($rating->coursename),
-                'subtitle' => $rating->rating,
-                'url' => (string)new \moodle_url('/course/view.php', ['id' => $rating->courseid]),
-                'target' => '_self',
-                'linkname' => $linkname,
-                'content' => $summary,
-                'contentvars' => ['author' => $userfullname, 'rating' => $stars],
-                'banner' => $userpicture->get_url($PAGE)->out(false),
-                'icon' => $userpictureicon->get_url($PAGE)->out(false),
-                'timecreated' => $rating->timecreated,
-                'timemodified' => $rating->timemodified,
-            ]);
+            $content = new \block_kamaleon\content(
+                (object)[
+                    'id' => -1,
+                    'instanceid' => $instanceid,
+                    'shorttitle' => $shorttitle,
+                    'title' => format_string($rating->coursename),
+                    'subtitle' => $rating->rating,
+                    'url' => (string)new \moodle_url('/course/view.php', ['id' => $rating->courseid]),
+                    'target' => '_self',
+                    'linkname' => $linkname,
+                    'content' => $summary,
+                    'contentvars' => ['author' => $userfullname, 'rating' => $stars],
+                    'banner' => $userpicture->get_url($PAGE)->out(false),
+                    'icon' => $userpictureicon->get_url($PAGE)->out(false),
+                    'timecreated' => $rating->timecreated,
+                    'timemodified' => $rating->timemodified,
+                ]
+            );
 
             $list[] = $content;
         }
-
 
         return $list;
     }
@@ -138,10 +139,12 @@ class tool_courserating extends base {
             'top' => get_string('tool_courserating_show_top', 'block_kamaleon'),
             'recent' => get_string('tool_courserating_show_recent', 'block_kamaleon'),
         ];
-        $elements[] = new \admin_setting_configselect('block_kamaleon/tool_courserating_show',
-                                                    get_string('tool_courserating_show', 'block_kamaleon'),
-                                                    get_string('tool_courserating_show_help', 'block_kamaleon'),
-                                                    'top', $options
+        $elements[] = new \admin_setting_configselect(
+            'block_kamaleon/tool_courserating_show',
+            get_string('tool_courserating_show', 'block_kamaleon'),
+            get_string('tool_courserating_show_help', 'block_kamaleon'),
+            'top',
+            $options
         );
         return $elements;
     }

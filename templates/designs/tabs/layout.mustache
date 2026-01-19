@@ -15,7 +15,7 @@
     along with Moodle.  If not, see <http://www.gnu.org/licenses/>.
 }}
 {{!
-    @template block_kamaleon/cestabs/layout
+    @template block_kamaleon/tabs/layout
 
     The designed layout.
 
@@ -44,39 +44,41 @@
 
 <style>
     {{#contents}}
-        .block_kamaleon.design-cestabs #tab-ces-{{id}}:checked~#tab-ces-content-{{id}} {
+        .block_kamaleon.design-tabs:has(#kmltab-{{id}}:checked) #kmltab-content-{{id}} {
             display: block;
         }
     {{/contents}}
 </style>
 
-<section class="tabs-ces">
+<section class="kmltabs">
+    <div class="kmltabs-buttons">
     {{#contents}}
-        <input id="tab-ces-{{id}}" {{^index}}checked=""{{/index}} name="tabs-ces-{{instanceid}}" type="radio">
-        <label for="tab-ces-{{id}}">
-            <span class="botones-planes-tabs">
-                {{#hasicon}}
-                <div class="icono-planes-tabs">
-                    <img src="{{icon}}" alt="{{title}}" width="40" height="auto" />
-                </div>
-                {{/hasicon}}
-                {{#title}}<p>{{title}}</p>{{/title}}
-            </span>
+        <input id="kmltab-{{id}}" {{^index}}checked=""{{/index}} name="tabs-ces-{{instanceid}}" type="radio">
+        <label for="kmltab-{{id}}">
+            {{#hasicon}}
+            <div class="kmltab-icon">
+                <img src="{{icon}}" alt="{{shorttitle}}" width="40" height="auto" />
+            </div>
+            {{/hasicon}}
+            {{#shorttitle}}<em>{{shorttitle}}</em>{{/shorttitle}}
         </label>
     {{/contents}}
+    </div>
 
     {{#contents}}
-        <div id="tab-ces-content-{{id}}" class="tab-ces-content">
+        <div id="kmltab-content-{{id}}" class="kmltab-content">
             <div class="contenido-tabs">
                 {{#hasbanner}}
-                    <img class="contenido-tabs-imagen" src="{{banner}}" alt="{{title}}">
+                    <div class="contenido-tabs-image">
+                        <img src="{{banner}}" alt="{{title}}">
+                    </div>
                 {{/hasbanner}}
-                <div class="contenido-tabs-texto">
+                <div class="contenido-tabs-text">
                     <h2>{{title}}</h2>
-                    <div class="separador-tabs"></div>
+                    <h3>{{subtitle}}</h3>
                     {{{content}}}
                     {{#url}}
-                        <a href="{{url}}" class="btn btn-secondary" {{#target}}target="{{target}}"{{/target}}>
+                        <a href="{{url}}" class="btn btn-primary" {{#target}}target="{{target}}"{{/target}}>
                         {{#linkname}}{{linkname}}{{/linkname}}
                         {{^linkname}}{{#str}} morenavigationlinks {{/str}}{{/linkname}}
                         </a>

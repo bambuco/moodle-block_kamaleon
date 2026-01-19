@@ -66,6 +66,7 @@ $string['newblock'] = '(new Kamaleon)';
 $string['newcontent'] = 'New content';
 $string['pluginname'] = 'Kamaleon';
 $string['privacy:metadata'] = 'The Kamaleon block does not store privacy user information.';
+$string['readmore'] = 'Read more';
 $string['search:content'] = 'Kamaleon block content';
 $string['shorttitle'] = 'Short title';
 $string['subtitle'] = 'Subtitle';
@@ -88,3 +89,6 @@ $string['viewcourse'] = 'View course';
 $string['visualization'] = 'Visualization';
 $string['visualization_default'] = 'Default';
 $string['visualization_hslider'] = 'Horizontal slider';
+$string['configinstanceparams'] = 'Instance parameters';
+$string['configinstanceparams_help'] = 'Additional parameters that will be passed to the content type handler. The format is parameter=value, one per line. For example, to show blog posts text with 300 characters, you can set: <br>
+<b>contentlength=300</b>.';

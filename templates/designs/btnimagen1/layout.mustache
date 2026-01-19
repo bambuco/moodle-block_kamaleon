@@ -1,0 +1,68 @@
+{{!
+    This file is part of Moodle - http://moodle.org/
+
+    Moodle is free software: you can redistribute it and/or modify
+    it under the terms of the GNU General Public License as published by
+    the Free Software Foundation, either version 3 of the License, or
+    (at your option) any later version.
+
+    Moodle is distributed in the hope that it will be useful,
+    but WITHOUT ANY WARRANTY; without even the implied warranty of
+    MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+    GNU General Public License for more details.
+
+    You should have received a copy of the GNU General Public License
+    along with Moodle.  If not, see <http://www.gnu.org/licenses/>.
+}}
+{{!
+    @template block_kamaleon/designs/btnimagen1/layout
+
+    Template for Buttons with image - 1 design.
+
+    Example context (json):
+    {
+        "attributes": [
+            "contents": [
+                "title": "My content",
+                "subtitle": "My content subtitle",
+                "url": "https://example.com",
+                "icon": "https://example.com/icon.png",
+                "target": "_blank",
+                "showedition": false,
+            ],
+            "instanceid": "99"
+        ]
+    }
+}}
+<section class="container-cards">
+    {{#contents}}
+    <div class="card-cards">
+        {{#url}}
+            <a href="{{url}}" class="btn-special" {{#target}}target="{{target}}"{{/target}}>
+        {{/url}}
+            {{#icon}}
+                <span class="card_image">
+                    <img src="{{icon}}" alt="">
+                </span>
+            {{/icon}}
+            <div class="card_content">
+                <strong>{{title}}</strong>
+                <span>{{subtitle}}</span>
+                {{#linkname}}
+                    <button class="btn btn-secondary">{{.}}</button>
+                {{/linkname}}
+                {{^linkname}}
+                    <svg viewBox="0 0 30 30" fill="none" xmlns="http://www.w3.org/2000/svg">
+                        <path d="M2.6625 0H29.175V26.5125L21.225 18.5625L10.6125 29.175L0 18.5625L10.6125 7.95L2.6625 0ZM25.2 3.975H11.9438L15.9187 7.95L5.30625 18.5625L10.6125 23.8688L21.225 13.2563L25.2 17.2313V3.975Z"/>
+                    </svg>
+                {{/linkname}}
+            </div>
+        {{#url}}
+            </a>
+        {{/url}}
+        {{#showedition}}
+            {{> block_kamaleon/edition}}
+        {{/showedition}}
+    </div>
+    {{/contents}}
+</section>

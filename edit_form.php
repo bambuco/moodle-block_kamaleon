@@ -59,6 +59,10 @@ class block_kamaleon_edit_form extends block_edit_form {
         $mform->addElement('text', 'config_maxrecords', get_string('configmaxrecords', 'block_kamaleon'));
         $mform->setType('config_maxrecords', PARAM_INT);
 
+        $mform->addElement('textarea', 'config_instanceparams', get_string('configinstanceparams', 'block_kamaleon'));
+        $mform->addHelpButton('config_instanceparams', 'configinstanceparams', 'block_kamaleon');
+        $mform->setType('config_instanceparams', PARAM_TEXT);
+
         $availabledesigns = \block_kamaleon\design::get_availables();
         $mform->addElement('select', 'config_design', get_string('design', 'block_kamaleon'), $availabledesigns);
 

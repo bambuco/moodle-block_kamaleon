@@ -1,0 +1,43 @@
+.block_kamaleon.design-btnimagen1 .container-cards {
+    display: flex;
+    justify-content: space-evenly;
+    align-items: center;
+}
+
+.block_kamaleon.design-btnimagen1 .card-cards > a {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: var(--primary, #0073e6);
+    text-decoration: none;
+}
+
+.block_kamaleon.design-btnimagen1 .card-cards > a:hover {
+    filter: grayscale(1);
+}
+
+.block_kamaleon.design-btnimagen1 .card_image {
+    display: block;
+}
+
+.block_kamaleon.design-btnimagen1 .card_image img {
+    border-radius: 50%;
+}
+
+.block_kamaleon.design-btnimagen1 .card_content {
+    line-height: 18px;
+    font-size: 16px;
+    display: flex;
+    flex-direction: column;
+}
+
+.block_kamaleon.design-btnimagen1 .card_content > svg {
+    margin: 10px 0 0;
+    fill: var(--secondary, #DAAA00);
+    width: 30px;
+    height: 30px;
+}
+
+.block_kamaleon.design-btnimagen1 .card_content .btn {
+    margin-top: 10px;
+}

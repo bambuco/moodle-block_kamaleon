@@ -44,7 +44,7 @@ class blog extends base {
         global $DB, $OUTPUT;
 
         $size = $configdata->maxrecords ?? 5;
-        $summarylength = 100;
+        $summarylength = $configdata->customparams['contentlength'] ?? 100;
         $params = ['module' => 'blog', 'courseid' => 0, 'publishstate' => 'public'];
         $posts = $DB->get_records('post', $params, 'created DESC', '*', 0, $size);
 
@@ -53,10 +53,12 @@ class blog extends base {
             $blogentry = new \blog_entry(null, $post);
             $blogentry->prepare_render();
 
-            $summary = format_string($post->summary);
+            $summary = format_text($post->summary, $post->summaryformat, ['context' => \context_system::instance()]);
 
-            if (strlen($summary) > $summarylength) {
-                $summary = substr($summary, 0, $summarylength) . '...';
+            if (!empty($summarylength)) {
+                if (strlen($summary) > $summarylength) {
+                    $summary = substr($summary, 0, $summarylength) . '...';
+                }
             }
 
             $image = '';
@@ -93,10 +95,13 @@ class blog extends base {
                 'shorttitle' => $shorttitle,
                 'title' => $post->subject,
                 'subtitle' => $subtitle,
-                'url' => (string)(new \moodle_url('//blog/index.php', ['entryid' => $post->id])),
+                'url' => (string)(new \moodle_url('/blog/index.php', ['entryid' => $post->id])),
                 'target' => '_self',
                 'content' => $summary,
-                'contentvars' => ['author' => $userpicture . fullname($blogentry->renderable->user)],
+                'contentvars' => [
+                    'author' => $userpicture . fullname($blogentry->renderable->user),
+                    'date' => userdate($post->created, get_string('strftimedate', 'langconfig')),
+                ],
                 'banner' => $image,
                 'timecreated' => $post->created,
                 'timemodified' => $post->lastmodified,

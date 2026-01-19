@@ -1,0 +1,94 @@
+.block_kamaleon.design-news1 .container-cards {
+    display: flex;
+    justify-content: center;
+    align-items: stretch;
+    gap: 20px;
+    flex-wrap: wrap;
+    margin-bottom: 20px;
+}
+
+.block_kamaleon.design-news1 .card-cards {
+    width: calc(49% - 10px);
+    margin: 15px 2px;
+    position: relative;
+    display: flex;
+    justify-content: space-between;
+}
+
+.block_kamaleon.design-news1 .card-cards .news-banner {
+    max-width: 170px;
+}
+
+.block_kamaleon.design-news1 .card-image {
+    position: relative;
+    display: flex;
+    justify-content: center;
+    align-items: start;
+}
+
+.block_kamaleon.design-news1 .card-image img.news-banner {
+    border-radius: 20px;
+}
+
+.block_kamaleon.design-news1 .news-icon {
+    position: absolute;
+    top: 5px;
+    left: 5px;
+}
+
+.block_kamaleon.design-news1 .card-body {
+    padding-top: 0;
+    padding-bottom: 0;
+}
+
+.block_kamaleon.design-news1 .news-date {
+    font-size: 13px;
+    border-bottom: 1px solid var(--gray, #c0c0c0);
+    padding-bottom: 5px;
+    margin-bottom: 10px;
+}
+
+.block_kamaleon.design-news1 .news-title {
+    color: var(--primary, #333);
+}
+
+.block_kamaleon.design-news1 .card_content-content {
+    overflow: hidden;
+    display: -webkit-box;
+    -webkit-box-orient: vertical;
+    -webkit-line-clamp: 3;
+    line-clamp: 3;
+    font-size: 13px !important;
+}
+
+.block_kamaleon.design-news1 .card_content-content p {
+    font-size: 13px !important;
+}
+
+.block_kamaleon.design-news1 .card_buttons {
+    padding-top: 10px;
+}
+
+/* First item special styles */
+
+.block_kamaleon.design-news1 .card-cards:first-child {
+    width: 100%;
+}
+
+.block_kamaleon.design-news1 .card-cards:first-child > * {
+    width: 50%;
+}
+
+.block_kamaleon.design-news1 .card-cards:first-child .news-banner {
+    max-width: 100%;
+}
+
+.block_kamaleon.design-news1 .card-cards:first-child .card_content-content {
+    -webkit-line-clamp: 12;
+    line-clamp: 12;
+    font-size: 16px !important;
+}
+.block_kamaleon.design-news1 .card-cards:first-child .card_content-content p {
+    font-size: 16px !important;
+}
+/* End of First item special styles */
