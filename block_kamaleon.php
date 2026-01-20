@@ -271,7 +271,8 @@ class block_kamaleon extends block_base {
 
         $attributes = parent::html_attributes();
 
-        if (!empty($CFG->block_kamaleon_allowcssclasses)) {
+        $allowcssclasses = get_config('block_kamaleon', 'allowcssclasses');
+        if (!empty($allowcssclasses)) {
             if (!empty($this->config->classes)) {
                 $attributes['class'] .= ' ' . $this->config->classes;
             }
