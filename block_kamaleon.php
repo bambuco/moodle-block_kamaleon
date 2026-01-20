@@ -99,24 +99,26 @@ class block_kamaleon extends block_base {
         }
 
         $contentsource = null;
-        if (is_object($this->config) && isset($this->config->type)) {
-            $contentsource = \block_kamaleon\controller::get_typeinstance($this->config->type);
-        }
+        if (is_object($this->config)) {
+            if (isset($this->config->type)) {
+                $contentsource = \block_kamaleon\controller::get_typeinstance($this->config->type);
+            }
 
-        $this->config->customparams = [];
-        if (isset($this->config->instanceparams)) {
-            $params = explode("\n", $this->config->instanceparams);
-            foreach ($params as $param) {
-                $pair = explode('=', trim($param), 2);
-                $value = '';
-                if (count($pair) == 2) {
-                    if (is_numeric($pair[1])) {
-                        $value = (int)trim($pair[1]);
-                    } else {
-                        $value = trim($pair[1]);
+            $this->config->customparams = [];
+            if (isset($this->config->instanceparams)) {
+                $params = explode("\n", $this->config->instanceparams);
+                foreach ($params as $param) {
+                    $pair = explode('=', trim($param), 2);
+                    $value = '';
+                    if (count($pair) == 2) {
+                        if (is_numeric($pair[1])) {
+                            $value = (int)trim($pair[1]);
+                        } else {
+                            $value = trim($pair[1]);
+                        }
                     }
+                    $this->config->customparams[trim($pair[0])] = $value;
                 }
-                $this->config->customparams[trim($pair[0])] = $value;
             }
         }
 

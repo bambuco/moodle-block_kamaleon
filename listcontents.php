@@ -74,8 +74,25 @@ $PAGE->set_heading(get_string('content', 'block_kamaleon'));
 $PAGE->set_title(get_string('content', 'block_kamaleon'));
 
 $configdata = empty($instance->configdata) ? (new stdClass()) : unserialize(base64_decode($instance->configdata));
+$configdata->customparams = [];
+if (isset($configdata->instanceparams)) {
+    $params = explode("\n", $configdata->instanceparams);
+    foreach ($params as $param) {
+        $pair = explode('=', trim($param), 2);
+        $value = '';
+        if (count($pair) == 2) {
+            if (is_numeric($pair[1])) {
+                $value = (int)trim($pair[1]);
+            } else {
+                $value = trim($pair[1]);
+            }
+        }
+        $configdata->customparams[trim($pair[0])] = $value;
+    }
+}
+
 $availabledesigns = \block_kamaleon\design::get_availables();
-$currentdesign = !empty($configdata->design) ? $configdata->design : null;
+$currentdesign = !empty($configdata->design) ? $configdata->design : '';
 
 $designform = new \block_kamaleon\forms\designs(null, ['id' => $id, 'designs' => $availabledesigns, 'current' => $currentdesign]);
 

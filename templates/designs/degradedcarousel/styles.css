@@ -47,7 +47,7 @@
 .block_kamaleon.design-degradedcarousel .texto-bn-bold {
     text-align: left;
     color: var(--primaryreverse, #f4f5f4);
-    padding-right: 50%;
+    padding-right: 30%;
     margin-bottom: 10px;
     text-shadow: 0 2px 2px rgba(0, 0, 0, 0.40);
     font-size: 30px;

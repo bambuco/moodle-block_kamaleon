@@ -1,0 +1,63 @@
+.block_kamaleon.design-btnicon1 .container-cards {
+    display: flex;
+    justify-content: space-evenly;
+    align-items: center;
+    flex-wrap: wrap;
+}
+
+.block_kamaleon.design-btnicon1 .card-cards {
+    width: 200px;
+    overflow: hidden;
+}
+
+.block_kamaleon.design-btnicon1 .btn-special {
+    display: flex;
+    align-items: center;
+    background-color: var(--graylight, #d9d9d9);
+    margin: 4px;
+    border-radius: 35px;
+    padding: 8px;
+    text-decoration: none;
+}
+
+.block_kamaleon.design-btnicon1 a.btn-special:hover {
+    background-color: var(--primary, #0073e6);
+}
+
+.block_kamaleon.design-btnicon1 .card_image {
+    background-color: var(--primary, #0073e6);
+    border-radius: 50%;
+    width: 50px;
+    height: 50px;
+    padding: 10px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.block_kamaleon.design-btnicon1 a.btn-special:hover .card_image {
+    background-color: var(--primaryreverse, #fff);
+}
+
+.block_kamaleon.design-btnicon1 .card_image img {
+    max-width: 100%;
+    height: auto;
+}
+
+.block_kamaleon.design-btnicon1 .card_image .icon {
+    margin: 0;
+    font-size: 25px;
+    color: var(--primaryreverse, #fff);
+}
+
+.block_kamaleon.design-btnicon1 a.btn-special:hover .card_image .icon {
+    color: var(--primary, #0073e6);
+}
+
+.block_kamaleon.design-btnicon1 .card_content {
+    width: calc(100% - 50px);
+    padding-left: 5px;
+    font-size: 13px;
+    line-height: 16px;
+    font-weight: 900;
+}

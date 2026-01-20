@@ -15,7 +15,7 @@ Download zip package, extract the kamaleon folder and upload this folder into bl
 ## IN VERSION
 
 ### 2023021506:
-* New templates: Tabs, News 1, Degraded carousel, Btn Imagen 1.
+* New templates: Tabs, News 1, Degraded carousel, Btn imagen 1, Btn icon 1.
 * New setting "Instance params" in block instance.
 
 ### 2023021505:
