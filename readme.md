@@ -8,7 +8,7 @@ Package tested in: moodle 4.1+
 Download zip package, extract the kamaleon folder and upload this folder into blocks/.
 
 ## ABOUT
-* **Developed by:** David Herney - davidbernal at bambuco dot co
+* **Developed by:** David Herney - david dot herney at bambuco dot co
 * **GIT:** https://github.com/bambuco/moodle-block_kamaleon
 * **Powered by:** [BambuCo](https://bambuco.co/) - [Universidad CES](https://www.ces.edu.co/)
 

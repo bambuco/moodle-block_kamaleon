@@ -267,8 +267,6 @@ class block_kamaleon extends block_base {
      * @return array
      */
     function html_attributes() {
-        global $CFG;
-
         $attributes = parent::html_attributes();
 
         $allowcssclasses = get_config('block_kamaleon', 'allowcssclasses');
