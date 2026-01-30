@@ -47,7 +47,7 @@
     {{#contents}}
     <div class="kam-card">
         {{#url}}
-            <a href="{{url}}" {{#target}}target="{{target}}"{{/target}} {{#title}}title="{{title}}"{{/title}}>
+            <a href="{{url}}" {{#inmodal}}class="kam-openinmodal" {{/inmodal}}{{#target}}target="{{target}}"{{/target}} {{#title}}title="{{title}}"{{/title}}>
         {{/url}}
         {{#shorttitle}}<i class="icon fa fa-{{shorttitle}}"></i>{{/shorttitle}}
         {{#title}}<h5>{{title}}</h5>{{/title}}

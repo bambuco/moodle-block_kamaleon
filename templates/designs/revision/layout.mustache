@@ -46,7 +46,7 @@
                     <li class="list-group-item">{{shorttitle}} <label>{{#str}} shorttitle, block_kamaleon {{/str}}</label></li>
                     <li class="list-group-item"><h2>{{title}}</h2> <label>{{#str}} title, block_kamaleon {{/str}}</label></li>
                     <li class="list-group-item"><h3>{{subtitle}}</h3> <label>{{#str}} subtitle, block_kamaleon {{/str}}</label></li>
-                    <li class="list-group-item"><a href="{{url}}" target="_blank">{{url}}</a> <label>{{#str}} url, block_kamaleon {{/str}}</label></li>
+                    <li class="list-group-item"><a href="{{url}}" {{#inmodal}}class="kam-openinmodal" {{/inmodal}} {{#target}}target="{{target}}"{{/target}}>{{url}}</a> <label>{{#str}} url, block_kamaleon {{/str}}</label></li>
                 </ul>
                 <div class="card-body box-content">
                     <div>
@@ -56,9 +56,11 @@
                 </div>
                 <div class="card-body box-images">
                     {{#hasicon}}
+                        <h5>{{#str}} icon, block_kamaleon {{/str}}</h5>
                         <img src="{{icon}}" alt="{{#str}} icon, block_kamaleon {{/str}}" />
                     {{/hasicon}}
                     {{#hasbanner}}
+                        <h5>{{#str}} banner, block_kamaleon {{/str}}</h5>
                         <img src="{{banner}}" alt="{{#str}} banner, block_kamaleon {{/str}}" />
                     {{/hasbanner}}
                     <label>{{#str}} images, block_kamaleon {{/str}}</label>

@@ -3,6 +3,14 @@
     background-size: cover;
 }
 
+.block_kamaleon.design-cesbootstrapcarousel .carousel-control {
+    width: 5%;
+}
+
+.block_kamaleon.design-cesbootstrapcarousel .carousel-control:hover {
+    background-color: #aaa4;
+}
+
 .block_kamaleon.design-cesbootstrapcarousel .carousel-control[role="button"]:focus {
     box-shadow: none;
 }
@@ -22,7 +30,8 @@
     background-color: #cddc29;
     padding: 0 17px 2px 17px;
     font-size: 35px;
-    font-weight: 900
+    font-weight: 900;
+    border-radius: 10px;
 }
 
 .block_kamaleon.design-cesbootstrapcarousel .boton-bn:hover {

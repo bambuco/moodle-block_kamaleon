@@ -31,6 +31,9 @@ $string['configallowadditionalcssclasses'] = 'Adds a configuration option to blo
 $string['configclasses'] = 'Additional CSS classes';
 $string['configclasses_help'] = 'The purpose of this configuration is to aid with theming by helping distinguish blocks from each other. Any CSS classes entered here (space delimited) will be appended to the block\'s default classes.';
 $string['configcontent'] = 'Content';
+$string['configinstanceparams'] = 'Instance parameters';
+$string['configinstanceparams_help'] = 'Additional parameters that will be passed to the content type handler. The format is parameter=value, one per line. For example, to show blog posts text with 300 characters, you can set: <br>
+<b>contentlength=300</b>.';
 $string['configmaxrecords'] = 'Maximum number of records';
 $string['configtitle'] = 'Block title';
 $string['configtype'] = 'Content type';
@@ -64,6 +67,7 @@ $string['monthsago'] = '{$a} months ago';
 $string['moreinfo'] = 'More info...';
 $string['newblock'] = '(new Kamaleon)';
 $string['newcontent'] = 'New content';
+$string['openinmodal'] = 'Open in modal window';
 $string['pluginname'] = 'Kamaleon';
 $string['privacy:metadata'] = 'The Kamaleon block does not store privacy user information.';
 $string['readmore'] = 'Read more';
@@ -89,6 +93,3 @@ $string['viewcourse'] = 'View course';
 $string['visualization'] = 'Visualization';
 $string['visualization_default'] = 'Default';
 $string['visualization_hslider'] = 'Horizontal slider';
-$string['configinstanceparams'] = 'Instance parameters';
-$string['configinstanceparams_help'] = 'Additional parameters that will be passed to the content type handler. The format is parameter=value, one per line. For example, to show blog posts text with 300 characters, you can set: <br>
-<b>contentlength=300</b>.';

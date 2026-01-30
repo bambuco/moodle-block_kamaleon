@@ -17,6 +17,7 @@ Download zip package, extract the kamaleon folder and upload this folder into bl
 ### 2023021506:
 * New templates: Tabs, News 1, Degraded carousel, Btn imagen 1, Btn icon 1.
 * New setting "Instance params" in block instance.
+* New target option: Open in modal.
 
 ### 2023021505:
 * Max resources setting by block instance.

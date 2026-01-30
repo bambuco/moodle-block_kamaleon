@@ -54,7 +54,7 @@
                         <h5 class="titulo-bn">{{title}}</h5>
                     {{/title}}
                     {{#subtitle}}<div class="texto-bn-bold">{{subtitle}}</div>{{/subtitle}}
-                    {{#url}}<a class="btn btn-secondary" href="{{url}}" {{#target}}target="{{target}}"{{/target}}>
+                    {{#url}}<a class="btn btn-secondary {{#inmodal}}kam-openinmodal{{/inmodal}}" href="{{url}}" {{#target}}target="{{target}}"{{/target}}>
                             {{#linkname}}{{linkname}}{{/linkname}}
                             {{^linkname}}{{#str}} morenavigationlinks {{/str}}{{/linkname}}
                         </a>{{/url}}

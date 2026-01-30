@@ -53,7 +53,7 @@
         </div>
         <div class="card_link">
             {{#url}}
-                <a href="{{url}}" {{#target}}target="{{target}}"{{/target}} class="btn btn-primary btn-lg">
+                <a href="{{url}}" {{#target}}target="{{target}}"{{/target}} class="btn btn-primary btn-lg {{#inmodal}}kam-openinmodal{{/inmodal}}">
             {{/url}}
             {{#linkname}}
                 {{.}}

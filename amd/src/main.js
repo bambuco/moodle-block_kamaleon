@@ -21,6 +21,9 @@
  */
 import $ from 'jquery';
 import horizontalSlider from 'block_kamaleon/horizontalslider';
+import Log from 'core/log';
+import Modal from 'core/modal';
+import ModalEvents from 'core/modal_events';
 
 /**
  * Component initialization.
@@ -60,5 +63,111 @@ export const initSlider = () => {
         }
 
         horizontalSlider.init($this, prop);
+    });
+};
+
+/**
+ * Initialize open in modal feature.
+ */
+export const initOpenInModal = () => {
+    $(".kam-openinmodal").each(function() {
+        var $this = $(this);
+        $this.on('click', function(event) {
+            event.preventDefault();
+
+            const $link = $(this);
+
+            const dialogue = $link.data('dialogue');
+
+            if (!dialogue) {
+
+                var w = $this.attr('data-property-width');
+                var h = $this.attr('data-property-height');
+
+                var href = $link.attr('href');
+                var url = href + (href.indexOf('?') === -1 ? '?' : '&') + 'inpopup=true';
+                var $iframe = $('<iframe class="bbco-openinmodal-container"></iframe>');
+                $iframe.attr('src', url);
+                $iframe.on('load', function() {
+                    $iframe.contents().find('a:not([target])').attr('target', '_top');
+                });
+
+                var el = $.fn.hide;
+                $.fn.hide = function() {
+                    this.trigger('hide');
+                    return el.apply(this, arguments);
+                };
+
+                var $floatwindow = $('<div></div>');
+
+                $floatwindow.append($iframe);
+
+                var properties = {
+                    width: '95vw',
+                    height: '95vh',
+                };
+
+                if (w) {
+                    if (w.indexOf('%') >= 0) {
+                        var windowW = $(window).width();
+                        var tmpW = Number(w.replace('%', ''));
+                        if (!isNaN(tmpW) && tmpW > 0) {
+                            w = tmpW * windowW / 100;
+                        }
+                    }
+
+                    if (!isNaN(w)) {
+                        w += 'px';
+                    }
+
+                    properties.width = w;
+                }
+
+                if (h) {
+                    if (h.indexOf('%') >= 0) {
+                        var windowH = $(window).height();
+                        var tmpH = Number(h.replace('%', ''));
+                        if (!isNaN(tmpH) && tmpH > 0) {
+                            h = tmpH * windowH / 100;
+                        }
+                    }
+
+                    if (!isNaN(h)) {
+                        h += 'px';
+                    }
+
+                    properties.height = h;
+                }
+
+                Modal.create({
+                    body: $iframe,
+                    title: $link.attr('title') || $link.text(),
+                })
+                .then(function(modal) {
+
+                    // When the dialog is closed, pause video and audio.
+                    modal.getRoot().on(ModalEvents.hidden, function() {
+                        $iframe.contents().find('video, audio').each(function() {
+                            this.pause();
+                        });
+                    });
+
+                    modal.getRoot().find('> .modal-dialog').attr('style', 'width: ' + properties.width +
+                                                                    '; height: ' + properties.height + ';')
+                                                                    .addClass('bbco-modal-dialog');
+                    modal.show();
+                    $link.data('dialogue', modal);
+
+                    return modal;
+                })
+                .catch(function(e) {
+                    Log.debug('Error creating modal');
+                    Log.debug(e);
+                });
+
+            } else {
+                dialogue.show();
+            }
+        });
     });
 };

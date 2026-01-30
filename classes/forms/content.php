@@ -70,7 +70,11 @@ class content extends moodleform {
         $mform->addElement('text', 'url', get_string('url', 'block_kamaleon'), ['maxlength' => 511]);
         $mform->setType('url', PARAM_URL);
 
-        $values = ['_blank' => get_string('resourcedisplaynew'), '_self' => get_string('resourcedisplayopen')];
+        $values = [
+            '_blank' => get_string('resourcedisplaynew'),
+            '_self' => get_string('resourcedisplayopen'),
+            'modal' => get_string('openinmodal', 'block_kamaleon'),
+        ];
         $mform->addElement('select', 'target', get_string('target', 'block_kamaleon'), $values);
 
         $mform->addElement('text', 'linkname', get_string('linkname', 'block_kamaleon'), ['maxlength' => 63]);

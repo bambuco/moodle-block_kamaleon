@@ -54,14 +54,14 @@
                     {{/title}}
                     {{#subtitle}}<div class="texto-bn-bold">{{subtitle}}</div>{{/subtitle}}
                     {{#content}}<div class="content">{{{content}}}</div>{{/content}}
-                    {{#url}}<a class="boton-bn" style="border-radius: 10px;" href="{{url}}" {{#target}}target="{{target}}"{{/target}}><i class="fa fa-angle-right"></i></a>{{/url}}
+                    {{#url}}<a class="boton-bn {{#inmodal}}kam-openinmodal{{/inmodal}}" href="{{url}}" {{#target}}target="{{target}}"{{/target}}><i class="fa fa-angle-right"></i></a>{{/url}}
                     {{#showedition}}
                         {{> block_kamaleon/edition}}
                     {{/showedition}}
                 </div>
             </div>
         {{/contents}}
-        <a class="carousel-control carousel-control-prev" style="width: 5%" role="button" href="#cesbootstrapcarousel-{{instanceid}}" data-slide="prev"> <span class="sr-only">{{#str}} previous {{/str}}</span> </a>
+        <a class="carousel-control carousel-control-prev" role="button" href="#cesbootstrapcarousel-{{instanceid}}" data-slide="prev"> <span class="sr-only">{{#str}} previous {{/str}}</span> </a>
         <a class="carousel-control carousel-control-next" role="button" href="#cesbootstrapcarousel-{{instanceid}}" data-slide="next"> <span class="sr-only">{{#str}} next {{/str}}</span> </a>
     </div>
 </section>

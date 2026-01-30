@@ -97,15 +97,24 @@ class controller {
     public static function include_externals(string $design, string $visualization = '') {
         global $CFG, $PAGE;
 
+        static $includedslider = false;
+        static $includedmodal = false;
+
         if (empty($design)) {
             return;
         }
 
+        // Include the open in modal JS only once.
+        if (!$includedmodal) {
+            $includedmodal = true;
+            $PAGE->requires->js_call_amd('block_kamaleon/main', 'initOpenInModal');
+        }
+
         // First load the generic externals.
         if (!empty($visualization)) {
-
             // Check if use slider in the block and include the flexslider CSS file.
-            if ($visualization == 'hslider') {
+            if ($visualization == 'hslider' && !$includedslider) {
+                $includedslider = true;
                 $csspath = '/blocks/kamaleon/externals/flexslider/flexslider.css';
                 $PAGE->requires->css($csspath, true);
                 $PAGE->requires->js_call_amd('block_kamaleon/main', 'initSlider');

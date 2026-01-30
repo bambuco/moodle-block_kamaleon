@@ -65,7 +65,7 @@
 
                     {{#url}}
                     <div>
-                        <a href="{{url}}" class="btn btn-success" {{#target}}target="{{target}}"{{/target}}>
+                        <a href="{{url}}" class="btn btn-success {{#inmodal}}kam-openinmodal{{/inmodal}}" {{#target}}target="{{target}}"{{/target}}>
                             {{#linkname}}{{linkname}}{{/linkname}}
                             {{^linkname}}{{#str}} morenavigationlinks {{/str}}{{/linkname}}
                         </a>

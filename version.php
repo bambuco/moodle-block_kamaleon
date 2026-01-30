@@ -23,6 +23,6 @@
 
 defined('MOODLE_INTERNAL') || die();
 
-$plugin->version   = 2023021505.02;
+$plugin->version   = 2023021505.03;
 $plugin->requires  = 2022112801;
 $plugin->component = 'block_kamaleon';

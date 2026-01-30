@@ -68,6 +68,7 @@ $string['monthsago'] = 'Hace {$a} meses';
 $string['moreinfo'] = 'Más info...';
 $string['newblock'] = '(nuevo Kamaleon)';
 $string['newcontent'] = 'Nuevo contenido';
+$string['openinmodal'] = 'Abrir en ventana modal';
 $string['pluginname'] = 'Kamaleon';
 $string['privacy:metadata'] = 'El bloque Kamaleon no almacena información privada del usuario.';
 $string['readmore'] = 'Seguir leyendo';

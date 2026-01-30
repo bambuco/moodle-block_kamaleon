@@ -76,7 +76,7 @@
                     <div class="separador-tabs"></div>
                     {{{content}}}
                     {{#url}}
-                        <a href="{{url}}" class="btn btn-secondary" {{#target}}target="{{target}}"{{/target}}>
+                        <a href="{{url}}" class="btn btn-secondary {{#inmodal}}kam-openinmodal{{/inmodal}}" {{#target}}target="{{target}}"{{/target}}>
                         {{#linkname}}{{linkname}}{{/linkname}}
                         {{^linkname}}{{#str}} morenavigationlinks {{/str}}{{/linkname}}
                         </a>

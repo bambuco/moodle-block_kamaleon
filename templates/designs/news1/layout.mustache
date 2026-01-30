@@ -69,7 +69,7 @@
 
             {{#url}}
             <div class="card_buttons">
-                <a href="{{url}}" class="btn btn-primary" {{#target}}target="{{target}}"{{/target}}>
+                <a href="{{url}}" class="btn btn-primary {{#inmodal}}kam-openinmodal{{/inmodal}}" {{#target}}target="{{target}}"{{/target}}>
                     {{#linkname}}{{linkname}}{{/linkname}}
                     {{^linkname}}{{#str}} readmore, block_kamaleon {{/str}}{{/linkname}}
                 </a>

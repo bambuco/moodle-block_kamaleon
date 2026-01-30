@@ -118,6 +118,11 @@ class contents implements renderable, templatable {
             $contentdata->hasbanner = !empty($contentdata->banner);
             $contentdata->hasicon = !empty($contentdata->icon);
             $contentdata->index = $index;
+            $contentdata->inmodal = ($contentdata->target === 'modal');
+            if ($contentdata->inmodal) {
+                $contentdata->target = '_self';
+            }
+
             $index++;
             $contents[] = $contentdata;
         }

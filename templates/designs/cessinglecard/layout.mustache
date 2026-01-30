@@ -49,7 +49,7 @@
         <div class="card_imagen">
             {{#banner}}
                 {{#url}}
-                    <a href="{{url}}" {{#target}}target="{{target}}"{{/target}}>
+                    <a href="{{url}}" {{#inmodal}}class="kam-openinmodal" {{/inmodal}}{{#target}}target="{{target}}"{{/target}}>
                         <img src="{{banner}}" alt="{{title}}" title="{{title}}">
                     </a>
                 {{/url}}
@@ -60,7 +60,7 @@
         </div>
         <div class="card_content">
             {{#url}}
-                <a href="{{url}}" {{#target}}target="{{target}}"{{/target}}>
+                <a href="{{url}}" {{#inmodal}}class="kam-openinmodal" {{/inmodal}}{{#target}}target="{{target}}"{{/target}}>
             {{/url}}
             <h5>{{title}}</h5>
             {{#url}}

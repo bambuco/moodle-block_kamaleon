@@ -78,7 +78,7 @@
                     <h3>{{subtitle}}</h3>
                     {{{content}}}
                     {{#url}}
-                        <a href="{{url}}" class="btn btn-primary" {{#target}}target="{{target}}"{{/target}}>
+                        <a href="{{url}}" class="btn btn-primary {{#inmodal}}kam-openinmodal{{/inmodal}}" {{#target}}target="{{target}}"{{/target}}>
                         {{#linkname}}{{linkname}}{{/linkname}}
                         {{^linkname}}{{#str}} morenavigationlinks {{/str}}{{/linkname}}
                         </a>
