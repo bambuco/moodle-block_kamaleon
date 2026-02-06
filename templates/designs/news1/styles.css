@@ -92,3 +92,18 @@
     font-size: 16px !important;
 }
 /* End of First item special styles */
+
+@media (max-width: 512px) {
+    .block_kamaleon.design-news1 .card-cards {
+        flex-direction: column;
+        width: 100%;
+    }
+
+    .block_kamaleon.design-news1 .card-cards:first-child > * {
+        width: 100%;
+    }
+
+    #block-region-bottom section.block_kamaleon.design-news1 .card-cards:first-child .card-body .card_content-content p {
+        font-size: 14px !important;
+    }
+}

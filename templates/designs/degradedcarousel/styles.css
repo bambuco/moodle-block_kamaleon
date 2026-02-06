@@ -63,19 +63,26 @@
 }
 
 @media (max-width: 512px) {
-
     .block_kamaleon.design-degradedcarousel .titulo-bn {
-        font-size: 25px;
+        font-size: 20px;
     }
 
     .block_kamaleon.design-degradedcarousel .texto-bn-bold {
-        font-size: 20px;
-        line-height: 22px;
+        font-size: 16px;
+        line-height: 20px;
+        padding-right: 0;
     }
 
     .block_kamaleon.design-degradedcarousel .texto-bn-light {
-        font-size: 20px;
-        line-height: 22px;
+        font-size: 16px;
+        line-height: 20px;
     }
 
+    .block_kamaleon.design-degradedcarousel .carousel-caption {
+        position: relative;
+        right: unset;
+        left: unset;
+        padding: 10px;
+        background: rgba(0, 0, 0, 0.80);
+    }
 }
