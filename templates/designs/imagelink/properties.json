@@ -1,0 +1,10 @@
+{
+  "name": "Image link (xTxUTNxBx)",
+  "description": "Used to display an image with a link, very simple and useful for general purposes.",
+  "author": {
+    "name": "David Herney",
+    "url": "https://bambuco.co/",
+    "email": "david.herney@bambuco.co"
+  },
+  "license": "GPL-3.0+"
+}
