@@ -3,6 +3,11 @@
     align-items: center;
     justify-content: center;
     gap: 10px;
+    flex-wrap: wrap;
+}
+
+.block_kamaleon.design-imagelink .container-elements > div {
+    padding: 5px;
 }
 
 .block_kamaleon.design-imagelink .container-elements > div > a {
