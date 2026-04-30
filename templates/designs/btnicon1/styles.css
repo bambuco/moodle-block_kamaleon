@@ -60,5 +60,8 @@
     font-size: 13px;
     line-height: 16px;
     font-weight: 700;
+}
+
+.block_kamaleon.design-btnicon1 a.btn-special:hover .card_content {
     color: var(--primaryreverse, #fff);
 }
