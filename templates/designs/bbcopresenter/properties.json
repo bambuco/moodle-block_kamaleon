@@ -1,0 +1,10 @@
+{
+  "name": "BbCo Presenter (xTSUTNCxI)",
+  "description": "Used to show information about a presenter",
+  "author": {
+    "name": "David Herney",
+    "url": "https://bambuco.co/",
+    "email": "david.herney@bambuco.co"
+  },
+  "license": "GPL-3.0+"
+}

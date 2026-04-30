@@ -1,0 +1,45 @@
+.block_kamaleon.design-bbcopresenter {
+    .container-elements {
+        display: flex;
+        align-items: start;
+        justify-content: center;
+        gap: 10px;
+        flex-wrap: wrap;
+
+        .card {
+            margin-top: 70px;
+            max-width: 400px;
+
+            .card-header {
+                text-align: center;
+                border-top-left-radius: 0.5rem;
+                border-top-right-radius: 0.5rem;
+                background-color: var(--primary, #2d2e83);
+
+                img {
+                    height: 120px;
+                    width: 120px;
+                    max-width: 100%;
+                    margin-top: -60px;
+                    box-shadow: 0 .5rem 1rem rgb(0 0 0 / .15);
+                    border-radius: 50%;
+                }
+
+                h3 {
+                    color: var(--primaryreverse, #fff);
+                    margin-top: 1rem;
+                }
+
+                p {
+                    color: var(--primaryreverse, #fff);
+                    font-weight: bolder;
+                    line-height: 110%;
+                }
+            }
+
+            .card-footer {
+                text-align: center;
+            }
+        }
+    }
+}
