@@ -15,8 +15,12 @@
     box-shadow: none;
 }
 
-.carousel-indicators li {
-    border-bottom: 2px solid #aaa;
+.block_kamaleon.design-cesbootstrapcarousel .carousel-indicators button {
+    background-color: var(--white, #fff);
+    border: 1px solid var(--secondary, #888);
+    width: 10px;
+    height: 10px;
+    border-radius: 50%;
 }
 
 .block_kamaleon.design-cesbootstrapcarousel .carousel-title-separator {

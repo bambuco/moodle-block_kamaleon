@@ -16,12 +16,30 @@
     box-shadow: none;
 }
 
-.carousel-indicators li {
-    width: 10px;
-    height: 10px;
-    border-radius: 50%;
-    border: none;
-    box-shadow: 1px 1px 1px var(--bglight, #aaa);
+.block_kamaleon.design-degradedcarousel .carousel-indicators {
+    margin-bottom: 1rem;
+
+    button {
+        box-sizing: content-box;
+        flex: 0 1 auto;
+        width: 30px;
+        height: 3px;
+        padding: 0;
+        margin: 0 3px;
+        text-indent: -999px;
+        cursor: pointer;
+        background-color: #fff;
+        background-clip: padding-box;
+        border: 0;
+        border-top: 10px solid transparent;
+        border-bottom: 1px solid #aaa;
+        opacity: 0.5;
+        transition: opacity 0.6s ease;
+    }
+
+    .active {
+        opacity: 1;
+    }
 }
 
 .block_kamaleon.design-degradedcarousel .carousel-caption {

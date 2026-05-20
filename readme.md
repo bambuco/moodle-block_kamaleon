@@ -14,6 +14,9 @@ Download zip package, extract the kamaleon folder and upload this folder into bl
 
 ## IN VERSION
 
+### 2026052000:
+* Compatibility with Moodle 5.1
+
 ### 2023021506:
 * New templates: Tabs, News 1, Degraded carousel, Btn imagen 1, Btn icon 1, Image link, BbCo Presenter.
 * New setting "Instance params" in block instance.

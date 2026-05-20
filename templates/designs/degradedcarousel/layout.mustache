@@ -21,29 +21,29 @@
 
     Example context (json):
     {
-        "attributes": [
-            "contents": [
+        "attributes": {
+            "contents": {
                 "id": 1,
                 "shorttitle": "MC",
                 "title": "My content",
                 "subtitle": "My content subtitle",
                 "url": "https://example.com",
-                "linkname": "Learn more",
-                "target": "_blank",
+                "content": "My content description",
                 "banner": "https://example.com/banner.png",
-                "showedition": false,
-            ],
+                "icon": "https://example.com/icon.png",
+                "showedition": false
+            },
             "instanceid": "99"
-        ]
+        }
     }
 }}
 
-<section id="degradedcarousel-{{instanceid}}" class="carousel slide" data-ride="carousel">
-    <ol class="carousel-indicators">
+<section id="degradedcarousel-{{instanceid}}" class="carousel slide" data-bs-ride="carousel" data-ride="carousel">
+    <div class="carousel-indicators">
     {{#contents}}
-        <li {{^index}}class="active"{{/index}} data-target="#degradedcarousel-{{instanceid}}" data-slide-to="{{index}}">&nbsp;</li>
+        <button {{^index}}class="active"{{/index}} data-bs-target="#degradedcarousel-{{instanceid}}" data-target="#degradedcarousel-{{instanceid}}" data-bs-slide-to="{{index}}" data-slide-to="{{index}}"></button>
     {{/contents}}
-    </ol>
+    </div>
     <div class="carousel-inner">
         {{#contents}}
             <div class="carousel-item {{^index}}active{{/index}}">
@@ -64,13 +64,13 @@
                 </div>
             </div>
         {{/contents}}
-        <a class="carousel-control carousel-control-prev" role="button" href="#degradedcarousel-{{instanceid}}" data-slide="prev">
+        <button class="carousel-control carousel-control-prev" role="button" data-bs-target="#degradedcarousel-{{instanceid}}" data-bs-slide="prev" data-target="#degradedcarousel-{{instanceid}}" data-slide="prev">
             <span class="carousel-control-prev-icon" aria-hidden="true"></span>
             <span class="sr-only visually-hidden">{{#str}} previous {{/str}}</span>
-        </a>
-        <a class="carousel-control carousel-control-next" role="button" href="#degradedcarousel-{{instanceid}}" data-slide="next">
+        </button>
+        <button class="carousel-control carousel-control-next" role="button" data-bs-target="#degradedcarousel-{{instanceid}}" data-bs-slide="next" data-target="#degradedcarousel-{{instanceid}}" data-slide="next">
             <span class="carousel-control-next-icon" aria-hidden="true"></span>
             <span class="sr-only visually-hidden">{{#str}} next {{/str}}</span>
-        </a>
+        </button>
     </div>
 </section>
