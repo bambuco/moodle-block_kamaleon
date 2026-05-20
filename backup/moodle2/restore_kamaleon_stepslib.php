@@ -68,5 +68,20 @@ class restore_kamaleon_block_structure_step extends restore_structure_step {
             }
         }
 
+        // Remove originalinstanceid from configdata since it refers to a block in the source system.
+        $blockid = $this->task->get_blockid();
+        $instance = $DB->get_record('block_instances', ['id' => $blockid]);
+        if ($instance) {
+            $config = unserialize_object(base64_decode($instance->configdata));
+            if (isset($config->originalinstanceid)) {
+                unset($config->originalinstanceid);
+                $DB->set_field(
+                    'block_instances',
+                    'configdata',
+                    base64_encode(serialize($config)),
+                    ['id' => $blockid]
+                );
+            }
+        }
     }
 }

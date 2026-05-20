@@ -21,8 +21,8 @@
 
     Example context (json):
     {
-        "attributes": [
-            "contents": [
+        "attributes": {
+            "contents": {
                 "shorttitle": "MC",
                 "title": "My content",
                 "subtitle": "My content subtitle",
@@ -30,10 +30,10 @@
                 "content": "My content description",
                 "banner": "https://example.com/banner.png",
                 "icon": "https://example.com/icon.png",
-                "showedition": false,
-            ],
+                "showedition": false
+            },
             "instanceid": "99"
-        ]
+        }
     }
 }}
 
@@ -44,7 +44,7 @@
             <div class="card mb-3 one-content">
                 <div class="card-header">
                     {{#shorttitle}}
-                        <span class="badge badge-secondary">{{shorttitle}}</span>
+                        <span class="badge bg-primary">{{shorttitle}}</span>
                     {{/shorttitle}}
                     <h5 class="card-title">
                         {{#hasicon}}

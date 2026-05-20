@@ -72,6 +72,7 @@ class block_kamaleon extends block_base {
     }
 
     function get_content() {
+        global $DB;
 
         if ($this->content !== NULL) {
             return $this->content;
@@ -129,7 +130,11 @@ class block_kamaleon extends block_base {
 
         if (empty($list) && !empty($this->config->originalinstanceid) && $contentsource) {
             $instanceid = $this->config->originalinstanceid;
-            $list = $contentsource->get_contents($instanceid, $this->config);
+            if ($DB->record_exists('block_instances', ['id' => $instanceid])) {
+                $list = $contentsource->get_contents($instanceid, $this->config);
+            } else {
+                $instanceid = $this->instance->id;
+            }
         } else {
             $instanceid = $this->instance->id;
         }
@@ -141,12 +146,15 @@ class block_kamaleon extends block_base {
 
         if (isset($this->config->htmlheader)) {
             // Rewrite url.
-            $htmlheader = file_rewrite_pluginfile_urls($this->config->htmlheader,
-                                                                     'pluginfile.php',
-                                                                     $this->context->id,
-                                                                     'block_kamaleon',
-                                                                     'content_header',
-                                                                     0);
+            $htmlheader = file_rewrite_pluginfile_urls(
+                $this->config->htmlheader,
+                'pluginfile.php',
+                $this->context->id,
+                'block_kamaleon',
+                'content_header',
+                0
+            );
+
             // Default to FORMAT_HTML.
             $htmlheaderformat = FORMAT_HTML;
             // Check to see if the format has been properly set on the config.
@@ -163,12 +171,15 @@ class block_kamaleon extends block_base {
 
         if (isset($this->config->htmlfooter)) {
             // Rewrite url.
-            $htmlfooter = file_rewrite_pluginfile_urls($this->config->htmlfooter,
-                                                                     'pluginfile.php',
-                                                                     $this->context->id,
-                                                                     'block_kamaleon',
-                                                                     'content_footer',
-                                                                     0);
+            $htmlfooter = file_rewrite_pluginfile_urls(
+                $this->config->htmlfooter,
+                'pluginfile.php',
+                $this->context->id,
+                'block_kamaleon',
+                'content_footer',
+                0
+            );
+
             // Default to FORMAT_HTML.
             $htmlfooterformat = FORMAT_HTML;
             // Check to see if the format has been properly set on the config.
