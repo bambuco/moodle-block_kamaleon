@@ -28,4 +28,4 @@ $plugin->requires  = 2022112801;
 $plugin->component = 'block_kamaleon';
 $plugin->supported = [405, 501];
 $plugin->maturity  = MATURITY_STABLE;
-$plugin->release   = 'HBCarito';
+$plugin->release   = '4.5.1 (HBCarito)';
