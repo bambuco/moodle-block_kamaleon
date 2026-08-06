@@ -1,11 +1,12 @@
 <?php
+// This file is part of Moodle - http://moodle.org/
 //
-// It is free software: you can redistribute it and/or modify
+// Moodle is free software: you can redistribute it and/or modify
 // it under the terms of the GNU General Public License as published by
 // the Free Software Foundation, either version 3 of the License, or
 // (at your option) any later version.
 //
-// It is distributed in the hope that it will be useful,
+// Moodle is distributed in the hope that it will be useful,
 // but WITHOUT ANY WARRANTY; without even the implied warranty of
 // MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
 // GNU General Public License for more details.
@@ -70,20 +71,19 @@ $PAGE->set_pagelayout('incourse');
 $PAGE->set_heading(get_string('content', 'block_kamaleon'));
 $PAGE->set_title(get_string('content', 'block_kamaleon'));
 
-$acceptedtypes = (new \core_form\filetypes_util)->normalize_file_types($CFG->courseoverviewfilesext);
+$acceptedtypes = (new \core_form\filetypes_util())->normalize_file_types($CFG->courseoverviewfilesext);
 $filemanageroptions = [
-                        'maxbytes' => $CFG->maxbytes,
-                        'subdirs' => 0,
-                        'maxfiles' => 1,
-                        'accepted_types' => $acceptedtypes,
-                    ];
+    'maxbytes' => $CFG->maxbytes,
+    'subdirs' => 0,
+    'maxfiles' => 1,
+    'accepted_types' => $acceptedtypes,
+];
 
 $editoroptions = ['maxfiles' => EDITOR_UNLIMITED_FILES, 'noclean' => true, 'context' => $context];
 
 $contentdraftideditor = file_get_submitted_draft_itemid('content');
 
 if ($content) {
-
     $bannerdraftitemid = file_get_submitted_draft_itemid('banner');
     file_prepare_draft_area($bannerdraftitemid, $context->id, 'block_kamaleon', 'banner', $id, $filemanageroptions);
     $content->banner = $bannerdraftitemid;
@@ -95,12 +95,18 @@ if ($content) {
     if (!empty($content->content)) {
         $text = $content->content;
         $content->content = [];
-        $content->content['text'] = file_prepare_draft_area($contentdraftideditor, $context->id, 'block_kamaleon', 'content',
-                                            $id, $editoroptions, $text);
+        $content->content['text'] = file_prepare_draft_area(
+            $contentdraftideditor,
+            $context->id,
+            'block_kamaleon',
+            'content',
+            $id,
+            $editoroptions,
+            $text
+        );
         $content->content['itemid'] = $contentdraftideditor;
         $content->content['format'] = editors_get_preferred_format();
     }
-
 }
 
 $data = [];
@@ -113,7 +119,6 @@ if ($form->is_cancelled()) {
     $url = new moodle_url($CFG->wwwroot . '/blocks/kamaleon/listcontents.php', ['id' => $bid]);
     redirect($url);
 } else if ($data = $form->get_data()) {
-
     if (!$content) {
         $content = new stdClass();
         $content->timecreated = time();
@@ -161,15 +166,21 @@ if ($form->is_cancelled()) {
 
     // Save editor files.
     if (!empty($content->content)) {
-        $text = file_save_draft_area_files($contentdraftideditor, $context->id, 'block_kamaleon', 'content',
-                                            $id, $editoroptions, $content->content);
+        $text = file_save_draft_area_files(
+            $contentdraftideditor,
+            $context->id,
+            'block_kamaleon',
+            'content',
+            $id,
+            $editoroptions,
+            $content->content
+        );
         $DB->set_field('block_kamaleon_contents', 'content', $text, ['id' => $id]);
     }
 
     $url = new moodle_url($CFG->wwwroot . '/blocks/kamaleon/listcontents.php', ['id' => $bid, 'msg' => 'changessaved']);
     redirect($url);
     exit;
-
 }
 
 echo $OUTPUT->header();

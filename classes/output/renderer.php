@@ -32,16 +32,14 @@ use plugin_renderer_base;
  * @license    http://www.gnu.org/copyleft/gpl.html GNU GPL v3 or later
  */
 class renderer extends plugin_renderer_base {
-
     /**
      * Return the template content for the block.
      *
      * @param contents $contents The contents renderable
      * @return string HTML string
      */
-    public function render_contents(contents $contents) : string {
+    public function render_contents(contents $contents): string {
         $template = $contents->get_template();
         return $this->render_from_template($template, $contents->export_for_template($this));
     }
-
 }

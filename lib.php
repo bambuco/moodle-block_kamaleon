@@ -70,14 +70,19 @@ function block_kamaleon_pluginfile($course, $cm, $context, $filearea, $args, $fo
     $fs = get_file_storage();
     $relativepath = implode('/', $args);
 
-    $fileid = $DB->get_field('files', 'id', [
+    $fileid = $DB->get_field(
+        'files',
+        'id',
+        [
             'contextid' => $context->id,
             'component' => 'block_kamaleon',
             'filearea' => $filearea,
             'itemid' => $entryid,
             'filepath' => '/',
-            'filename' => $relativepath
-        ], MUST_EXIST);
+            'filename' => $relativepath,
+        ],
+        MUST_EXIST
+    );
 
     if (!($file = $fs->get_file_by_id($fileid)) || $file->is_directory()) {
             return false;
@@ -89,8 +94,9 @@ function block_kamaleon_pluginfile($course, $cm, $context, $filearea, $args, $fo
 
 /**
  * Perform global search replace such as when migrating site to new URL.
- * @param  $search
- * @param  $replace
+ *
+ * @param string $search The search string.
+ * @param string $replace The replacement string.
  * @return void
  */
 function block_kamaleon_global_db_replace($search, $replace) {

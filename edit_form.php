@@ -29,12 +29,17 @@
  * @license   http://www.gnu.org/copyleft/gpl.html GNU GPL v3 or later
  */
 class block_kamaleon_edit_form extends block_edit_form {
+    /**
+     * Form fields specific to this type of block.
+     *
+     * @param \MoodleQuickForm $mform the form being built.
+     */
     protected function specific_definition($mform) {
         global $CFG;
 
         $canmanage = has_capability('block/kamaleon:addinstance', $this->block->context);
 
-        // Fields for editing HTML block title and contents.
+        // Fields for editing kamaleon block title and contents.
         $mform->addElement('header', 'configheader', get_string('blocksettings', 'block'));
 
         $mform->addElement('text', 'config_title', get_string('configtitle', 'block_kamaleon'));
@@ -84,7 +89,6 @@ class block_kamaleon_edit_form extends block_edit_form {
         // Footer HTML editor.
         $mform->addElement('editor', 'config_htmlfooter', get_string('htmlfooter', 'block_kamaleon'), null, $editoroptions);
         $mform->setType('config_htmlfooter', PARAM_RAW); // XSS is prevented when printing the block contents and serving files.
-
     }
 
     /**
@@ -93,8 +97,7 @@ class block_kamaleon_edit_form extends block_edit_form {
      * @param stdClass $defaults The default values.
      * @return void
      */
-    function set_data($defaults) {
-
+    public function set_data($defaults) {
         if (!empty($this->block->config) && !empty($this->block->config->htmlheader)) {
             $htmlheader = $this->block->config->htmlheader;
             $draftideditor = file_get_submitted_draft_itemid('config_htmlheader');
@@ -103,8 +106,15 @@ class block_kamaleon_edit_form extends block_edit_form {
             } else {
                 $currenthtmlheader = $htmlheader;
             }
-            $defaults->config_htmlheader['text'] = file_prepare_draft_area($draftideditor, $this->block->context->id,
-                                                    'block_kamaleon', 'content_header', 0, ['subdirs' => true], $currenthtmlheader);
+            $defaults->config_htmlheader['text'] = file_prepare_draft_area(
+                $draftideditor,
+                $this->block->context->id,
+                'block_kamaleon',
+                'content_header',
+                0,
+                ['subdirs' => true],
+                $currenthtmlheader
+            );
             $defaults->config_htmlheader['itemid'] = $draftideditor;
             $defaults->config_htmlheader['format'] = $this->block->config->htmlheaderformat ?? FORMAT_MOODLE;
         } else {
@@ -119,8 +129,15 @@ class block_kamaleon_edit_form extends block_edit_form {
             } else {
                 $currenthtmlfooter = $htmlfooter;
             }
-            $defaults->config_htmlfooter['text'] = file_prepare_draft_area($draftideditor, $this->block->context->id,
-                                                    'block_kamaleon', 'content_footer', 0, ['subdirs' => true], $currenthtmlfooter);
+            $defaults->config_htmlfooter['text'] = file_prepare_draft_area(
+                $draftideditor,
+                $this->block->context->id,
+                'block_kamaleon',
+                'content_footer',
+                0,
+                ['subdirs' => true],
+                $currenthtmlfooter
+            );
             $defaults->config_htmlfooter['itemid'] = $draftideditor;
             $defaults->config_htmlfooter['format'] = $this->block->config->htmlfooterformat ?? FORMAT_MOODLE;
         } else {
@@ -128,7 +145,7 @@ class block_kamaleon_edit_form extends block_edit_form {
         }
 
         if (!$this->block->user_can_edit() && !empty($this->block->config->title)) {
-            // If a title has been set but the user cannot edit it format it nicely
+            // If a title has been set but the user cannot edit it format it nicely.
             $title = $this->block->config->title;
             $defaults->config_title = format_string($title, true, $this->page->context);
             // Remove the title from the config so that parent::set_data doesn't set it.
@@ -156,5 +173,4 @@ class block_kamaleon_edit_form extends block_edit_form {
             $this->block->config->originalinstanceid = $this->block->instance->id;
         }
     }
-
 }

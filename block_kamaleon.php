@@ -22,28 +22,32 @@
  * @license   http://www.gnu.org/copyleft/gpl.html GNU GPL v3 or later
  */
 class block_kamaleon extends block_base {
-
-    function init() {
+    /**
+     * Initialize the block by setting its title and other properties.
+     *
+     */
+    public function init() {
         $this->title = get_string('pluginname', 'block_kamaleon');
     }
 
-    function has_config() {
+    /**
+     * Define if the block has a global configuration page.
+     *
+     * @return bool True if the block has a global configuration page, false otherwise.
+     */
+    public function has_config() {
         return true;
     }
 
-    /* Allows the block class to have a say in the user's ability to edit (i.e., configure) blocks of this type.
+    /**
+     * Allows the block class to have a say in the user's ability to edit (i.e., configure) blocks of this type.
      * The framework has first say in whether this will be allowed (e.g., no editing allowed unless in edit mode)
      * but if the framework does allow it, the block can still decide to refuse.
-     * @return boolean
+     *
+     * @return boolean True if the user can edit, false otherwise.
      */
-    function user_can_edit() {
-        $canmanage = has_capability('block/kamaleon:addinstance', $this->context);
-
-        if ($canmanage) {
-            return true;
-        }
-
-        return false;
+    public function user_can_edit() {
+        return has_capability('block/kamaleon:addinstance', $this->context);
     }
 
     /**
@@ -55,11 +59,22 @@ class block_kamaleon extends block_base {
         return $this->user_can_edit();
     }
 
-    function applicable_formats() {
+    /**
+     * Return the applicable formats for this block.
+     *
+     * @return array An array of formats where the block can be added.
+     */
+    public function applicable_formats() {
         return ['all' => true];
     }
 
-    function specialization() {
+    /**
+     * Specialization function to set the block title based on the configuration.
+     * If the title is not set in the configuration, it will default to 'New Block
+     *
+     * @return void
+     */
+    public function specialization() {
         if (isset($this->config->title)) {
             $this->title = $this->title = format_string($this->config->title, true, ['context' => $this->context]);
         } else {
@@ -67,21 +82,31 @@ class block_kamaleon extends block_base {
         }
     }
 
-    function instance_allow_multiple() {
+    /**
+     * Allow multiple instances of this block to be added to a page.
+     *
+     * @return bool True if multiple instances are allowed, false otherwise.
+     */
+    public function instance_allow_multiple() {
         return true;
     }
 
-    function get_content() {
+    /**
+     * Return the contents of this block.
+     *
+     * @return stdClass An object containing the block content, title, footer, and files.
+     */
+    public function get_content() {
         global $DB;
 
-        if ($this->content !== NULL) {
+        if ($this->content !== null) {
             return $this->content;
         }
 
-        $this->content = new stdClass;
+        $this->content = new stdClass();
         $this->content->footer = '';
 
-        $filteropt = new stdClass;
+        $filteropt = new stdClass();
         $filteropt->overflowdiv = true;
 
         // If the content is trusted, do not clean it.
@@ -91,7 +116,6 @@ class block_kamaleon extends block_base {
 
         $design = '';
         if (!empty($this->config) && !empty($this->config->design)) {
-
             $visualization = property_exists($this->config, 'visualization') ? $this->config->visualization : '';
             \block_kamaleon\controller::include_externals($this->config->design, $visualization);
 
@@ -197,11 +221,17 @@ class block_kamaleon extends block_base {
         return $this->content;
     }
 
+    /**
+     * Get the content of the block for external functions.
+     *
+     * @param renderer_base $output The output renderer from the parent context (e.g. page renderer)
+     * @return stdClass An object containing the block content, title, footer, and files.
+     */
     public function get_content_for_external($output) {
         global $CFG;
         require_once($CFG->libdir . '/externallib.php');
 
-        $bc = new stdClass;
+        $bc = new stdClass();
         $bc->title = null;
         $bc->content = '';
         $bc->contenformat = FORMAT_MOODLE;
@@ -222,7 +252,7 @@ class block_kamaleon extends block_base {
 
             $bc->content = $renderer->render($renderable);
 
-            $filteropt = new stdClass;
+            $filteropt = new stdClass();
             if ($this->content_is_trusted()) {
                 // Fancy html allowed only on course, category and system blocks.
                 $filteropt->noclean = true;
@@ -233,28 +263,42 @@ class block_kamaleon extends block_base {
             if (isset($this->config->format)) {
                 $format = $this->config->format;
             }
-            list($bc->content, $bc->contentformat) =
-                external_format_text($content, $format, $this->context, 'block_kamaleon', 'content', null, $filteropt);
-            $bc->files = external_util::get_area_files($this->context->id, 'block_kamaleon', 'content', false, false);
 
+            [$bc->content, $bc->contentformat] = external_format_text(
+                $content,
+                $format,
+                $this->context,
+                'block_kamaleon',
+                'content',
+                null,
+                $filteropt
+            );
+
+            $bc->files = external_util::get_area_files($this->context->id, 'block_kamaleon', 'content', false, false);
         }
+
         return $bc;
     }
 
-    function content_is_trusted() {
+    /**
+     * Determine if the content of this block is trusted. Trusted content is not cleaned and can contain JavaScript.
+     *
+     * @return bool True if the content is trusted, false otherwise.
+     */
+    public function content_is_trusted() {
         global $SCRIPT;
 
         if (!$context = context::instance_by_id($this->instance->parentcontextid, IGNORE_MISSING)) {
             return false;
         }
-        //find out if this block is on the profile page
+
+        // Find out if this block is on the profile page.
         if ($context->contextlevel == CONTEXT_USER) {
             if ($SCRIPT === '/my/index.php') {
-                // this is exception - page is completely private, nobody else may see content there
-                // that is why we allow JS here
+                // This is exception - page is completely private, nobody else may see content there that is why we allow JS here.
                 return true;
             } else {
-                // no JS on public personal pages, it would be a big security issue
+                // No JS on public personal pages, it would be a big security issue.
                 return false;
             }
         }
@@ -272,12 +316,12 @@ class block_kamaleon extends block_base {
         return (!empty($this->config->title) && parent::instance_can_be_docked());
     }
 
-    /*
+    /**
      * Add custom html attributes to aid with theming and styling
      *
      * @return array
      */
-    function html_attributes() {
+    public function html_attributes() {
         $attributes = parent::html_attributes();
 
         $allowcssclasses = get_config('block_kamaleon', 'allowcssclasses');
@@ -331,20 +375,24 @@ class block_kamaleon extends block_base {
 
         $config = clone($data);
         // Move embedded files into a proper filearea and adjust HTML links to match.
-        $config->htmlheader = file_save_draft_area_files($data->htmlheader['itemid'],
-                              $this->context->id,
-                              'block_kamaleon',
-                              'content_header',
-                              0,
-                              ['subdirs' => true],
-                              $data->htmlheader['text']);
-        $config->htmlfooter = file_save_draft_area_files($data->htmlfooter['itemid'],
-                              $this->context->id,
-                              'block_kamaleon',
-                              'content_footer',
-                              0,
-                              ['subdirs' => true],
-                              $data->htmlfooter['text']);
+        $config->htmlheader = file_save_draft_area_files(
+            $data->htmlheader['itemid'],
+            $this->context->id,
+            'block_kamaleon',
+            'content_header',
+            0,
+            ['subdirs' => true],
+            $data->htmlheader['text']
+        );
+        $config->htmlfooter = file_save_draft_area_files(
+            $data->htmlfooter['itemid'],
+            $this->context->id,
+            'block_kamaleon',
+            'content_footer',
+            0,
+            ['subdirs' => true],
+            $data->htmlfooter['text']
+        );
         $config->htmlheaderformat = $data->htmlheader['format'];
         $config->htmlfooterformat = $data->htmlfooter['format'];
         parent::instance_config_save($config, $nolongerused);
@@ -355,7 +403,7 @@ class block_kamaleon extends block_base {
      *
      * @return bool
      */
-    function instance_delete() {
+    public function instance_delete() {
         global $DB;
 
         $fs = get_file_storage();
@@ -363,7 +411,6 @@ class block_kamaleon extends block_base {
 
         if ($contents = $DB->get_records('block_kamaleon_contents', ['instanceid' => $this->instance->id])) {
             foreach ($contents as $content) {
-
                 // Delete files.
                 $files = $fs->get_area_files($this->context->id, 'block_kamaleon', 'banner', $content->id);
                 foreach ($files as $file) {
@@ -425,9 +472,11 @@ class block_kamaleon extends block_base {
     public function get_content_for_output($output) {
         $bc = parent::get_content_for_output($output);
 
-        if (empty($bc->controls) ||
-                !$this->page->user_is_editing() ||
-                !has_capability('block/kamaleon:addinstance', $this->context)) {
+        if (
+            empty($bc->controls) ||
+            !$this->page->user_is_editing() ||
+            !has_capability('block/kamaleon:addinstance', $this->context)
+        ) {
             return $bc;
         }
 
@@ -451,5 +500,4 @@ class block_kamaleon extends block_base {
         $bc->controls = $newcontrols;
         return $bc;
     }
-
 }

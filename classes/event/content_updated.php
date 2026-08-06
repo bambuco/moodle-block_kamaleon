@@ -31,7 +31,6 @@ namespace block_kamaleon\event;
  *
  */
 class content_updated extends \core\event\base {
-
     /**
      * Init method.
      */
@@ -67,5 +66,4 @@ class content_updated extends \core\event\base {
     public function get_url() {
         return new \moodle_url('/blocks/kamaleon/contentedit.php', ['id' => $this->objectid]);
     }
-
 }

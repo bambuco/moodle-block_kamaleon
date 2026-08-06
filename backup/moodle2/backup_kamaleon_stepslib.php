@@ -15,6 +15,8 @@
 // along with Moodle.  If not, see <http://www.gnu.org/licenses/>.
 
 /**
+ * Block backup steps.
+ *
  * @package    block_kamaleon
  * @copyright  2024 David Herney @ BambuCo
  * @license    http://www.gnu.org/copyleft/gpl.html GNU GPL v3 or later
@@ -27,9 +29,13 @@
  * @license   http://www.gnu.org/copyleft/gpl.html GNU GPL v3 or later
  */
 class backup_kamaleon_block_structure_step extends backup_block_structure_step {
-
+    /**
+     * Defines the structure of the block for backup.
+     *
+     * @return backup_nested_element The root element of the block structure.
+     * @throws coding_exception If there is a coding error.
+     */
     protected function define_structure() {
-
         // Define each element separated.
         $kamaleon = new backup_nested_element('kamaleon', ['id'], null);
         $contents = new backup_nested_element('contents');
@@ -56,7 +62,10 @@ class backup_kamaleon_block_structure_step extends backup_block_structure_step {
         // Define sources.
         $kamaleon->set_source_array([(object)['id' => $this->task->get_blockid()]]);
 
-        $item->set_source_table('block_kamaleon_contents', ['instanceid' => backup_helper::is_sqlparam($this->task->get_blockid())]);
+        $item->set_source_table(
+            'block_kamaleon_contents',
+            ['instanceid' => backup_helper::is_sqlparam($this->task->get_blockid())]
+        );
 
         // Annotations.
         $item->annotate_ids('block_kamaleon', 'instanceid');

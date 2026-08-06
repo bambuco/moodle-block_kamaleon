@@ -35,7 +35,6 @@ use templatable;
  * @license   http://www.gnu.org/copyleft/gpl.html GNU GPL v3 or later
  */
 class contents implements renderable, templatable {
-
     /**
      * @var int The block instance id.
      */
@@ -92,7 +91,6 @@ class contents implements renderable, templatable {
      * @return array Context variables for the template
      */
     public function export_for_template(renderer_base $output) {
-
         $context = \context_block::instance($this->instanceid);
 
         $contents = [];
@@ -103,8 +101,14 @@ class contents implements renderable, templatable {
                 $content = new \block_kamaleon\content($content);
             }
 
-            $content->content = file_rewrite_pluginfile_urls($content->content, 'pluginfile.php', $context->id, 'block_kamaleon',
-                                                                'content', $content->id);
+            $content->content = file_rewrite_pluginfile_urls(
+                $content->content,
+                'pluginfile.php',
+                $context->id,
+                'block_kamaleon',
+                'content',
+                $content->id
+            );
 
             // Convert $content into stdClass.
             $contentdata = $content->get_object();

@@ -116,6 +116,13 @@ jobs:
         if: ${{ !cancelled() && matrix.runchecks == 'all' }}
         run: moodle-plugin-ci mustache
 
+      - name: Exclude external FlexSlider from ESLint
+        if: ${{ !cancelled() && matrix.runchecks == 'all' }}
+        run: |
+          # Ignore bundled third-party library that does not follow Moodle JS coding style.
+          echo "blocks/kamaleon/amd/src/flexslider.js" >> "$GITHUB_WORKSPACE/moodle/.eslintignore"
+          echo "public/blocks/kamaleon/amd/src/flexslider.js" >> "$GITHUB_WORKSPACE/moodle/.eslintignore"
+
       - name: Grunt
         if: ${{ !cancelled() && matrix.runchecks == 'all' }}
         run: moodle-plugin-ci grunt --max-lint-warnings 0

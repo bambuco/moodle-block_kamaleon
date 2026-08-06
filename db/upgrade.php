@@ -22,15 +22,11 @@
  * @license http://www.gnu.org/copyleft/gpl.html GNU GPL v3 or later
  */
 
-defined('MOODLE_INTERNAL') || die();
-
 /**
  * Upgrade code for the kamaleon block.
  *
  * @param int $oldversion
  */
 function xmldb_block_kamaleon_upgrade($oldversion) {
-    global $CFG, $DB;
-
     return true;
 }
