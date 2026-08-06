@@ -136,7 +136,7 @@ class content extends entity {
      *
      * @return array Variables.
      */
-    public function get_vars() : array {
+    public function get_vars(): array {
         $returnvars = [];
 
         if (!empty($this->data->contentvars)) {

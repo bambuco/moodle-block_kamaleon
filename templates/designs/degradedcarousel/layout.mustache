@@ -38,7 +38,7 @@
     }
 }}
 
-<section id="degradedcarousel-{{instanceid}}" class="carousel slide" data-bs-ride="carousel" data-ride="carousel">
+<div id="degradedcarousel-{{instanceid}}" class="carousel slide" data-bs-ride="carousel" data-ride="carousel">
     <div class="carousel-indicators">
     {{#contents}}
         <button {{^index}}class="active"{{/index}} data-bs-target="#degradedcarousel-{{instanceid}}" data-target="#degradedcarousel-{{instanceid}}" data-bs-slide-to="{{index}}" data-slide-to="{{index}}"></button>
@@ -73,4 +73,4 @@
             <span class="sr-only visually-hidden">{{#str}} next {{/str}}</span>
         </button>
     </div>
-</section>
+</div>

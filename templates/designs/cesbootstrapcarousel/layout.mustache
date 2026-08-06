@@ -43,7 +43,7 @@
     }
 }}
 
-<section id="cesbootstrapcarousel-{{instanceid}}" class="carousel slide" data-bs-ride="carousel" data-ride="carousel">
+<div id="cesbootstrapcarousel-{{instanceid}}" class="carousel slide" data-bs-ride="carousel" data-ride="carousel">
     <div class="carousel-indicators">
     {{#contents}}
         <button {{^index}}class="active"{{/index}} data-bs-target="#cesbootstrapcarousel-{{instanceid}}" data-target="#cesbootstrapcarousel-{{instanceid}}" data-bs-slide-to="{{index}}" data-slide-to="{{index}}"></button>
@@ -75,4 +75,4 @@
             <span class="sr-only">{{#str}} next {{/str}}</span>
         </button>
     </div>
-</section>
+</div>

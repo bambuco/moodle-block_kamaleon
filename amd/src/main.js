@@ -36,7 +36,7 @@ export const initSlider = () => {
         var prop = {
             "animation": "slide",
             "itemMargin": 15,
-            "selector": "section > *",
+            "selector": "[data-toslider='true'] > *",
         };
 
         if ($this.attr('data-autoplay') && $this.attr('data-autoplay') == 'true') {

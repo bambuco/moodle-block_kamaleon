@@ -122,6 +122,8 @@ jobs:
           # Ignore bundled third-party library that does not follow Moodle JS coding style.
           echo "blocks/kamaleon/amd/src/flexslider.js" >> "$GITHUB_WORKSPACE/moodle/.eslintignore"
           echo "public/blocks/kamaleon/amd/src/flexslider.js" >> "$GITHUB_WORKSPACE/moodle/.eslintignore"
+          echo "amd/src/flexslider.js" >> "$GITHUB_WORKSPACE/moodle/blocks/kamaleon/.eslintignore"
+          echo "blocks/kamaleon/amd/src/flexslider.js" >> "$GITHUB_WORKSPACE/moodle/blocks/kamaleon/.eslintignore"
 
       - name: Grunt
         if: ${{ !cancelled() && matrix.runchecks == 'all' }}

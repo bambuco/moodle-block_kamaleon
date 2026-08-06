@@ -48,7 +48,6 @@ class design extends entity {
                 && file_exists($path . $file . '/properties.json')
                 && file_exists($path . $file . '/layout.mustache')
             ) {
-
                 $propertiescontent = file_get_contents($path . $file . '/properties.json');
                 if (!empty($propertiescontent)) {
                     $settings = json_decode($propertiescontent, true);

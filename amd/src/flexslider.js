@@ -23,6 +23,7 @@
 /**
  * Include the FlexSlider library.
  */
+/* eslint-disable */
 define(['jquery'], function(jQuery) {
     'use strict';
     /*global MSGesture*/
