@@ -38,11 +38,13 @@
                 "hasicon": true,
                 "showedition": false
             },
-            "instanceid": "99"
+            "instanceid": "99",
+            "validator": true
         }
     }
 }}
 
+{{^validator}}
 <style>
     {{#contents}}
         .block_kamaleon.design-tabs:has(#kmltab-{{id}}:checked) #kmltab-content-{{id}} {
@@ -50,6 +52,7 @@
         }
     {{/contents}}
 </style>
+{{/validator}}
 
 <div class="kmltabs">
     <div class="kmltabs-buttons">

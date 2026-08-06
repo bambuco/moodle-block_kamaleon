@@ -18,7 +18,7 @@
 }
 
 .block_kamaleon.design-comfesinglecard2 .card_content {
-    background-color: var(--light);
+    background-color: var(--light, #fff);
     /*border-radius: 115% 400px 0px 0px/90px 150px 10px 10px;*/
     border-radius: 255px 100px 10px 10px / 80px 150px 10px 10px;
     padding: 20px 20px 40px;

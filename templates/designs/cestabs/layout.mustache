@@ -38,11 +38,13 @@
                 "hasicon": true,
                 "showedition": false
             },
-            "instanceid": "99"
+            "instanceid": "99",
+            "validator": true
         }
     }
 }}
 
+{{^validator}}
 <style>
     {{#contents}}
         .block_kamaleon.design-cestabs #tab-ces-{{id}}:checked~#tab-ces-content-{{id}} {
@@ -50,6 +52,7 @@
         }
     {{/contents}}
 </style>
+{{/validator}}
 
 <div class="tabs-ces">
     {{#contents}}
