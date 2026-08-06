@@ -1,20 +1,17 @@
-/* 1. Contenedor principal convertido en Flexbox */
 .block_kamaleon.design-cestabs .tabs-ces {
     border-right: none;
     background: #f1f1f1;
     margin: auto;
     padding: 0 30px;
     display: flex;
-    flex-wrap: wrap; /* Permite que el contenido fluya debajo de los botones */
+    flex-wrap: wrap;
     justify-content: flex-start;
 }
 
-/* Ocultamos los inputs de radio */
 .block_kamaleon.design-cestabs .tabs-ces input[type=radio] {
     display: none;
 }
 
-/* 2. Los botones de las pestañas (Labels) */
 .block_kamaleon.design-cestabs .tabs-ces .tab-ces-label {
     display: block;
     width: 25%;
@@ -24,7 +21,7 @@
     text-align: left;
     cursor: pointer;
     color: #a4d5e7;
-    order: 1; /* Mandamos los botones a la parte superior */
+    order: 1;
 }
 
 .block_kamaleon.design-cestabs .tabs-ces .tab-ces-label p {
@@ -46,26 +43,19 @@
     font-weight: bold;
 }
 
-/* 3. El contenedor de la información */
 .block_kamaleon.design-cestabs .tab-ces-content {
-    display: none; /* Oculto por defecto */
+    display: none;
     width: 100%;
     padding: 1em;
     background-color: #f1f1f1;
     border-top: solid 0.5px #535353;
-    order: 2; /* Mandamos el contenido debajo de la fila de botones */
+    order: 2;
 }
 
-/* =========================================================================
-   4. LA MAGIA: CSS puro para mostrar la pestaña activa
-   Si el input está chequeado, se muestra el div .tab-ces-content que está
-   inmediatamente después del label.
-========================================================================= */
 .block_kamaleon.design-cestabs input[type=radio]:checked + .tab-ces-label + .tab-ces-content {
     display: block;
 }
 
-/* 5. Estilos internos de diseño (Sin modificaciones) */
 .block_kamaleon.design-cestabs .botones-planes-tabs {
     display: flex;
     align-items: center;
@@ -142,10 +132,9 @@
     background-color: #15284b;
 }
 
-/* Responsividad adaptada a Flexbox */
 @media only screen and (max-width: 800px) {
     .block_kamaleon.design-cestabs .tabs-ces .tab-ces-label {
-        width: 100%; /* El botón pasa a ocupar el ancho total en móviles */
+        width: 100%;
     }
 
     .block_kamaleon.design-cestabs .contenido-tabs {
