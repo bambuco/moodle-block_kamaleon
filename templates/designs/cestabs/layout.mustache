@@ -38,26 +38,15 @@
                 "hasicon": true,
                 "showedition": false
             },
-            "instanceid": "99",
-            "validator": true
+            "instanceid": "99"
         }
     }
 }}
-
-{{^validator}}
-<style>
+<div class="tabs-ces tabs-ces-flex-layout">
     {{#contents}}
-        .block_kamaleon.design-cestabs #tab-ces-{{id}}:checked~#tab-ces-content-{{id}} {
-            display: block;
-        }
-    {{/contents}}
-</style>
-{{/validator}}
+        <input id="tab-ces-{{id}}" class="tab-ces-radio" {{^index}}checked=""{{/index}} name="tabs-ces-{{instanceid}}" type="radio">
 
-<div class="tabs-ces">
-    {{#contents}}
-        <input id="tab-ces-{{id}}" {{^index}}checked=""{{/index}} name="tabs-ces-{{instanceid}}" type="radio">
-        <label for="tab-ces-{{id}}">
+        <label for="tab-ces-{{id}}" class="tab-ces-label">
             <span class="botones-planes-tabs">
                 {{#hasicon}}
                 <div class="icono-planes-tabs">
@@ -67,9 +56,7 @@
                 {{#title}}<p>{{title}}</p>{{/title}}
             </span>
         </label>
-    {{/contents}}
 
-    {{#contents}}
         <div id="tab-ces-content-{{id}}" class="tab-ces-content">
             <div class="contenido-tabs">
                 {{#hasbanner}}
@@ -91,7 +78,6 @@
             {{#showedition}}
                 {{> block_kamaleon/edition}}
             {{/showedition}}
-
         </div>
     {{/contents}}
 </div>

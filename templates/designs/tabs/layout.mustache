@@ -38,27 +38,15 @@
                 "hasicon": true,
                 "showedition": false
             },
-            "instanceid": "99",
-            "validator": true
+            "instanceid": "99"
         }
     }
 }}
-
-{{^validator}}
-<style>
+<div class="kmltabs kmltabs-flex-layout">
     {{#contents}}
-        .block_kamaleon.design-tabs:has(#kmltab-{{id}}:checked) #kmltab-content-{{id}} {
-            display: block;
-        }
-    {{/contents}}
-</style>
-{{/validator}}
+        <input id="kmltab-{{id}}" class="kmltab-radio" {{^index}}checked=""{{/index}} name="tabs-ces-{{instanceid}}" type="radio">
 
-<div class="kmltabs">
-    <div class="kmltabs-buttons">
-    {{#contents}}
-        <input id="kmltab-{{id}}" {{^index}}checked=""{{/index}} name="tabs-ces-{{instanceid}}" type="radio">
-        <label for="kmltab-{{id}}">
+        <label for="kmltab-{{id}}" class="kmltab-label">
             {{#hasicon}}
             <div class="kmltab-icon">
                 <img src="{{icon}}" alt="{{shorttitle}}" width="40" height="auto" />
@@ -66,10 +54,7 @@
             {{/hasicon}}
             {{#shorttitle}}<em>{{shorttitle}}</em>{{/shorttitle}}
         </label>
-    {{/contents}}
-    </div>
 
-    {{#contents}}
         <div id="kmltab-content-{{id}}" class="kmltab-content">
             <div class="contenido-tabs">
                 {{#hasbanner}}
@@ -93,7 +78,6 @@
             {{#showedition}}
                 {{> block_kamaleon/edition}}
             {{/showedition}}
-
         </div>
     {{/contents}}
 </div>
