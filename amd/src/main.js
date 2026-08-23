@@ -26,16 +26,32 @@ import Modal from 'core/modal';
 import ModalEvents from 'core/modal_events';
 
 /**
+ * Read a non-negative pixel value from a CSS custom property.
+ *
+ * @param {HTMLElement} element The element whose computed styles are read.
+ * @param {string} property The CSS custom property name.
+ * @param {number} fallback The value to use when the property is not set or invalid.
+ * @returns {number}
+ */
+const getCssPixelValue = (element, property, fallback) => {
+    const value = parseFloat(window.getComputedStyle(element).getPropertyValue(property));
+    return Number.isFinite(value) && value >= 0 ? value : fallback;
+};
+
+/**
  * Component initialization.
  */
 export const initSlider = () => {
 
     $(".kam-hslider").each(function() {
         var $this = $(this);
+        const itemGap = getCssPixelValue(this, '--kamaleon-slider-item-gap', 15);
+        const edgePadding = getCssPixelValue(this, '--kamaleon-slider-edge-padding', 48);
 
         var prop = {
             "animation": "slide",
-            "itemMargin": 15,
+            "itemMargin": itemGap,
+            "edgePadding": edgePadding,
             "selector": "[data-toslider='true'] > *",
         };
 

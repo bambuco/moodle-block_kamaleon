@@ -12,6 +12,19 @@ Download zip package, extract the kamaleon folder and upload this folder into bl
 * **GIT:** https://github.com/bambuco/moodle-block_kamaleon
 * **Powered by:** [BambuCo](https://bambuco.co/) - [Universidad CES](https://www.ces.edu.co/)
 
+## HORIZONTAL SLIDER
+
+Slider spacing can be customized with CSS custom properties on the block:
+
+```css
+.block_kamaleon {
+    --kamaleon-slider-item-gap: 15px;
+    --kamaleon-slider-edge-padding: 48px;
+}
+```
+
+The values default to 15px and 48px respectively when they are not defined.
+
 ## IN VERSION
 
 ### 2026052000:
