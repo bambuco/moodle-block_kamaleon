@@ -32,7 +32,6 @@ namespace block_kamaleon;
  * @license   http://www.gnu.org/copyleft/gpl.html GNU GPL v3 or later
  */
 class entity {
-
     /**
      * @var \stdClass General entity data.
      */
@@ -75,7 +74,7 @@ class entity {
         } else if (method_exists($this, 'get_' . $name)) {
             return call_user_func([$this, 'get_' . $name]);
         } else {
-            throw new \Exception('propertie_or_method_not_found: ' . get_class($this) . '->'. $name);
+            throw new \Exception('propertie_or_method_not_found: ' . get_class($this) . '->' . $name);
         }
     }
 
@@ -93,7 +92,7 @@ class entity {
         } else if (method_exists($this, 'set_' . $name)) {
             return call_user_func([$this, 'set_' . $name], $value);
         } else {
-            throw new \Exception('propertie_or_method_not_found: ' . get_class($this) . '->'. $name);
+            throw new \Exception('propertie_or_method_not_found: ' . get_class($this) . '->' . $name);
         }
     }
 }

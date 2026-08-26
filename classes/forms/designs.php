@@ -23,8 +23,9 @@
  */
 
 namespace block_kamaleon\forms;
+
 defined('MOODLE_INTERNAL') || die();
-require_once($CFG->libdir.'/formslib.php');
+require_once($CFG->libdir . '/formslib.php');
 
 use moodleform;
 
@@ -35,12 +36,10 @@ use moodleform;
  * @license    http://www.gnu.org/copyleft/gpl.html GNU GPL v3 or later
  */
 class designs extends moodleform {
-
     /**
      * Form definition.
      */
     public function definition() {
-
         $mform = $this->_form;
 
         $mform->addElement('select', 'design', get_string('design', 'block_kamaleon'), $this->_customdata['designs']);
@@ -51,7 +50,5 @@ class designs extends moodleform {
         $mform->setDefault('id', $this->_customdata['id']);
 
         $this->add_action_buttons(false);
-
     }
-
 }

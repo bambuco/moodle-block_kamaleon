@@ -30,7 +30,6 @@ namespace block_kamaleon;
  * @license   http://www.gnu.org/copyleft/gpl.html GNU GPL v3 or later
  */
 class content extends entity {
-
     /**
      * Class constructor.
      *
@@ -42,7 +41,6 @@ class content extends entity {
         $this->data = null;
 
         if ($content) {
-
             if (is_object($content) && property_exists($content, 'id')) {
                 $this->data = $content;
             } else {
@@ -138,16 +136,14 @@ class content extends entity {
      *
      * @return array Variables.
      */
-    public function get_vars() : array {
-
+    public function get_vars(): array {
         $returnvars = [];
+
         if (!empty($this->data->contentvars)) {
-
             if (is_string($this->data->contentvars)) {
-
                 $vars = explode("\n", $this->data->contentvars);
                 $vars = array_map('trim', $vars);
-                $vars = array_filter($vars, function($var) {
+                $vars = array_filter($vars, function ($var) {
                     return !empty($var);
                 });
 
@@ -175,7 +171,6 @@ class content extends entity {
                     }
                 }
                 $vars = $finalvar;
-
             } else if (is_array($this->data->contentvars)) {
                 $vars = $this->data->contentvars;
             } else {
@@ -193,5 +188,4 @@ class content extends entity {
 
         return $returnvars;
     }
-
 }

@@ -30,7 +30,6 @@ namespace block_kamaleon;
  * @license   http://www.gnu.org/copyleft/gpl.html GNU GPL v3 or later
  */
 class design extends entity {
-
     /**
      * Get the available designs.
      *
@@ -44,10 +43,11 @@ class design extends entity {
 
         $list = ['' => ''];
         foreach ($files as $file) {
-            if (is_dir($path . $file)
-                    && file_exists($path . $file . '/properties.json')
-                    && file_exists($path . $file . '/layout.mustache')) {
-
+            if (
+                is_dir($path . $file)
+                && file_exists($path . $file . '/properties.json')
+                && file_exists($path . $file . '/layout.mustache')
+            ) {
                 $propertiescontent = file_get_contents($path . $file . '/properties.json');
                 if (!empty($propertiescontent)) {
                     $settings = json_decode($propertiescontent, true);
@@ -60,7 +60,6 @@ class design extends entity {
                         $list[$file] = $settings->name;
                     }
                 }
-
             }
         }
 
@@ -91,8 +90,8 @@ class design extends entity {
         $path = $CFG->dirroot . '/blocks/kamaleon/templates/designs/';
 
         if (is_dir($path . $design)) {
-
             $propertiescontent = file_get_contents($path . $design . '/properties.json');
+
             if (!empty($propertiescontent)) {
                 $settings = json_decode($propertiescontent, true);
 
@@ -104,10 +103,8 @@ class design extends entity {
                     return is_array($settings->external) ? (object)$settings->external : $settings->external;
                 }
             }
-
         }
 
         return null;
     }
-
 }

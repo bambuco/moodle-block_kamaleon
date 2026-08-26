@@ -38,7 +38,7 @@
     }
 }}
 
-<section id="degradedcarousel-{{instanceid}}" class="carousel slide" data-bs-ride="carousel" data-ride="carousel">
+<div id="degradedcarousel-{{instanceid}}" class="carousel slide" data-bs-ride="carousel" data-ride="carousel">
     <div class="carousel-indicators">
     {{#contents}}
         <button {{^index}}class="active"{{/index}} data-bs-target="#degradedcarousel-{{instanceid}}" data-target="#degradedcarousel-{{instanceid}}" data-bs-slide-to="{{index}}" data-slide-to="{{index}}"></button>
@@ -65,13 +65,13 @@
                 </div>
             </div>
         {{/contents}}
-        <button class="carousel-control carousel-control-prev" role="button" data-bs-target="#degradedcarousel-{{instanceid}}" data-bs-slide="prev" data-target="#degradedcarousel-{{instanceid}}" data-slide="prev">
+        <button class="carousel-control carousel-control-prev" data-bs-target="#degradedcarousel-{{instanceid}}" data-bs-slide="prev" data-target="#degradedcarousel-{{instanceid}}" data-slide="prev">
             <span class="carousel-control-prev-icon" aria-hidden="true"></span>
             <span class="sr-only visually-hidden">{{#str}} previous {{/str}}</span>
         </button>
-        <button class="carousel-control carousel-control-next" role="button" data-bs-target="#degradedcarousel-{{instanceid}}" data-bs-slide="next" data-target="#degradedcarousel-{{instanceid}}" data-slide="next">
+        <button class="carousel-control carousel-control-next" data-bs-target="#degradedcarousel-{{instanceid}}" data-bs-slide="next" data-target="#degradedcarousel-{{instanceid}}" data-slide="next">
             <span class="carousel-control-next-icon" aria-hidden="true"></span>
             <span class="sr-only visually-hidden">{{#str}} next {{/str}}</span>
         </button>
     </div>
-</section>
+</div>

@@ -21,9 +21,10 @@
 
     Example context (json):
     {
-        "attributes": [
-            "contents": [
+        "attributes": {
+            "contents": {
                 "id": 1,
+                "index": 0,
                 "shorttitle": "MC",
                 "title": "My content",
                 "subtitle": "My content subtitle",
@@ -35,26 +36,17 @@
                 "hasbanner": true,
                 "icon": "https://example.com/icon.png",
                 "hasicon": true,
-                "showedition": false,
-            ],
+                "showedition": false
+            },
             "instanceid": "99"
-        ]
+        }
     }
 }}
-
-<style>
+<div class="kmltabs kmltabs-flex-layout">
     {{#contents}}
-        .block_kamaleon.design-tabs:has(#kmltab-{{id}}:checked) #kmltab-content-{{id}} {
-            display: block;
-        }
-    {{/contents}}
-</style>
+        <input id="kmltab-{{id}}" class="kmltab-radio" {{^index}}checked=""{{/index}} name="tabs-ces-{{instanceid}}" type="radio">
 
-<section class="kmltabs">
-    <div class="kmltabs-buttons">
-    {{#contents}}
-        <input id="kmltab-{{id}}" {{^index}}checked=""{{/index}} name="tabs-ces-{{instanceid}}" type="radio">
-        <label for="kmltab-{{id}}">
+        <label for="kmltab-{{id}}" class="kmltab-label">
             {{#hasicon}}
             <div class="kmltab-icon">
                 <img src="{{icon}}" alt="{{shorttitle}}" width="40" height="auto" />
@@ -62,10 +54,7 @@
             {{/hasicon}}
             {{#shorttitle}}<em>{{shorttitle}}</em>{{/shorttitle}}
         </label>
-    {{/contents}}
-    </div>
 
-    {{#contents}}
         <div id="kmltab-content-{{id}}" class="kmltab-content">
             <div class="contenido-tabs">
                 {{#hasbanner}}
@@ -89,7 +78,6 @@
             {{#showedition}}
                 {{> block_kamaleon/edition}}
             {{/showedition}}
-
         </div>
     {{/contents}}
-</section>
+</div>

@@ -30,7 +30,6 @@ namespace block_kamaleon\type;
  * @license   http://www.gnu.org/copyleft/gpl.html GNU GPL v3 or later
  */
 class custom extends base {
-
     /**
      * Get the contents for the custom type.
      *
@@ -38,7 +37,7 @@ class custom extends base {
      * @param object $configdata The block configuration data.
      * @return array List of contents.
      */
-    public function get_contents($instanceid, $configdata = null) : array {
+    public function get_contents($instanceid, $configdata = null): array {
         global $DB;
 
         $size = $configdata->maxrecords ?? 0;

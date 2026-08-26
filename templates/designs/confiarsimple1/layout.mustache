@@ -21,8 +21,8 @@
 
     Example context (json):
     {
-        "attributes": [
-            "contents": [
+        "attributes": {
+            "contents": {
                 "id": 1,
                 "index": 0,
                 "shorttitle": "MC",
@@ -36,14 +36,14 @@
                 "hasbanner": true,
                 "icon": "https://example.com/icon.png",
                 "hasicon": true,
-                "showedition": false,
-            ],
+                "showedition": false
+            },
             "instanceid": "99"
-        ]
+        }
     }
 }}
 
-<section class="container-contents">
+<div class="container-contents">
     {{#contents}}
     <div class="single-content">
         <div class="content-image">
@@ -76,4 +76,4 @@
         </div>
     </div>
     {{/contents}}
-</section>
+</div>

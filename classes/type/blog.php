@@ -23,6 +23,7 @@
  */
 namespace block_kamaleon\type;
 
+defined('MOODLE_INTERNAL') || die();
 require_once($CFG->dirroot . '/blog/locallib.php');
 
 /**
@@ -39,7 +40,7 @@ class blog extends base {
      * @param object $configdata The block configuration data.
      * @return array List of contents.
      */
-    public function get_contents($instanceid, $configdata = null) : array {
+    public function get_contents($instanceid, $configdata = null): array {
         global $DB, $OUTPUT;
 
         $size = $configdata->maxrecords ?? 5;
@@ -108,7 +109,6 @@ class blog extends base {
 
             $postlist[] = $content;
         }
-
 
         return $postlist;
     }

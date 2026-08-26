@@ -15,10 +15,14 @@
 // along with Moodle.  If not, see <http://www.gnu.org/licenses/>.
 
 /**
+ * Block backup task.
+ *
  * @package    block_kamaleon
  * @copyright  2024 David Herney @ BambuCo
  * @license    http://www.gnu.org/copyleft/gpl.html GNU GPL v3 or later
  */
+
+defined('MOODLE_INTERNAL') || die();
 
 require_once($CFG->dirroot . '/blocks/kamaleon/backup/moodle2/backup_kamaleon_stepslib.php');
 
@@ -30,7 +34,6 @@ require_once($CFG->dirroot . '/blocks/kamaleon/backup/moodle2/backup_kamaleon_st
  * @license   http://www.gnu.org/copyleft/gpl.html GNU GPL v3 or later
  */
 class backup_kamaleon_block_task extends backup_block_task {
-
     /**
      * If the block declares own backup settings defined in the file backup_foobar_settingslib.php, add them here.
      * Most blocks just leave the method body empty.
@@ -78,8 +81,7 @@ class backup_kamaleon_block_task extends backup_block_task {
      *
      * @param string $content
      */
-    static public function encode_content_links($content) {
+    public static function encode_content_links($content) {
         return $content; // No special encoding of links.
     }
 }
-

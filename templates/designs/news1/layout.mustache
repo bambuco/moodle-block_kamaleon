@@ -34,7 +34,8 @@
                 "content": "My content description",
                 "banner": "https://example.com/banner.png",
                 "hasbanner": true,
-                "hasicon": false,
+                "icon": "https://example.com/icon.png",
+                "hasicon": true,
                 "showedition": false
             },
             "instanceid": "99"
@@ -42,7 +43,7 @@
     }
 }}
 
-<section class="container-cards">
+<div class="container-cards" data-toslider="true">
     {{#contents}}
     <div class="card-cards">
         <div class="card-image">
@@ -84,4 +85,4 @@
         </div>
     </div>
     {{/contents}}
-</section>
+</div>

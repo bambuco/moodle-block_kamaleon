@@ -21,20 +21,28 @@
 
     Example context (json):
     {
-        "attributes": [
-            "contents": [
+        "attributes": {
+            "contents": {
+                "id": 1,
+                "index": 0,
+                "shorttitle": "MC",
                 "title": "My content",
                 "subtitle": "My content subtitle",
                 "url": "https://example.com",
-                "icon": "https://example.com/icon.png",
                 "target": "_blank",
-                "showedition": false,
-            ],
+                "linkname": "My content link name",
+                "content": "My content description",
+                "banner": "https://example.com/banner.png",
+                "hasbanner": true,
+                "icon": "https://example.com/icon.png",
+                "hasicon": true,
+                "showedition": false
+            },
             "instanceid": "99"
-        ]
+        }
     }
 }}
-<section class="container-cards">
+<div class="container-cards" data-toslider="true">
     {{#contents}}
     <div class="card-cards">
         {{#url}}
@@ -65,4 +73,4 @@
         {{/showedition}}
     </div>
     {{/contents}}
-</section>
+</div>

@@ -103,7 +103,7 @@
         width: 100%;
     }
 
-    #block-region-bottom section.block_kamaleon.design-news1 .card-cards:first-child .card-body .card_content-content p {
+    #block-region-bottom .block_kamaleon.design-news1 .card-cards:first-child .card-body .card_content-content p {
         font-size: 14px !important;
     }
 }

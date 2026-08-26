@@ -21,9 +21,10 @@
 
     Example context (json):
     {
-        "attributes": [
-            "contents": [
+        "attributes": {
+            "contents": {
                 "id": 1,
+                "index": 0,
                 "shorttitle": "MC",
                 "title": "My content",
                 "subtitle": "My content subtitle",
@@ -35,25 +36,17 @@
                 "hasbanner": true,
                 "icon": "https://example.com/icon.png",
                 "hasicon": true,
-                "showedition": false,
-            ],
+                "showedition": false
+            },
             "instanceid": "99"
-        ]
+        }
     }
 }}
-
-<style>
+<div class="tabs-ces tabs-ces-flex-layout">
     {{#contents}}
-        .block_kamaleon.design-cestabs #tab-ces-{{id}}:checked~#tab-ces-content-{{id}} {
-            display: block;
-        }
-    {{/contents}}
-</style>
+        <input id="tab-ces-{{id}}" class="tab-ces-radio" {{^index}}checked=""{{/index}} name="tabs-ces-{{instanceid}}" type="radio">
 
-<section class="tabs-ces">
-    {{#contents}}
-        <input id="tab-ces-{{id}}" {{^index}}checked=""{{/index}} name="tabs-ces-{{instanceid}}" type="radio">
-        <label for="tab-ces-{{id}}">
+        <label for="tab-ces-{{id}}" class="tab-ces-label">
             <span class="botones-planes-tabs">
                 {{#hasicon}}
                 <div class="icono-planes-tabs">
@@ -63,9 +56,7 @@
                 {{#title}}<p>{{title}}</p>{{/title}}
             </span>
         </label>
-    {{/contents}}
 
-    {{#contents}}
         <div id="tab-ces-content-{{id}}" class="tab-ces-content">
             <div class="contenido-tabs">
                 {{#hasbanner}}
@@ -87,7 +78,6 @@
             {{#showedition}}
                 {{> block_kamaleon/edition}}
             {{/showedition}}
-
         </div>
     {{/contents}}
-</section>
+</div>

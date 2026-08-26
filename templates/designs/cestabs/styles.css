@@ -3,42 +3,39 @@
     background: #f1f1f1;
     margin: auto;
     padding: 0 30px;
-}
-
-.block_kamaleon.design-cestabs .tabs-ces:after {
-    content: "";
-    display: table;
-    clear: both;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: flex-start;
 }
 
 .block_kamaleon.design-cestabs .tabs-ces input[type=radio] {
     display: none;
 }
 
-.block_kamaleon.design-cestabs .tabs-ces label {
+.block_kamaleon.design-cestabs .tabs-ces .tab-ces-label {
     display: block;
-    float: left;
     width: 25%;
     height: auto;
     padding: 20px 1em;
     border: none;
-    text-align: Left;
+    text-align: left;
     cursor: pointer;
     color: #a4d5e7;
+    order: 1;
 }
 
-.block_kamaleon.design-cestabs .tabs-ces label p {
+.block_kamaleon.design-cestabs .tabs-ces .tab-ces-label p {
     font-size: 16px;
     line-height: 20px;
     margin: 0;
     color: #535353;
 }
 
-.block_kamaleon.design-cestabs .tabs-ces label:hover p {
+.block_kamaleon.design-cestabs .tabs-ces .tab-ces-label:hover p {
     color: #15284b;
 }
 
-.block_kamaleon.design-cestabs input[id|="tab-ces"]:checked+label {
+.block_kamaleon.design-cestabs input[id|="tab-ces"]:checked + .tab-ces-label {
     border-bottom: solid 7px #15284b;
     color: #15284b;
     margin-bottom: 0px;
@@ -48,11 +45,15 @@
 
 .block_kamaleon.design-cestabs .tab-ces-content {
     display: none;
-    float: left;
     width: 100%;
     padding: 1em;
     background-color: #f1f1f1;
     border-top: solid 0.5px #535353;
+    order: 2;
+}
+
+.block_kamaleon.design-cestabs input[type=radio]:checked + .tab-ces-label + .tab-ces-content {
+    display: block;
 }
 
 .block_kamaleon.design-cestabs .botones-planes-tabs {
@@ -132,8 +133,7 @@
 }
 
 @media only screen and (max-width: 800px) {
-    .block_kamaleon.design-cestabs .tabs-ces label {
-        float: none;
+    .block_kamaleon.design-cestabs .tabs-ces .tab-ces-label {
         width: 100%;
     }
 
@@ -154,6 +154,6 @@
     .block_kamaleon.design-cestabs .botones-planes-tabs {
         display: flex;
         align-items: center;
-        justify-content: left;
+        justify-content: flex-start;
     }
 }

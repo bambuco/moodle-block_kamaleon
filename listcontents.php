@@ -118,17 +118,18 @@ echo $OUTPUT->header();
 
 // Delete a content, after confirmation.
 if ($delete && confirm_sesskey()) {
-
     if ($confirm != md5($delete)) {
         $returnurl = new moodle_url('/blocks/kamaleon/listcontents.php', ['id' => $id]);
         echo $OUTPUT->heading(get_string('contentdelete', 'block_kamaleon'), 3);
         $optionsyes = ['delete' => $delete, 'confirm' => md5($delete), 'sesskey' => sesskey()];
-        echo $OUTPUT->confirm(get_string('deletecheck', 'block_kamaleon'),
-                                new moodle_url($returnurl, $optionsyes), $returnurl);
+        echo $OUTPUT->confirm(
+            get_string('deletecheck', 'block_kamaleon'),
+            new moodle_url($returnurl, $optionsyes),
+            $returnurl
+        );
         echo $OUTPUT->footer();
         die;
     } else if (data_submitted()) {
-
         $fs = get_file_storage();
         $files = $fs->get_area_files($context->id, 'block_kamaleon', 'banner', $content->id);
         foreach ($files as $file) {
@@ -144,7 +145,7 @@ if ($delete && confirm_sesskey()) {
 
         $event = \block_kamaleon\event\content_deleted::create([
             'objectid' => $content->id,
-            'context' => $context
+            'context' => $context,
         ]);
         $event->add_record_snapshot('block_kamaleon_contents', $content);
         $event->trigger();
@@ -189,12 +190,13 @@ if ($contentsource) {
 
     if ($iscustom) {
         echo html_writer::start_tag('div', ['class' => 'row buttons']);
-        echo html_writer::link('contentedit.php?instanceid=' . $id,
-                                $OUTPUT->image_icon('t/add', 'core') . get_string('newcontent', 'block_kamaleon'),
-                                ['class' => 'btn btn-primary']);
+        echo html_writer::link(
+            'contentedit.php?instanceid=' . $id,
+            $OUTPUT->image_icon('t/add', 'core') . get_string('newcontent', 'block_kamaleon'),
+            ['class' => 'btn btn-primary']
+        );
         echo html_writer::end_tag('div');
     }
-
 }
 
 echo $OUTPUT->footer();

@@ -16,6 +16,7 @@
 
 namespace block_kamaleon\type;
 
+defined('MOODLE_INTERNAL') || die();
 require_once($CFG->dirroot . '/admin/tool/courserating/lib.php');
 
 /**
@@ -26,7 +27,6 @@ require_once($CFG->dirroot . '/admin/tool/courserating/lib.php');
  * @license    http://www.gnu.org/copyleft/gpl.html GNU GPL v3 or later
  */
 class tool_courserating extends base {
-
     /**
      * Get the contents for the custom type.
      *
@@ -34,7 +34,7 @@ class tool_courserating extends base {
      * @param object $configdata The block configuration data.
      * @return array List of contents.
      */
-    public function get_contents($instanceid, $configdata = null) : array {
+    public function get_contents($instanceid, $configdata = null): array {
         global $DB, $OUTPUT, $PAGE;
 
         $size = $configdata->maxrecords ?? 5;
@@ -62,8 +62,8 @@ class tool_courserating extends base {
         $list = [];
         $dateformat = get_string('strftimedatefullshort', 'langconfig');
         $linkname = get_string('viewcourse', 'block_kamaleon');
-        foreach ($ratings as $rating) {
 
+        foreach ($ratings as $rating) {
             $user = $DB->get_record('user', ['id' => $rating->userid]);
 
             $summary = format_string($rating->review);

@@ -23,8 +23,9 @@
  */
 
 namespace block_kamaleon\forms;
+
 defined('MOODLE_INTERNAL') || die();
-require_once($CFG->libdir.'/formslib.php');
+require_once($CFG->libdir . '/formslib.php');
 
 use moodleform;
 
@@ -35,27 +36,25 @@ use moodleform;
  * @license    http://www.gnu.org/copyleft/gpl.html GNU GPL v3 or later
  */
 class content extends moodleform {
-
     /**
      * @var object List of local data.
      */
-    protected $_data;
+    protected $data;
 
     /**
      * @var array List of editor options.
      */
-    protected $_editoroptions;
+    protected $editoroptions;
 
     /**
      * Form definition.
      */
     public function definition() {
-
         $mform = $this->_form;
 
         // This contains the data of this form.
-        $this->_data = $this->_customdata['data'];
-        $this->_editoroptions = $this->_customdata['editoroptions'];
+        $this->data = $this->_customdata['data'];
+        $this->editoroptions = $this->_customdata['editoroptions'];
         $imagesoptions = $this->_customdata['filemanageroptions'];
 
         $mform->addElement('text', 'shorttitle', get_string('shorttitle', 'block_kamaleon'), ['maxlength' => 255]);
@@ -80,7 +79,7 @@ class content extends moodleform {
         $mform->addElement('text', 'linkname', get_string('linkname', 'block_kamaleon'), ['maxlength' => 63]);
         $mform->setType('linkname', PARAM_TEXT);
 
-        $mform->addElement('editor', 'content', get_string('content', 'block_kamaleon'), null, $this->_editoroptions);
+        $mform->addElement('editor', 'content', get_string('content', 'block_kamaleon'), null, $this->editoroptions);
         $mform->setType('content', PARAM_RAW);
 
         $mform->addElement('textarea', 'contentvars', get_string('contentvars', 'block_kamaleon'));
@@ -107,7 +106,6 @@ class content extends moodleform {
         $this->add_action_buttons();
 
         // Finally set the current form data.
-        $this->set_data($this->_data);
+        $this->set_data($this->data);
     }
-
 }

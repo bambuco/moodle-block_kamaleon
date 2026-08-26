@@ -22,7 +22,7 @@
  * @license   http://www.gnu.org/copyleft/gpl.html GNU GPL v3 or later
  */
 namespace block_kamaleon;
-use \block_kamaleon\type;
+use block_kamaleon\type;
 
 /**
  * Component controller.
@@ -31,22 +31,17 @@ use \block_kamaleon\type;
  * @license   http://www.gnu.org/copyleft/gpl.html GNU GPL v3 or later
  */
 class controller {
-
     /**
      * List of available sources.
+     *
+     * Future types:
+     * calendar, coursecategories, courses, glossary, moddata, statistics
      *
      * @return array List of sources types.
      */
     public static function get_sourcestypes() {
-
         $types = [
             'blog' => get_string('type_blog', 'block_kamaleon'),
-            /*'calendar' => get_string('type_calendar', 'block_kamaleon'),
-            'coursecategories' => get_string('type_coursecategories', 'block_kamaleon'),
-            'courses' => get_string('type_courses', 'block_kamaleon'),
-            'glossary' => get_string('type_glossary', 'block_kamaleon'),
-            'moddata' => get_string('type_moddata', 'block_kamaleon'),
-            'statistics' => get_string('type_statistics', 'block_kamaleon')*/
         ];
 
         $plugininfo = \core_plugin_manager::instance()->get_plugin_info('tool_courserating');
@@ -57,6 +52,12 @@ class controller {
         return $types;
     }
 
+    /**
+     * Get the instance of a source type.
+     *
+     * @param string $type The source type.
+     * @return type|null The instance of the source type or null if not found.
+     */
     public static function get_typeinstance($type) {
         $classname = '\block_kamaleon\type\\' . $type;
         if (class_exists($classname)) {
@@ -69,6 +70,7 @@ class controller {
     /**
      * Include a CSS file according the current used design.
      *
+     * @param string $design The design name.
      * @return void
      */
     public static function include_designcss(string $design) {
@@ -84,7 +86,6 @@ class controller {
         if (file_exists($CFG->dirroot . $csspath)) {
             $PAGE->requires->css($csspath);
         }
-
     }
 
     /**

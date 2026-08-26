@@ -15,6 +15,8 @@
 // along with Moodle.  If not, see <http://www.gnu.org/licenses/>.
 
 /**
+ * Define the complete structure for restore
+ *
  * @package    block_kamaleon
  * @copyright  2024 David Herney @ BambuCo
  * @license    http://www.gnu.org/copyleft/gpl.html GNU GPL v3 or later
@@ -27,9 +29,12 @@
  * @license   http://www.gnu.org/copyleft/gpl.html GNU GPL v3 or later
  */
 class restore_kamaleon_block_structure_step extends restore_structure_step {
-
+    /**
+     * Defines the structure of the block for restore.
+     *
+     * @return array The paths to be processed by the restore task.
+     */
     protected function define_structure() {
-
         $paths = [];
 
         $paths[] = new restore_path_element('block', '/block', true);

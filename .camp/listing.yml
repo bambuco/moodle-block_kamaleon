@@ -1,0 +1,16 @@
+# Schema: https://camp-registry.org/schema/listing.schema.json
+name: block_kamaleon
+summary: A block to display content from different sources and with different designs.
+description: |
+  Kamaleon is a flexible content block that lets course editors create and order custom items or display content from Moodle blogs and, when available, Course Rating. Choose from multiple templates, limit the number of items, present them in a standard layout or horizontal slider, and open links on the same page, in a new window, or in a modal. Block content and settings are supported by Moodle backup and restore.
+labels:
+- fully-free
+- donation-supported
+- commercial-support-available
+category: UX
+screenshots:
+  - path: .camp/screenshots/overview.jpg
+    caption: Multiple templates
+links:
+  docs: https://comunidadmoodle.com/course/view.php?id=128&section=3
+  issues: https://github.com/bambuco/moodle-block_kamaleon/issues
