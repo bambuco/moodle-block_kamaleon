@@ -177,6 +177,7 @@ html[xmlns] .block_kamaleon.kam-hslider .slides {
   filter: alpha(opacity=0);
   cursor: default;
   z-index: -1;
+  display: none;
 }
 .block_kamaleon .flex-pauseplay a {
   display: block;

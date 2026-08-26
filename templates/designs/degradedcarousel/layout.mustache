@@ -46,7 +46,7 @@
     </div>
     <div class="carousel-inner">
         {{#contents}}
-            <div class="carousel-item {{^index}}active{{/index}}">
+            <div class="carousel-item {{^index}}active{{/index}} {{#vars}}{{#cssclass}}{{.}}{{/cssclass}}{{/vars}}">
                 <img src="{{{banner}}}" alt="{{#title}}{{.}}{{/title}}" />
                 <div class="carousel-item-overlap"></div>
                 <div class="carousel-caption">
@@ -54,6 +54,7 @@
                         <h5 class="titulo-bn">{{title}}</h5>
                     {{/title}}
                     {{#subtitle}}<div class="texto-bn-bold">{{subtitle}}</div>{{/subtitle}}
+                    {{#content}}<div class="texto-content">{{{content}}}</div>{{/content}}
                     {{#url}}<a class="btn btn-secondary {{#inmodal}}kam-openinmodal{{/inmodal}}" href="{{url}}" {{#target}}target="{{target}}"{{/target}}>
                             {{#linkname}}{{linkname}}{{/linkname}}
                             {{^linkname}}{{#str}} morenavigationlinks {{/str}}{{/linkname}}

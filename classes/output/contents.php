@@ -57,18 +57,31 @@ class contents implements renderable, templatable {
     public $showedition;
 
     /**
+     * @var array Custom parameters for the block.
+     */
+    public $customparams;
+
+    /**
      * Constructor.
      *
      * @param int $instanceid The block instance id.
      * @param array $contents The contents list.
      * @param string $currentdesign The current block design.
      * @param bool $showedition Show edition buttons.
+     * @param array $customparams Custom parameters for the block.
      */
-    public function __construct(int $instanceid, array $contents, string $currentdesign = '', bool $showedition = false) {
+    public function __construct(
+        int $instanceid,
+        array $contents,
+        string $currentdesign = '',
+        bool $showedition = false,
+        array $customparams = []
+    ) {
         $this->instanceid = $instanceid;
         $this->contents = $contents;
         $this->currentdesign = $currentdesign;
         $this->showedition = $showedition;
+        $this->customparams = $customparams;
     }
 
     /**
@@ -92,7 +105,6 @@ class contents implements renderable, templatable {
      * @return array Context variables for the template
      */
     public function export_for_template(renderer_base $output) {
-
         $context = \context_block::instance($this->instanceid);
 
         $contents = [];
@@ -103,8 +115,14 @@ class contents implements renderable, templatable {
                 $content = new \block_kamaleon\content($content);
             }
 
-            $content->content = file_rewrite_pluginfile_urls($content->content, 'pluginfile.php', $context->id, 'block_kamaleon',
-                                                                'content', $content->id);
+            $content->content = file_rewrite_pluginfile_urls(
+                $content->content,
+                'pluginfile.php',
+                $context->id,
+                'block_kamaleon',
+                'content',
+                $content->id
+            );
 
             // Convert $content into stdClass.
             $contentdata = $content->get_object();
@@ -127,11 +145,22 @@ class contents implements renderable, templatable {
             $contents[] = $contentdata;
         }
 
+        $attributes = [];
+        if (!empty($this->customparams)) {
+            foreach ($this->customparams as $key => $value) {
+                if (strpos($key, 'data-') === 0) {
+                    $attributes[] = ['key' => $key, 'value' => $value];
+                }
+            }
+        }
+
         $defaultvariables = [
             'instanceid' => $this->instanceid,
             'contents' => $contents,
+            'contentstotal' => count($contents),
             'sesskey' => sesskey(),
             'showedition' => $this->showedition,
+            'attributes' => $attributes,
         ];
 
         return $defaultvariables;

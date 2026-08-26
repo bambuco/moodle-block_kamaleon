@@ -1,0 +1,10 @@
+{
+  "name": "Comfenalco ZigZag card (xTxUTNxBx)",
+  "description": "A card with the content distributed alternating top-bottom-top.",
+  "author": {
+    "name": "Luis Miguel Marín",
+    "url": "https://www.comfenalcoantioquia.com/",
+    "email": "luis.marin@comfenalcoantioquia.com"
+  },
+  "license": "GPL-3.0+"
+}

@@ -161,4 +161,40 @@ class controller {
             }
         }
     }
+
+    /**
+     * Convert the instance params into an array of custom params.
+     *
+     * @param string $instanceparams The instance params.
+     * @return array The custom params.
+     */
+    public static function instance2customparams(string $instanceparams): array {
+        $customparams = [];
+
+        if (empty($instanceparams)) {
+            return $customparams;
+        }
+
+        $params = explode("\n", $instanceparams);
+        foreach ($params as $param) {
+            $pair = explode('=', trim($param), 2);
+            $value = '';
+
+            $key = trim($pair[0]);
+            if (empty($key)) {
+                continue;
+            }
+
+            if (count($pair) == 2) {
+                if (is_numeric($pair[1])) {
+                    $value = (int)trim($pair[1]);
+                } else {
+                    $value = trim($pair[1]);
+                }
+            }
+            $customparams[$key] = $value;
+        }
+
+        return $customparams;
+    }
 }

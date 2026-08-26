@@ -15,7 +15,7 @@
     along with Moodle.  If not, see <http://www.gnu.org/licenses/>.
 }}
 {{!
-    @template block_kamaleon/designs/news1/layout
+    @template block_kamaleon/indicatoronscale/layout
 
     The designed layout.
 
@@ -34,52 +34,28 @@
                 "content": "My content description",
                 "banner": "https://example.com/banner.png",
                 "hasbanner": true,
-                "hasicon": false,
+                "icon": "https://example.com/icon.png",
+                "hasicon": true,
                 "showedition": false
             },
-            "instanceid": "99"
+            "instanceid": "99",
+            "contentstotal": 5
         }
     }
 }}
 
-<section class="container-cards">
+<section class="container-indicators">
     {{#contents}}
-    <div class="card-cards">
-        <div class="card-image">
-            {{#hasicon}}
-                <img class="news-icon" src="{{icon}}" alt="">
-            {{/hasicon}}
-            {{#hasbanner}}
-                <img class="news-banner" src="{{banner}}" alt="{{title}}">
-            {{/hasbanner}}
+    <div class="indicator-box" style="--index: {{index}}; --total: {{contentstotal}};">
+        <div class="indicator_icon">
+            {{#icon}}<img src="{{icon}}" alt="{{title}}" title="{{title}}" />{{/icon}}
+            {{#shorttitle}}<h6>{{shorttitle}}</h6>{{/shorttitle}}
         </div>
-
-        <div class="card-body">
-            {{#vars}}{{#date}}
-                <div class="news-date">{{.}}</div>
-            {{/date}}{{/vars}}
-            <h5 class="news-title">{{title}}</h5>
-            <div class="news-subtitle">
-                <h6>{{subtitle}}</h6>
-            </div>
-
-            <div class="card_content-content">
-                {{{content}}}
-            </div>
-
-            {{#url}}
-            <div class="card_buttons">
-                <a href="{{url}}" class="btn btn-primary {{#inmodal}}kam-openinmodal{{/inmodal}}" {{#target}}target="{{target}}"{{/target}}>
-                    {{#linkname}}{{linkname}}{{/linkname}}
-                    {{^linkname}}{{#str}} readmore, block_kamaleon {{/str}}{{/linkname}}
-                </a>
-            </div>
-            {{/url}}
-
+        <div class="indicator_body">
+            {{#title}}<h4>{{title}}</h4>{{/title}}
+            {{#subtitle}}<h5>{{subtitle}}</h5>{{/subtitle}}
             {{#showedition}}
-            <div class="card-footer text-muted">
                 {{> block_kamaleon/edition}}
-            </div>
             {{/showedition}}
         </div>
     </div>

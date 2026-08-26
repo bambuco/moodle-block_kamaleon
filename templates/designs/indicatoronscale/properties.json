@@ -1,0 +1,10 @@
+{
+  "name": "Indicator on scale (STSxxxxxI)",
+  "description": "An indicator seen in steps",
+  "author": {
+    "name": "Luis Miguel Marín",
+    "url": "https://www.comfenalcoantioquia.com/",
+    "email": "luis.marin@comfenalcoantioquia.com"
+  },
+  "license": "GPL-3.0+"
+}
