@@ -28,13 +28,16 @@
                 "url": "https://example.com",
                 "icon": "https://example.com/icon.png",
                 "target": "_blank",
-                "showedition": false
+                "showedition": false,
+                "attributes": {
+                    "data-attribute": "value"
+                }
             },
             "instanceid": "99"
         }
     }
 }}
-<div class="container-cards" data-toslider="true">
+<div class="container-cards" {{#attributes}}{{key}}="{{value}}"{{/attributes}} data-toslider="true">
     {{#contents}}
     <div class="card-cards">
         {{#url}}

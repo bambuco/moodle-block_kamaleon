@@ -43,7 +43,7 @@
     }
 }}
 
-<div class="container-cards" data-toslider="true">
+<div class="container-cards" {{#attributes}}{{key}}="{{value}}"{{/attributes}} data-toslider="true">
     {{#contents}}
     <div class="card-cards" {{#banner}}style="background-image: url('{{banner}}');"{{/banner}}>
         <div class="card_content">

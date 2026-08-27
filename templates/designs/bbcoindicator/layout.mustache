@@ -36,14 +36,17 @@
                 "hasbanner": true,
                 "icon": "https://example.com/icon.png",
                 "hasicon": true,
-                "showedition": false
+                "showedition": false,
+                "attributes": {
+                    "data-attribute": "value"
+                }
             },
             "instanceid": "99"
         }
     }
 }}
 
-<div class="container-indicators" data-toslider="true">
+<div class="container-indicators" {{#attributes}}{{key}}="{{value}}"{{/attributes}} data-toslider="true">
     {{#contents}}
     <div>
         {{#icon}}<img src="{{icon}}" alt="{{title}}" title="{{title}}" />{{/icon}}
