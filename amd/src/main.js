@@ -59,18 +59,18 @@ export const initSlider = () => {
 
             if ($hsliderelement.attr('data-width')) {
                 prop.itemWidth = parseInt($hsliderelement.attr('data-width'));
-            } else {
-                var $element = $this.find(prop.selector);
-                var itemwidth = $element.css('width');
-
-                if (itemwidth) {
-                    prop.itemWidth = parseInt(itemwidth);
-                } else {
-                    prop.itemWidth = $element.width();
-                }
             }
+        }
 
-            console.log('Horizontal Slider properties: ', prop);
+        if (!prop.itemWidth) {
+            var $element = $this.find(prop.selector);
+            var itemwidth = $element.css('width');
+
+            if (itemwidth) {
+                prop.itemWidth = parseInt(itemwidth);
+            } else {
+                prop.itemWidth = $element.width();
+            }
         }
 
         horizontalSlider.init($this, prop);
