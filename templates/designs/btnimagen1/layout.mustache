@@ -21,8 +21,8 @@
 
     Example context (json):
     {
-        "attributes": {
-            "contents": {
+        "contents": [
+            {
                 "id": 1,
                 "index": 0,
                 "shorttitle": "MC",
@@ -37,15 +37,15 @@
                 "icon": "https://example.com/icon.png",
                 "hasicon": true,
                 "showedition": false
-            },
-            "attributes": [
-                {
-                    "key": "data-attribute",
-                    "value": "true"
-                }
-            ],
-            "instanceid": "99"
-        }
+            }
+        ],
+        "attributes": [
+            {
+                "key": "data-attribute",
+                "value": "true"
+            }
+        ],
+        "instanceid": "99"
     }
 }}
 <div class="container-cards" {{#attributes}}{{key}}="{{value}}"{{/attributes}} data-toslider="true">

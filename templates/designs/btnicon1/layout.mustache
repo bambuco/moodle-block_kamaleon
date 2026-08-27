@@ -20,24 +20,24 @@
     Template for Buttons with image - 1 design.
 
     Example context (json):
-    {
-        "attributes": {
-            "contents": {
+        {
+        "contents": [
+            {
                 "title": "My content",
                 "subtitle": "My content subtitle",
                 "url": "https://example.com",
                 "icon": "https://example.com/icon.png",
                 "target": "_blank",
                 "showedition": false
-            },
-            "attributes": [
-                {
-                    "key": "data-attribute",
-                    "value": "true"
-                }
-            ],
-            "instanceid": "99"
-        }
+            }
+        ],
+        "instanceid": "99",
+        "attributes": [
+            {
+                "key": "data-attribute",
+                "value": "true"
+            }
+        ]
     }
 }}
 <div class="container-cards" {{#attributes}}{{key}}="{{value}}"{{/attributes}} data-toslider="true">

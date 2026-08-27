@@ -15,14 +15,14 @@
     along with Moodle.  If not, see <http://www.gnu.org/licenses/>.
 }}
 {{!
-    @template block_kamaleon/designs/rating/layout
+    @template block_kamaleon/designs/starsrating/layout
 
     The designed layout.
 
     Example context (json):
-    {
-        "attributes": {
-            "contents": {
+        {
+        "contents": [
+            {
                 "id": 1,
                 "index": 0,
                 "shorttitle": "MC",
@@ -37,15 +37,15 @@
                 "icon": "https://example.com/icon.png",
                 "hasicon": true,
                 "showedition": false
-            },
-            "attributes": [
-                {
-                    "key": "data-attribute",
-                    "value": "true"
-                }
-            ],
-            "instanceid": "99"
-        }
+            }
+        ],
+        "instanceid": "99",
+        "attributes": [
+            {
+                "key": "data-attribute",
+                "value": "true"
+            }
+        ]
     }
 }}
 
