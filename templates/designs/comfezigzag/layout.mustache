@@ -15,7 +15,7 @@
     along with Moodle.  If not, see <http://www.gnu.org/licenses/>.
 }}
 {{!
-    @template block_kamaleon/cessinglecard/layout
+    @template block_kamaleon/comfezigzag/layout
 
     The designed layout.
 
@@ -36,46 +36,56 @@
                 "hasbanner": true,
                 "icon": "https://example.com/icon.png",
                 "hasicon": true,
-                "showedition": false
+                "showedition": false,
+                "attributes": {
+                    "data-attribute": "value"
+                }
             }
         ],
         "instanceid": "99",
-        "attributes": [
-            {
-                "key": "data-attribute",
-                "value": "true"
-            }
-        ]
+        "attributes": []
     }
 }}
 
 <div class="container-cards" {{#attributes}}{{key}}="{{value}}"{{/attributes}} data-toslider="true">
     {{#contents}}
     <div class="card-cards">
-        <div class="card_imagen">
-            {{#banner}}
-                {{#url}}
-                    <a href="{{url}}" {{#inmodal}}class="kam-openinmodal" {{/inmodal}}{{#target}}target="{{target}}"{{/target}}>
-                        <img src="{{banner}}" alt="{{title}}" title="{{title}}">
-                    </a>
-                {{/url}}
-                {{^url}}
+        {{#url}}
+            <a href="{{url}}" {{#target}}target="{{target}}"{{/target}} class="card-box{{#inmodal}} kam-openinmodal{{/inmodal}}">
+        {{/url}}
+        {{^url}}
+            <div class="card-box">
+        {{/url}}
+            <div class="card_icon">
+                {{#icon}}
+                    <img src="{{icon}}" alt="{{subtitle}}" title="{{subtitle}}">
+                {{/icon}}
+            </div>
+            <div class="card_body">
+                <div class="card_tag">
+                    {{shorttitle}}
+                </div>
+                <h5>
+                    {{title}}
+                </h5>
+                <div class="card_content">
+                    {{{content}}}
+                </div>
+            </div>
+            <div class="card_imagen">
+                {{#banner}}
                     <img src="{{banner}}" alt="{{title}}" title="{{title}}">
-                {{/url}}
-            {{/banner}}
-        </div>
-        <div class="card_content">
-            {{#url}}
-                <a href="{{url}}" {{#inmodal}}class="kam-openinmodal" {{/inmodal}}{{#target}}target="{{target}}"{{/target}}>
-            {{/url}}
-            <h5>{{title}}</h5>
-            {{#url}}
-                </a>
-            {{/url}}
-            {{#showedition}}
-                {{> block_kamaleon/edition}}
-            {{/showedition}}
-        </div>
+                {{/banner}}
+            </div>
+        {{#url}}
+            </a>
+        {{/url}}
+        {{^url}}
+            </div>
+        {{/url}}
+        {{#showedition}}
+            {{> block_kamaleon/edition}}
+        {{/showedition}}
     </div>
     {{/contents}}
 </div>

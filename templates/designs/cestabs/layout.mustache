@@ -20,9 +20,9 @@
     The designed layout.
 
     Example context (json):
-    {
-        "attributes": {
-            "contents": {
+        {
+        "contents": [
+            {
                 "id": 1,
                 "index": 0,
                 "shorttitle": "MC",
@@ -37,9 +37,10 @@
                 "icon": "https://example.com/icon.png",
                 "hasicon": true,
                 "showedition": false
-            },
-            "instanceid": "99"
-        }
+            }
+        ],
+        "instanceid": "99",
+        "attributes": []
     }
 }}
 <div class="tabs-ces tabs-ces-flex-layout">
@@ -49,11 +50,11 @@
         <label for="tab-ces-{{id}}" class="tab-ces-label">
             <span class="botones-planes-tabs">
                 {{#hasicon}}
-                <div class="icono-planes-tabs">
-                    <img src="{{icon}}" alt="{{title}}" width="40" height="auto" />
-                </div>
+                <span class="icono-planes-tabs">
+                    <img src="{{icon}}" alt="{{title}}">
+                </span>
                 {{/hasicon}}
-                {{#title}}<p>{{title}}</p>{{/title}}
+                {{#title}}<span class="titulo-planes-tabs">{{title}}</span>{{/title}}
             </span>
         </label>
 

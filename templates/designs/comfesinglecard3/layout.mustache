@@ -15,7 +15,7 @@
     along with Moodle.  If not, see <http://www.gnu.org/licenses/>.
 }}
 {{!
-    @template block_kamaleon/cessinglecard/layout
+    @template block_kamaleon/comfesinglecard3/layout
 
     The designed layout.
 
@@ -40,42 +40,34 @@
             }
         ],
         "instanceid": "99",
-        "attributes": [
-            {
-                "key": "data-attribute",
-                "value": "true"
-            }
-        ]
+        "attributes": []
     }
 }}
 
-<div class="container-cards" {{#attributes}}{{key}}="{{value}}"{{/attributes}} data-toslider="true">
+<div class="container-cards">
     {{#contents}}
-    <div class="card-cards">
-        <div class="card_imagen">
-            {{#banner}}
-                {{#url}}
-                    <a href="{{url}}" {{#inmodal}}class="kam-openinmodal" {{/inmodal}}{{#target}}target="{{target}}"{{/target}}>
-                        <img src="{{banner}}" alt="{{title}}" title="{{title}}">
-                    </a>
-                {{/url}}
-                {{^url}}
-                    <img src="{{banner}}" alt="{{title}}" title="{{title}}">
-                {{/url}}
-            {{/banner}}
-        </div>
+    <div class="card-cards" {{#banner}}style="background-image: url('{{banner}}');"{{/banner}}>
         <div class="card_content">
-            {{#url}}
-                <a href="{{url}}" {{#inmodal}}class="kam-openinmodal" {{/inmodal}}{{#target}}target="{{target}}"{{/target}}>
-            {{/url}}
-            <h5>{{title}}</h5>
-            {{#url}}
-                </a>
-            {{/url}}
+            {{#title}}<h4>{{title}}</h4>{{/title}}
+            {{#content}}{{{content}}}{{/content}}
             {{#showedition}}
                 {{> block_kamaleon/edition}}
             {{/showedition}}
         </div>
+        {{#url}}
+        <div class="card_footer">
+                <a href="{{url}}" {{#target}}target="{{target}}"{{/target}} class="btn btn-primary {{#inmodal}}kam-openinmodal{{/inmodal}}">
+                {{#linkname}}
+                    {{linkname}}
+                {{/linkname}}
+                {{^linkname}}
+                    {{#title}}
+                        {{#str}} moreinfo, block_kamaleon {{/str}}
+                    {{/title}}
+                {{/linkname}}
+                </a>
+        </div>
+        {{/url}}
     </div>
     {{/contents}}
 </div>

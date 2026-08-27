@@ -15,7 +15,7 @@
     along with Moodle.  If not, see <http://www.gnu.org/licenses/>.
 }}
 {{!
-    @template block_kamaleon/cessinglecard/layout
+    @template block_kamaleon/indicatoronscale/layout
 
     The designed layout.
 
@@ -40,38 +40,21 @@
             }
         ],
         "instanceid": "99",
-        "attributes": [
-            {
-                "key": "data-attribute",
-                "value": "true"
-            }
-        ]
+        "contentstotal": 5,
+        "attributes": []
     }
 }}
 
-<div class="container-cards" {{#attributes}}{{key}}="{{value}}"{{/attributes}} data-toslider="true">
+<div class="container-indicators">
     {{#contents}}
-    <div class="card-cards">
-        <div class="card_imagen">
-            {{#banner}}
-                {{#url}}
-                    <a href="{{url}}" {{#inmodal}}class="kam-openinmodal" {{/inmodal}}{{#target}}target="{{target}}"{{/target}}>
-                        <img src="{{banner}}" alt="{{title}}" title="{{title}}">
-                    </a>
-                {{/url}}
-                {{^url}}
-                    <img src="{{banner}}" alt="{{title}}" title="{{title}}">
-                {{/url}}
-            {{/banner}}
+    <div class="indicator-box" style="--index: {{index}}; --total: {{contentstotal}};">
+        <div class="indicator_icon">
+            {{#icon}}<img src="{{icon}}" alt="{{title}}" title="{{title}}">{{/icon}}
+            {{#shorttitle}}<h6>{{shorttitle}}</h6>{{/shorttitle}}
         </div>
-        <div class="card_content">
-            {{#url}}
-                <a href="{{url}}" {{#inmodal}}class="kam-openinmodal" {{/inmodal}}{{#target}}target="{{target}}"{{/target}}>
-            {{/url}}
-            <h5>{{title}}</h5>
-            {{#url}}
-                </a>
-            {{/url}}
+        <div class="indicator_body">
+            {{#title}}<h4>{{title}}</h4>{{/title}}
+            {{#subtitle}}<h5>{{subtitle}}</h5>{{/subtitle}}
             {{#showedition}}
                 {{> block_kamaleon/edition}}
             {{/showedition}}

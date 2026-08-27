@@ -14,6 +14,8 @@
 // You should have received a copy of the GNU General Public License
 // along with Moodle.  If not, see <http://www.gnu.org/licenses/>.
 
+use core\output\html_writer;
+
 /**
  * Block kamaleon class definition.
  *
@@ -128,6 +130,7 @@ class block_kamaleon extends block_base {
         \block_kamaleon\controller::include_designcss($design);
 
         $contentsource = null;
+        $customparams = [];
         if (is_object($this->config)) {
             if (isset($this->config->type)) {
                 $contentsource = \block_kamaleon\controller::get_typeinstance($this->config->type);
@@ -135,20 +138,9 @@ class block_kamaleon extends block_base {
 
             $this->config->customparams = [];
             if (isset($this->config->instanceparams)) {
-                $params = explode("\n", $this->config->instanceparams);
-                foreach ($params as $param) {
-                    $pair = explode('=', trim($param), 2);
-                    $value = '';
-                    if (count($pair) == 2) {
-                        if (is_numeric($pair[1])) {
-                            $value = (int)trim($pair[1]);
-                        } else {
-                            $value = trim($pair[1]);
-                        }
-                    }
-                    $this->config->customparams[trim($pair[0])] = $value;
-                }
+                $this->config->customparams = \block_kamaleon\controller::instance2customparams($this->config->instanceparams);
             }
+            $customparams = $this->config->customparams;
         }
 
         $list = [];
@@ -167,7 +159,7 @@ class block_kamaleon extends block_base {
             $instanceid = $this->instance->id;
         }
 
-        $renderable = new \block_kamaleon\output\contents($instanceid, $list, $design);
+        $renderable = new \block_kamaleon\output\contents($instanceid, $list, $design, false, $customparams);
         $renderer = $this->page->get_renderer('block_kamaleon');
 
         $this->content->text = $renderer->render($renderable);
@@ -194,7 +186,11 @@ class block_kamaleon extends block_base {
                 $htmlheader = $htmlheader['text'];
             }
 
-            $this->content->text = format_text($htmlheader, $htmlheaderformat, $filteropt) . $this->content->text;
+            $this->content->text = html_writer::tag(
+                'div',
+                format_text($htmlheader, $htmlheaderformat, $filteropt),
+                ['class' => 'block_kamaleon_header']
+            ) . $this->content->text;
         }
 
         if (isset($this->config->htmlfooter)) {
@@ -219,7 +215,11 @@ class block_kamaleon extends block_base {
                 $htmlfooter = $htmlfooter['text'];
             }
 
-            $this->content->footer .= format_text($htmlfooter, $htmlfooterformat, $filteropt);
+            $this->content->footer .= html_writer::tag(
+                'div',
+                format_text($htmlfooter, $htmlfooterformat, $filteropt),
+                ['class' => 'block_kamaleon_footer']
+            );
         }
 
         return $this->content;

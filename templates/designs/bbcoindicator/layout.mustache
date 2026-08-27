@@ -20,9 +20,9 @@
     The designed layout.
 
     Example context (json):
-    {
-        "attributes": {
-            "contents": {
+        {
+        "contents": [
+            {
                 "id": 1,
                 "index": 0,
                 "shorttitle": "MC",
@@ -37,16 +37,22 @@
                 "icon": "https://example.com/icon.png",
                 "hasicon": true,
                 "showedition": false
-            },
-            "instanceid": "99"
-        }
+            }
+        ],
+        "instanceid": "99",
+        "attributes": [
+            {
+                "key": "data-attribute",
+                "value": "true"
+            }
+        ]
     }
 }}
 
-<div class="container-indicators" data-toslider="true">
+<div class="container-indicators" {{#attributes}}{{key}}="{{value}}"{{/attributes}} data-toslider="true">
     {{#contents}}
     <div>
-        {{#icon}}<img src="{{icon}}" alt="{{title}}" title="{{title}}" />{{/icon}}
+        {{#icon}}<img src="{{icon}}" alt="{{title}}" title="{{title}}">{{/icon}}
         {{#title}}<h5>{{title}}</h5>{{/title}}
         {{#subtitle}}<h4>{{subtitle}}</h4>{{/subtitle}}
         {{#showedition}}

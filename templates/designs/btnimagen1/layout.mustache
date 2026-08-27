@@ -21,8 +21,8 @@
 
     Example context (json):
     {
-        "attributes": {
-            "contents": {
+        "contents": [
+            {
                 "id": 1,
                 "index": 0,
                 "shorttitle": "MC",
@@ -37,12 +37,18 @@
                 "icon": "https://example.com/icon.png",
                 "hasicon": true,
                 "showedition": false
-            },
-            "instanceid": "99"
-        }
+            }
+        ],
+        "attributes": [
+            {
+                "key": "data-attribute",
+                "value": "true"
+            }
+        ],
+        "instanceid": "99"
     }
 }}
-<div class="container-cards" data-toslider="true">
+<div class="container-cards" {{#attributes}}{{key}}="{{value}}"{{/attributes}} data-toslider="true">
     {{#contents}}
     <div class="card-cards">
         {{#url}}
@@ -57,7 +63,7 @@
                 <strong>{{title}}</strong>
                 <span>{{subtitle}}</span>
                 {{#linkname}}
-                    <button class="btn btn-secondary">{{.}}</button>
+                    <span class="btn btn-secondary">{{.}}</span>
                 {{/linkname}}
                 {{^linkname}}
                     <svg viewBox="0 0 30 30" fill="none" xmlns="http://www.w3.org/2000/svg">

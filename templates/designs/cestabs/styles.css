@@ -24,14 +24,14 @@
     order: 1;
 }
 
-.block_kamaleon.design-cestabs .tabs-ces .tab-ces-label p {
+.block_kamaleon.design-cestabs .tabs-ces .tab-ces-label .titulo-planes-tabs {
     font-size: 16px;
     line-height: 20px;
     margin: 0;
     color: #535353;
 }
 
-.block_kamaleon.design-cestabs .tabs-ces .tab-ces-label:hover p {
+.block_kamaleon.design-cestabs .tabs-ces .tab-ces-label:hover .titulo-planes-tabs {
     color: #15284b;
 }
 
@@ -72,6 +72,11 @@
     display: flex;
     justify-content: center;
     margin-right: 20px;
+
+    img {
+        width: 40px;
+        height: auto;
+    }
 }
 
 .block_kamaleon.design-cestabs .contenido-tabs {

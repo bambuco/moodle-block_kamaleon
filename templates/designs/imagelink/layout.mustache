@@ -20,9 +20,9 @@
     Template to render the image link design.
 
     Example context (json):
-    {
-        "attributes": {
-            "contents": {
+        {
+        "contents": [
+            {
                 "id": 1,
                 "index": 0,
                 "shorttitle": "MC",
@@ -37,16 +37,17 @@
                 "icon": "https://example.com/icon.png",
                 "hasicon": true,
                 "showedition": false
-            },
-            "instanceid": "99"
-        }
+            }
+        ],
+        "instanceid": "99",
+        "attributes": []
     }
 }}
 <div class="container-elements" data-toslider="true">
     {{#contents}}
     <div>
         <a href="{{url}}" {{#target}}target="{{target}}"{{/target}} aria-label="{{title}}">
-            {{#hasbanner}}<img src="{{banner}}" alt="{{title}}" title="{{title}}" />{{/hasbanner}}
+            {{#hasbanner}}<img src="{{banner}}" alt="{{title}}" title="{{title}}">{{/hasbanner}}
             {{#linkname}}{{linkname}}{{/linkname}}
         </a>
         {{#showedition}}

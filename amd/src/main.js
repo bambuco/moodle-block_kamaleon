@@ -55,19 +55,30 @@ export const initSlider = () => {
             "selector": "[data-toslider='true'] > *",
         };
 
-        if ($this.attr('data-autoplay') && $this.attr('data-autoplay') == 'true') {
-            prop.slideshow = true;
-        } else {
-            prop.slideshow = false;
+        const $hsliderelement = $this.find('[data-kam-hslider-element]');
+
+        if ($hsliderelement.length > 0) {
+            if ($hsliderelement.attr('data-autoplay') && $hsliderelement.attr('data-autoplay') == 'true') {
+                prop.slideshow = true;
+            } else {
+                prop.slideshow = false;
+            }
+
+            if ($hsliderelement.attr('data-loop') && $hsliderelement.attr('data-loop') == 'true') {
+                prop.animationLoop = true;
+            }
+
+            if ($hsliderelement.attr('data-slideshowspeed')) {
+                prop.slideshowSpeed = $hsliderelement.attr('data-slideshowspeed');
+                prop.pauseOnHover = true;
+            }
+
+            if ($hsliderelement.attr('data-width')) {
+                prop.itemWidth = parseInt($hsliderelement.attr('data-width'));
+            }
         }
 
-        if ($this.attr('data-loop') && $this.attr('data-loop') == 'true') {
-            prop.animationLoop = true;
-        }
-
-        if ($this.attr('data-width')) {
-            prop.itemWidth = parseInt($this.attr('data-width'));
-        } else {
+        if (!prop.itemWidth) {
             var $element = $this.find(prop.selector);
             var itemwidth = $element.css('width');
 

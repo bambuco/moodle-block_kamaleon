@@ -20,9 +20,9 @@
     The designed layout.
 
     Example context (json):
-    {
-        "attributes": {
-            "contents": {
+        {
+        "contents": [
+            {
                 "id": 1,
                 "index": 0,
                 "shorttitle": "MC",
@@ -37,9 +37,10 @@
                 "icon": "https://example.com/icon.png",
                 "hasicon": true,
                 "showedition": false
-            },
-            "instanceid": "99"
-        }
+            }
+        ],
+        "instanceid": "99",
+        "attributes": []
     }
 }}
 <div class="kmltabs kmltabs-flex-layout">
@@ -48,9 +49,9 @@
 
         <label for="kmltab-{{id}}" class="kmltab-label">
             {{#hasicon}}
-            <div class="kmltab-icon">
-                <img src="{{icon}}" alt="{{shorttitle}}" width="40" height="auto" />
-            </div>
+            <span class="kmltab-icon">
+                <img src="{{icon}}" alt="{{shorttitle}}">
+            </span>
             {{/hasicon}}
             {{#shorttitle}}<em>{{shorttitle}}</em>{{/shorttitle}}
         </label>
