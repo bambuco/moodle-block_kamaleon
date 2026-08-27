@@ -117,13 +117,17 @@ class block_kamaleon extends block_base {
         }
 
         $design = '';
-        if (!empty($this->config) && !empty($this->config->design)) {
+        $visualization = '';
+        if (!empty($this->config)) {
             $visualization = property_exists($this->config, 'visualization') ? $this->config->visualization : '';
-            \block_kamaleon\controller::include_externals($this->config->design, $visualization);
+        }
 
-            \block_kamaleon\controller::include_designcss($this->config->design);
+        if (!empty($this->config) && !empty($this->config->design)) {
             $design = $this->config->design;
         }
+
+        \block_kamaleon\controller::include_externals($design, $visualization);
+        \block_kamaleon\controller::include_designcss($design);
 
         $contentsource = null;
         $customparams = [];

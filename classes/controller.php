@@ -101,10 +101,6 @@ class controller {
         static $includedslider = false;
         static $includedmodal = false;
 
-        if (empty($design)) {
-            return;
-        }
-
         // Include the open in modal JS only once.
         if (!$includedmodal) {
             $includedmodal = true;
@@ -120,6 +116,11 @@ class controller {
                 $PAGE->requires->css($csspath, true);
                 $PAGE->requires->js_call_amd('block_kamaleon/main', 'initSlider');
             }
+        }
+
+        // The default design has no design-specific external files.
+        if (empty($design)) {
+            return;
         }
 
         $externals = \block_kamaleon\design::get_externals($design);
