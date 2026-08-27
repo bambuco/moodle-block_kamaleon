@@ -43,7 +43,7 @@
         "attributes": []
     }
 }}
-<div class="container-elements" data-toslider="true">
+<div class="container-elements" {{#attributes}}{{key}}="{{value}}"{{/attributes}} data-toslider="true">
     {{#contents}}
         <div class="card">
             <div class="card-header">

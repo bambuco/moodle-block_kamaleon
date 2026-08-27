@@ -39,7 +39,7 @@
 }}
 
 <div class="block_kamaleon-contentslist">
-    <div class="row" data-toslider="true">
+    <div class="row" {{#attributes}}{{key}}="{{value}}"{{/attributes}} data-toslider="true">
         {{#contents}}
         <div class="col-md-4">
             <div class="card mb-3 one-content">

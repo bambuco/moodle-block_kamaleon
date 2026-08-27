@@ -44,7 +44,7 @@
     }
 }}
 
-<div class="container-contents" data-toslider="true">
+<div class="container-contents" {{#attributes}}{{key}}="{{value}}"{{/attributes}} data-toslider="true">
     {{#contents}}
     <div class="single-content">
         <div class="content-image">
