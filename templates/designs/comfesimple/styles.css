@@ -1,0 +1,126 @@
+.block_kamaleon.design-comfesimple {
+    .single-content {
+        padding: 10px 20px 0;
+        margin-bottom: 60px;
+    }
+
+    .content-body {
+        max-width: 1200px;
+        margin: 5px auto 40px;
+        position: relative;
+        display: flex;
+        border-radius: 0 0 16px 16px;
+    }
+
+    .content-header {
+        max-width: 1200px;
+        margin: 0 auto;
+        display: flex;
+        flex-direction: column;
+        align-items: flex-start;
+        justify-content: center;
+        width: 100%;
+
+        h5 {
+            font-size: 1.5rem;
+            font-weight: 700;
+            color: var(--secondary);
+            margin: 0;
+        }
+
+        h3 {
+            font-size: 2.5rem;
+            font-weight: 700;
+            color: var(--secondary);
+            margin: 0;
+            position: relative;
+
+            img {
+                position: absolute;
+                top: -25px;
+                right: 0;
+            }
+        }
+    }
+
+    .content-image {
+        display: flex;
+        justify-content: center;
+        align-items: end;
+        width: 40%;
+        margin-bottom: -30px;
+
+        img {
+            max-width: 90%;
+            max-height: 100%;
+            border-radius: 20px;
+            box-shadow: 5px 5px 10px -3px rgba(0, 0, 0, 0.8);
+            margin: 10px;
+        }
+    }
+
+    .content-content {
+        width: 60%;
+        display: flex;
+        align-items: center;
+        padding-bottom: 20px;
+
+        h5 {
+            font-size: 200%;
+            text-align: left;
+            line-height: normal;
+            font-weight: 700;
+            position: relative;
+            margin-bottom: 40px;
+
+            &:before {
+                content: "";
+                position: absolute;
+                width: 50px;
+                height: 5px;
+                border: none;
+                background-color: var(--primary);
+                bottom: -20px;
+                border-radius: 3px;
+            }
+        }
+    }
+
+    .showedition {
+        display: flex;
+        justify-content: center;
+    }
+
+    .single-content {
+        &:nth-child(even) {
+            background-color: var(--secondary);
+            color: var(--secondaryreverse, #fff);
+
+            .content-header {
+                h3,
+                h5 {
+                    color: var(--secondaryreverse, #fff);
+                }
+            }
+        }
+    }
+
+    @media (max-width: 512px) {
+        .content-body {
+            flex-direction: column;
+        }
+
+        .content-image {
+            width: auto;
+
+            img {
+                max-width: 100%;
+            }
+        }
+
+        .content-content {
+            width: 100%;
+            padding: 20px;
+        }
+    }
+}

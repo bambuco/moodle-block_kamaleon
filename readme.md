@@ -27,6 +27,12 @@ The values default to 15px and 48px respectively when they are not defined.
 
 ## IN VERSION
 
+### 2026052002:
+* New template: comfesimple.
+
+### 2026052001:
+* New templates: indicatoronscale, comfesinglecard3, comfezigzag.
+
 ### 2026052000:
 * Compatibility with Moodle 5.1
 
